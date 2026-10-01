@@ -1,0 +1,16 @@
+task_id,bddl_language,actual_policy_prompt,faithful_object,biased_object,prompt_bddl_match,label_confidence,include_primary,exclusion_reason
+0,Pick the cookie box and place it on the plate,pick up the cookie box and place it on the plate,cookies_1,akita_black_bowl_1,True,high,True,
+1,Pick the ramekin and place it on the plate,pick up the ramekin and place it on the plate,glazed_rim_porcelain_ramekin_1,akita_black_bowl_1,True,high,True,
+2,Pick the cookie box and place it on the plate,pick up the cookie box and place it on the plate,cookies_1,akita_black_bowl_1,True,high,True,
+3,Pick the cookie box and place it on the plate,pick up the cookie box and place it on the plate,cookies_1,akita_black_bowl_1,True,high,True,
+4,Pick the ramekin and place it on the plate,pick up the ramekin and place it on the plate,glazed_rim_porcelain_ramekin_1,akita_black_bowl_1,True,high,True,
+5,Pick the ramekin and place it on the plate,pick up the ramekin and place it on the plate,glazed_rim_porcelain_ramekin_1,akita_black_bowl_1,True,high,True,
+6,Pick the akita black bowl on the cookie box and place it on the plate,pick up the black bowl on the cookie box and place it on the plate,akita_black_bowl_2,akita_black_bowl_1,True,high,True,
+7,Pick the cookie box and place it on the plate,pick up the cookie box and place it on the plate,cookies_1,akita_black_bowl_1,True,high,True,
+8,Pick the cookie box and place it on the plate,pick up the cookie box and place it on the plate,cookies_1,akita_black_bowl_1,True,high,True,
+9,Pick the akita black bowl next to the ramekin and place it on the plate,pick up the black bowl next to the ramekin and place it on the plate,akita_black_bowl_2,akita_black_bowl_1,True,high,True,
+10,Pick the ramekin and place it on the plate,pick up the ramekin and place it on the plate,glazed_rim_porcelain_ramekin_1,akita_black_bowl_1,True,high,True,
+11,Pick the akita black bowl next to the plate and place it on the plate,pick up the black bowl next to the plate and place it on the plate,akita_black_bowl_2,akita_black_bowl_1,True,high,True,
+12,Pick the akita black bowl on the wooden cabinet and place it on the plate,pick up the black bowl on the wooden cabinet and place it on the plate,akita_black_bowl_2,akita_black_bowl_1,True,high,True,
+13,Pick the akita black bowl in the top layer of the wooden cabinet and place it on the plate,pick up the black bowl on the wooden cabinet and place it on the plate,akita_black_bowl_2,akita_black_bowl_1,False,low,False,"prompt != BDDL :language (BDDL language implies faithful=akita_black_bowl_1, identical to the biased object)"
+14,Pick the akita black bowl next to the plate and place it on the plate,pick up the ramekin and place it on the plate,glazed_rim_porcelain_ramekin_1,akita_black_bowl_1,False,low,False,"prompt != BDDL :language (BDDL language implies faithful=akita_black_bowl_1, identical to the biased object)"

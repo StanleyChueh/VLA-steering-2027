@@ -12,6 +12,8 @@ for mode in greedy scale; do
     --task-suite "$SUITE" --task-ids "$TASKS" --episodes "$EPISODES" --decoding-mode $mode --out "$OUT/$mode" \
     > "$OUT/$mode.log" 2>&1
   grep -E "^\[$mode\]" "$OUT/$mode.log"
-  # Any episode that ended in an exception is an infrastructure failure, not a policy failure.
-  if grep -q '"error": "' "$OUT/$mode/episodes.jsonl"; then echo "ERROR episodes in $mode - inspect $OUT/$mode.log"; exit 1; fi
+  # An episode that ended in an exception is an infrastructure failure, not a policy failure: flag it (reported
+  # separately by src/analysis/summarize_scale.py), but keep running so both conditions complete.
+  n_exc=$(grep -c '"exception": true' "$OUT/$mode/episodes.jsonl" || true)
+  [ "$n_exc" = "0" ] || echo "WARNING: $n_exc exception episodes in $mode - inspect $OUT/$mode.log"
 done

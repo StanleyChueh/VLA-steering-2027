@@ -1,0 +1,8 @@
+[robosuite WARNING] No private macro file found! (macros.py:53)
+[robosuite WARNING] It is recommended to use a private macro file (macros.py:54)
+[robosuite WARNING] To setup, run: python /home/stanley/Stanley_ws/VLA-steering-2027/envs/libero-cf-client/lib/python3.8/site-packages/robosuite/scripts/setup_macros.py (macros.py:55)
+[B] task 13 ep 0: any=True F(touch=False, succ=False) B(touch=True, succ=True) len=116 calls=24 err=None
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+wrote /home/stanley/Stanley_ws/VLA-steering-2027/results/S2_pipeline_check/B/episodes.jsonl

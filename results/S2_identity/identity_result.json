@@ -1,0 +1,182 @@
+{
+  "n_calls_per_mode": 6,
+  "modes": {
+    "vanilla": {
+      "actions_bit_identical_per_call": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "actions_max_abs_diff": 0.0,
+      "rng_after_sequence_identical": true,
+      "diag_x0_bit_identical_all": true,
+      "n_branch_checks": 6,
+      "noise_sha_first_call": {
+        "cond": "8d4aae81a8a4a42a"
+      },
+      "raw_probs_file": "results/S2_identity/raw_vanilla_call0_cond.npy",
+      "attention_shapes": {
+        "kwts_E": [
+          10,
+          10
+        ],
+        "kwts_N": [],
+        "obs_mass": [
+          10,
+          18,
+          8,
+          10
+        ],
+        "obs_normalized_entropy": [
+          10,
+          18,
+          8,
+          10
+        ],
+        "obs_raw_entropy": [
+          10,
+          18,
+          8,
+          10
+        ],
+        "obs_valid_key_count": [],
+        "vlm_normalized_entropy": [
+          10,
+          18,
+          8,
+          10
+        ],
+        "vlm_raw_entropy": [
+          10,
+          18,
+          8,
+          10
+        ],
+        "vlm_valid_key_count": [],
+        "prefix_mask": [
+          968
+        ]
+      },
+      "obs_valid_key_count": 512,
+      "vlm_valid_key_count": 525,
+      "obs_normalized_entropy_final_step_by_k": [
+        0.6678000092506409,
+        0.6793000102043152,
+        0.6808000206947327,
+        0.6861000061035156,
+        0.6890000104904175,
+        0.6881999969482422,
+        0.6909999847412109,
+        0.6870999932289124,
+        0.6866000294685364,
+        0.6801999807357788
+      ],
+      "PASS": true
+    },
+    "cag_tf": {
+      "actions_bit_identical_per_call": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "actions_max_abs_diff": 0.0,
+      "rng_after_sequence_identical": true,
+      "diag_x0_bit_identical_all": true,
+      "n_branch_checks": 12,
+      "noise_sha_first_call": {
+        "cond": "8d4aae81a8a4a42a",
+        "uncond": "8d4aae81a8a4a42a"
+      },
+      "raw_probs_file": "results/S2_identity/raw_cag_tf_call0_cond.npy",
+      "attention_shapes": {
+        "kwts_E": [
+          10,
+          10
+        ],
+        "kwts_N": [],
+        "obs_mass": [
+          10,
+          18,
+          8,
+          10
+        ],
+        "obs_normalized_entropy": [
+          10,
+          18,
+          8,
+          10
+        ],
+        "obs_raw_entropy": [
+          10,
+          18,
+          8,
+          10
+        ],
+        "obs_valid_key_count": [],
+        "vlm_normalized_entropy": [
+          10,
+          18,
+          8,
+          10
+        ],
+        "vlm_raw_entropy": [
+          10,
+          18,
+          8,
+          10
+        ],
+        "vlm_valid_key_count": [],
+        "prefix_mask": [
+          968
+        ]
+      },
+      "obs_valid_key_count": 512,
+      "vlm_valid_key_count": 525,
+      "obs_normalized_entropy_final_step_by_k": [
+        0.6678000092506409,
+        0.6793000102043152,
+        0.6808000206947327,
+        0.6861000061035156,
+        0.6890000104904175,
+        0.6881999969482422,
+        0.6909999847412109,
+        0.6870999932289124,
+        0.6866000294685364,
+        0.6801999807357788
+      ],
+      "guidance_reconstruction_max_abs_err": 1.0040408382483434e-07,
+      "guidance_translation_norm_first_call": [
+        0.04004,
+        0.16382,
+        0.3262,
+        0.38554,
+        0.39845,
+        0.35397,
+        0.29553,
+        0.25349,
+        0.21818,
+        0.19655
+      ],
+      "guidance_normalized_combined_norm_first_call": [
+        0.0754,
+        0.2094,
+        0.4168,
+        0.4896,
+        0.5141,
+        0.4735,
+        0.413,
+        0.3713,
+        0.3402,
+        0.3232
+      ],
+      "PASS": true
+    }
+  },
+  "PASS": true
+}

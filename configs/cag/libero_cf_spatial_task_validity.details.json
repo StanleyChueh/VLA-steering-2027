@@ -1,0 +1,4827 @@
+{
+ "suite": "libero_cf_spatial",
+ "env_seed": 7,
+ "valid_tasks": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12
+ ],
+ "selection_rule": "first, median, and last task among the valid clean tasks (median = lower median)",
+ "primary_pilot_tasks": [
+  0,
+  6,
+  12
+ ],
+ "tasks": {
+  "0": {
+   "bddl_file": "libero_cf_spatial/01-pick_up_the_cookie_box_and_place_it_on_the_plate.bddl",
+   "faithful_condition": "on cookies_1 plate_1",
+   "biased_condition": "on akita_black_bowl_1 plate_1",
+   "faithful_from_bddl_language": "cookies_1",
+   "qualifier": "",
+   "qualifier_reference": null,
+   "n_init_states": 50,
+   "bodies": {
+    "cookies_1": "cookies_1_main",
+    "plate_1": "plate_1_main",
+    "akita_black_bowl_2": "akita_black_bowl_2_main",
+    "akita_black_bowl_1": "akita_black_bowl_1_main",
+    "wooden_cabinet_1": "wooden_cabinet_1_main",
+    "glazed_rim_porcelain_ramekin_1": "glazed_rim_porcelain_ramekin_1_main"
+   },
+   "per_init": [
+    {
+     "init": 0,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "4e410b9b3ef01bdcce619205cc302f2b626662463a074042b0eacabb0dd671e8"
+    },
+    {
+     "init": 1,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "3ee59226cb9b17c48081cf9798917bc83715dfad3c1e97dbcefebec788335692"
+    },
+    {
+     "init": 2,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "5522982f5e72757e606f3e9df3881d3a99611aa9d0d6055e2aeb0e3ccbabaa40"
+    },
+    {
+     "init": 3,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "4ed703ed7e4b2a7fd864c7786bcded76d98458c182033e14baa0717ce0200591"
+    },
+    {
+     "init": 4,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "37c6c2d024ba75317de7bbb791c0bb547eba1c670d845bd82517c38754612619"
+    },
+    {
+     "init": 5,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "5655f0a303bf68e348dc00677704e33d3665beb79ec2f14aeb6e900934cedae0"
+    },
+    {
+     "init": 6,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "7ec80cf78c2f7cf7d2b100d39e23591a9860318d9d2bb28d743da576184a913b"
+    },
+    {
+     "init": 7,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "eb8485a132f091f2edcc89d9893a3dafe3152b1ee6a15192eedd5c1a79e33de5"
+    },
+    {
+     "init": 8,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "78e86562f33dc7e72f49e548d78254739bacfb2c1d0854144e830550412bd089"
+    },
+    {
+     "init": 9,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "586d34fe39b161c31d316ef5662b53555715d3cf5d297d42eec3a44ab3b111cb"
+    },
+    {
+     "init": 10,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "030cf2477ef71560bfb61aca75c614b36af83688cdd81b810aa7ea2ab62b4a10"
+    },
+    {
+     "init": 11,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "438cfa53bdaa7875157e517055b1132c521f4496030b83c4d65c5ee2017cee61"
+    },
+    {
+     "init": 12,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "bd9c085346a529d068973dbe380193cb22a5c2182c1dffc09ab48eb336affbcd"
+    },
+    {
+     "init": 13,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "4bc0b8ea0048afb0c4a634269e156425dab9b10478372ff00a419ea203d7fbd6"
+    },
+    {
+     "init": 14,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "694feabe0f0df7930301de913f42081c99979488e53a35b356c9397dc2f24c07"
+    },
+    {
+     "init": 15,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "db8bf1d0a56fe9cfb07abd9a6765ce29ff67c2366fc82d94728c35fe74991c91"
+    },
+    {
+     "init": 16,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "43f0a0a006ba1971f82a3c4ae10242f29c86199ba411e146e2389e3e12421f81"
+    },
+    {
+     "init": 17,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "9ab77d1f1ac47502284c985ee7d7386a853313ecc7c47b737c626e8454d08421"
+    },
+    {
+     "init": 18,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "03cffc9eeaec415ced54dffc5be8735a4f064b3f9b4fd77aff9756c46d5369e5"
+    },
+    {
+     "init": 19,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "88d608882ff8a0519f47d55819d00c58dc649c7899075fd30b567be39fa54f95"
+    },
+    {
+     "init": 20,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "8bda7340679fa899e73f2219b9ba2c16741e154618c3b0b4ffcbacb9e065dc54"
+    },
+    {
+     "init": 21,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "2168e136163d85b423ac0e482daed76d599cefdb84d2dce2aa9fe24d7afda0f9"
+    },
+    {
+     "init": 22,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "56fd1a6d5aa5c453ec9bce5b3d4111378be523b639f3b13dc8cc8c252e5d8d24"
+    },
+    {
+     "init": 23,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "6ef76eec1c3c3d81ed12a5f281cfa3366d06b8e3eb6a9da9464e0139a4ec96be"
+    },
+    {
+     "init": 24,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "8c85f93cc64acb37a97356b5c775fbeb2b00c78bcc4b807330a5446109e30bdd"
+    },
+    {
+     "init": 25,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "c573892d18b6cd22fd8eec086661bd5fa0c414772e986b40683cce2afda86f99"
+    },
+    {
+     "init": 26,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "e1a90d8614c8cbd094c45bc7be499b542dcb9c5c0cc398048f75caa6c1bff5ec"
+    },
+    {
+     "init": 27,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "265278d485b1971f11b9b7c4d7e436ee44fe3259ac01b78250bdf2d06bc1bffb"
+    },
+    {
+     "init": 28,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "758ba829d459975b48ecb7e33a3cb75578e753711c1f7919a5d67059dee58286"
+    },
+    {
+     "init": 29,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "d322b5bfd8ea82d224f907a0fd94658af72e09c74f43fddccec28ba0adef4e0a"
+    },
+    {
+     "init": 30,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "516b7888c2ac90b56eb0625abcf40f71559ff6714ae3568f7bfb9b9268bb48d0"
+    },
+    {
+     "init": 31,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "0bf781b8c09f0bc0f75bba662deb7819b81d57dab4bf3b08489d9b317db95a31"
+    },
+    {
+     "init": 32,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "535ee96cd9cd303355864179968da391d745e22504922ac89c7031687efb5158"
+    },
+    {
+     "init": 33,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "74e4346be484a1c4e4ae1dd89836961ca8a3586d146e2710a50914a311e96abd"
+    },
+    {
+     "init": 34,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "7546baf87e392b27d074f684a6a588d9a1772356660e83fa387a4a5a38fea682"
+    },
+    {
+     "init": 35,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "4a7af7d5a6134b8336158f568ce9aba735b726e36bd1fbe9bbe55b9235617b04"
+    },
+    {
+     "init": 36,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "e206c4a896fb022c30ddcfb8e47cdd405bded3f3b593c05c32ee72ab380dfdf9"
+    },
+    {
+     "init": 37,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "fe92695637fc5181a6c292baab785088599cd087dba64c0401ac35a46617807b"
+    },
+    {
+     "init": 38,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "fac774712fec5c1302a76b4eed3935b8062ad63bd8134ef6df8bb3e0ec6414a7"
+    },
+    {
+     "init": 39,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "d17223435faaad078fc3bf0904353d132810a37eb6a4a29db4ac58a11675eab0"
+    },
+    {
+     "init": 40,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "c157496f8bc8245d2c5d4fbbbfbbbf08eb106f48a7c57c2c22a476574f266d01"
+    },
+    {
+     "init": 41,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "8413ff9e178cf44877964c1c17bf15f81734e0dfe609973f66f374ada7e4888e"
+    },
+    {
+     "init": 42,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "8e32e7195a09e7e5072bd6426aaeecc20ddbfaff0511ce81d66e9c4d70b960d8"
+    },
+    {
+     "init": 43,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "d47c9c16840e21cd928ca29efacfa4e85ca7927a7e6295afaa6b7923f78c7575"
+    },
+    {
+     "init": 44,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "4ffb019ca6a4a7f176bc4b85560dae6f05e51e37c769cd49c4e174026237daca"
+    },
+    {
+     "init": 45,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "a2d67950bba9739668f65f63fa276d6b3091f4f30bf0d3e961da583e87d03193"
+    },
+    {
+     "init": 46,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "d3cfd8b359f29c11ee3bf207c4b85032a4de65e45723b1bf81ac7d0fbe025256"
+    },
+    {
+     "init": 47,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "3d6a40067f7c03b8ecbcea697ae14502540d952d0733ef500ab45489d33d381b"
+    },
+    {
+     "init": 48,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "ad9ee5402d0b25e0b0035d737f570faee9597edeacfc75b31926a586942bf6dc"
+    },
+    {
+     "init": 49,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "287ab82a0550900446f73f261e955974c7c774663232ab2355eb1ff3f47b9fe4"
+    }
+   ]
+  },
+  "1": {
+   "bddl_file": "libero_cf_spatial/02-pick_up_the_ramekin_and_place_it_on_the_plate.bddl",
+   "faithful_condition": "on glazed_rim_porcelain_ramekin_1 plate_1",
+   "biased_condition": "on akita_black_bowl_1 plate_1",
+   "faithful_from_bddl_language": "glazed_rim_porcelain_ramekin_1",
+   "qualifier": "",
+   "qualifier_reference": null,
+   "n_init_states": 50,
+   "bodies": {
+    "cookies_1": "cookies_1_main",
+    "plate_1": "plate_1_main",
+    "akita_black_bowl_2": "akita_black_bowl_2_main",
+    "akita_black_bowl_1": "akita_black_bowl_1_main",
+    "wooden_cabinet_1": "wooden_cabinet_1_main",
+    "glazed_rim_porcelain_ramekin_1": "glazed_rim_porcelain_ramekin_1_main"
+   },
+   "per_init": [
+    {
+     "init": 0,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "4e410b9b3ef01bdcce619205cc302f2b626662463a074042b0eacabb0dd671e8"
+    },
+    {
+     "init": 1,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "3ee59226cb9b17c48081cf9798917bc83715dfad3c1e97dbcefebec788335692"
+    },
+    {
+     "init": 2,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "5522982f5e72757e606f3e9df3881d3a99611aa9d0d6055e2aeb0e3ccbabaa40"
+    },
+    {
+     "init": 3,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "4ed703ed7e4b2a7fd864c7786bcded76d98458c182033e14baa0717ce0200591"
+    },
+    {
+     "init": 4,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "37c6c2d024ba75317de7bbb791c0bb547eba1c670d845bd82517c38754612619"
+    },
+    {
+     "init": 5,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "5655f0a303bf68e348dc00677704e33d3665beb79ec2f14aeb6e900934cedae0"
+    },
+    {
+     "init": 6,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "7ec80cf78c2f7cf7d2b100d39e23591a9860318d9d2bb28d743da576184a913b"
+    },
+    {
+     "init": 7,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "eb8485a132f091f2edcc89d9893a3dafe3152b1ee6a15192eedd5c1a79e33de5"
+    },
+    {
+     "init": 8,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "78e86562f33dc7e72f49e548d78254739bacfb2c1d0854144e830550412bd089"
+    },
+    {
+     "init": 9,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "586d34fe39b161c31d316ef5662b53555715d3cf5d297d42eec3a44ab3b111cb"
+    },
+    {
+     "init": 10,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "030cf2477ef71560bfb61aca75c614b36af83688cdd81b810aa7ea2ab62b4a10"
+    },
+    {
+     "init": 11,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "438cfa53bdaa7875157e517055b1132c521f4496030b83c4d65c5ee2017cee61"
+    },
+    {
+     "init": 12,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "bd9c085346a529d068973dbe380193cb22a5c2182c1dffc09ab48eb336affbcd"
+    },
+    {
+     "init": 13,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "4bc0b8ea0048afb0c4a634269e156425dab9b10478372ff00a419ea203d7fbd6"
+    },
+    {
+     "init": 14,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "694feabe0f0df7930301de913f42081c99979488e53a35b356c9397dc2f24c07"
+    },
+    {
+     "init": 15,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "db8bf1d0a56fe9cfb07abd9a6765ce29ff67c2366fc82d94728c35fe74991c91"
+    },
+    {
+     "init": 16,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "43f0a0a006ba1971f82a3c4ae10242f29c86199ba411e146e2389e3e12421f81"
+    },
+    {
+     "init": 17,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "9ab77d1f1ac47502284c985ee7d7386a853313ecc7c47b737c626e8454d08421"
+    },
+    {
+     "init": 18,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "03cffc9eeaec415ced54dffc5be8735a4f064b3f9b4fd77aff9756c46d5369e5"
+    },
+    {
+     "init": 19,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "88d608882ff8a0519f47d55819d00c58dc649c7899075fd30b567be39fa54f95"
+    },
+    {
+     "init": 20,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "8bda7340679fa899e73f2219b9ba2c16741e154618c3b0b4ffcbacb9e065dc54"
+    },
+    {
+     "init": 21,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "2168e136163d85b423ac0e482daed76d599cefdb84d2dce2aa9fe24d7afda0f9"
+    },
+    {
+     "init": 22,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "56fd1a6d5aa5c453ec9bce5b3d4111378be523b639f3b13dc8cc8c252e5d8d24"
+    },
+    {
+     "init": 23,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "6ef76eec1c3c3d81ed12a5f281cfa3366d06b8e3eb6a9da9464e0139a4ec96be"
+    },
+    {
+     "init": 24,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "8c85f93cc64acb37a97356b5c775fbeb2b00c78bcc4b807330a5446109e30bdd"
+    },
+    {
+     "init": 25,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "c573892d18b6cd22fd8eec086661bd5fa0c414772e986b40683cce2afda86f99"
+    },
+    {
+     "init": 26,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "e1a90d8614c8cbd094c45bc7be499b542dcb9c5c0cc398048f75caa6c1bff5ec"
+    },
+    {
+     "init": 27,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "265278d485b1971f11b9b7c4d7e436ee44fe3259ac01b78250bdf2d06bc1bffb"
+    },
+    {
+     "init": 28,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "758ba829d459975b48ecb7e33a3cb75578e753711c1f7919a5d67059dee58286"
+    },
+    {
+     "init": 29,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "d322b5bfd8ea82d224f907a0fd94658af72e09c74f43fddccec28ba0adef4e0a"
+    },
+    {
+     "init": 30,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "516b7888c2ac90b56eb0625abcf40f71559ff6714ae3568f7bfb9b9268bb48d0"
+    },
+    {
+     "init": 31,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "0bf781b8c09f0bc0f75bba662deb7819b81d57dab4bf3b08489d9b317db95a31"
+    },
+    {
+     "init": 32,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "535ee96cd9cd303355864179968da391d745e22504922ac89c7031687efb5158"
+    },
+    {
+     "init": 33,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "74e4346be484a1c4e4ae1dd89836961ca8a3586d146e2710a50914a311e96abd"
+    },
+    {
+     "init": 34,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "7546baf87e392b27d074f684a6a588d9a1772356660e83fa387a4a5a38fea682"
+    },
+    {
+     "init": 35,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "4a7af7d5a6134b8336158f568ce9aba735b726e36bd1fbe9bbe55b9235617b04"
+    },
+    {
+     "init": 36,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "e206c4a896fb022c30ddcfb8e47cdd405bded3f3b593c05c32ee72ab380dfdf9"
+    },
+    {
+     "init": 37,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "fe92695637fc5181a6c292baab785088599cd087dba64c0401ac35a46617807b"
+    },
+    {
+     "init": 38,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "fac774712fec5c1302a76b4eed3935b8062ad63bd8134ef6df8bb3e0ec6414a7"
+    },
+    {
+     "init": 39,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "d17223435faaad078fc3bf0904353d132810a37eb6a4a29db4ac58a11675eab0"
+    },
+    {
+     "init": 40,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "c157496f8bc8245d2c5d4fbbbfbbbf08eb106f48a7c57c2c22a476574f266d01"
+    },
+    {
+     "init": 41,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "8413ff9e178cf44877964c1c17bf15f81734e0dfe609973f66f374ada7e4888e"
+    },
+    {
+     "init": 42,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "8e32e7195a09e7e5072bd6426aaeecc20ddbfaff0511ce81d66e9c4d70b960d8"
+    },
+    {
+     "init": 43,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "d47c9c16840e21cd928ca29efacfa4e85ca7927a7e6295afaa6b7923f78c7575"
+    },
+    {
+     "init": 44,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "4ffb019ca6a4a7f176bc4b85560dae6f05e51e37c769cd49c4e174026237daca"
+    },
+    {
+     "init": 45,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "a2d67950bba9739668f65f63fa276d6b3091f4f30bf0d3e961da583e87d03193"
+    },
+    {
+     "init": 46,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "d3cfd8b359f29c11ee3bf207c4b85032a4de65e45723b1bf81ac7d0fbe025256"
+    },
+    {
+     "init": 47,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "3d6a40067f7c03b8ecbcea697ae14502540d952d0733ef500ab45489d33d381b"
+    },
+    {
+     "init": 48,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "ad9ee5402d0b25e0b0035d737f570faee9597edeacfc75b31926a586942bf6dc"
+    },
+    {
+     "init": 49,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "287ab82a0550900446f73f261e955974c7c774663232ab2355eb1ff3f47b9fe4"
+    }
+   ]
+  },
+  "2": {
+   "bddl_file": "libero_cf_spatial/03-pick_up_the_cookie_box_and_place_it_on_the_plate.bddl",
+   "faithful_condition": "on cookies_1 plate_1",
+   "biased_condition": "on akita_black_bowl_1 plate_1",
+   "faithful_from_bddl_language": "cookies_1",
+   "qualifier": "",
+   "qualifier_reference": null,
+   "n_init_states": 50,
+   "bodies": {
+    "cookies_1": "cookies_1_main",
+    "plate_1": "plate_1_main",
+    "akita_black_bowl_2": "akita_black_bowl_2_main",
+    "akita_black_bowl_1": "akita_black_bowl_1_main",
+    "wooden_cabinet_1": "wooden_cabinet_1_main",
+    "glazed_rim_porcelain_ramekin_1": "glazed_rim_porcelain_ramekin_1_main"
+   },
+   "per_init": [
+    {
+     "init": 0,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "4e410b9b3ef01bdcce619205cc302f2b626662463a074042b0eacabb0dd671e8"
+    },
+    {
+     "init": 1,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "3ee59226cb9b17c48081cf9798917bc83715dfad3c1e97dbcefebec788335692"
+    },
+    {
+     "init": 2,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "5522982f5e72757e606f3e9df3881d3a99611aa9d0d6055e2aeb0e3ccbabaa40"
+    },
+    {
+     "init": 3,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "4ed703ed7e4b2a7fd864c7786bcded76d98458c182033e14baa0717ce0200591"
+    },
+    {
+     "init": 4,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "37c6c2d024ba75317de7bbb791c0bb547eba1c670d845bd82517c38754612619"
+    },
+    {
+     "init": 5,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "5655f0a303bf68e348dc00677704e33d3665beb79ec2f14aeb6e900934cedae0"
+    },
+    {
+     "init": 6,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "7ec80cf78c2f7cf7d2b100d39e23591a9860318d9d2bb28d743da576184a913b"
+    },
+    {
+     "init": 7,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "eb8485a132f091f2edcc89d9893a3dafe3152b1ee6a15192eedd5c1a79e33de5"
+    },
+    {
+     "init": 8,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "78e86562f33dc7e72f49e548d78254739bacfb2c1d0854144e830550412bd089"
+    },
+    {
+     "init": 9,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "586d34fe39b161c31d316ef5662b53555715d3cf5d297d42eec3a44ab3b111cb"
+    },
+    {
+     "init": 10,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "030cf2477ef71560bfb61aca75c614b36af83688cdd81b810aa7ea2ab62b4a10"
+    },
+    {
+     "init": 11,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "438cfa53bdaa7875157e517055b1132c521f4496030b83c4d65c5ee2017cee61"
+    },
+    {
+     "init": 12,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "bd9c085346a529d068973dbe380193cb22a5c2182c1dffc09ab48eb336affbcd"
+    },
+    {
+     "init": 13,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "4bc0b8ea0048afb0c4a634269e156425dab9b10478372ff00a419ea203d7fbd6"
+    },
+    {
+     "init": 14,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "694feabe0f0df7930301de913f42081c99979488e53a35b356c9397dc2f24c07"
+    },
+    {
+     "init": 15,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "db8bf1d0a56fe9cfb07abd9a6765ce29ff67c2366fc82d94728c35fe74991c91"
+    },
+    {
+     "init": 16,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "43f0a0a006ba1971f82a3c4ae10242f29c86199ba411e146e2389e3e12421f81"
+    },
+    {
+     "init": 17,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "9ab77d1f1ac47502284c985ee7d7386a853313ecc7c47b737c626e8454d08421"
+    },
+    {
+     "init": 18,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "03cffc9eeaec415ced54dffc5be8735a4f064b3f9b4fd77aff9756c46d5369e5"
+    },
+    {
+     "init": 19,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "88d608882ff8a0519f47d55819d00c58dc649c7899075fd30b567be39fa54f95"
+    },
+    {
+     "init": 20,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "8bda7340679fa899e73f2219b9ba2c16741e154618c3b0b4ffcbacb9e065dc54"
+    },
+    {
+     "init": 21,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "2168e136163d85b423ac0e482daed76d599cefdb84d2dce2aa9fe24d7afda0f9"
+    },
+    {
+     "init": 22,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "56fd1a6d5aa5c453ec9bce5b3d4111378be523b639f3b13dc8cc8c252e5d8d24"
+    },
+    {
+     "init": 23,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "6ef76eec1c3c3d81ed12a5f281cfa3366d06b8e3eb6a9da9464e0139a4ec96be"
+    },
+    {
+     "init": 24,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "8c85f93cc64acb37a97356b5c775fbeb2b00c78bcc4b807330a5446109e30bdd"
+    },
+    {
+     "init": 25,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "c573892d18b6cd22fd8eec086661bd5fa0c414772e986b40683cce2afda86f99"
+    },
+    {
+     "init": 26,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "e1a90d8614c8cbd094c45bc7be499b542dcb9c5c0cc398048f75caa6c1bff5ec"
+    },
+    {
+     "init": 27,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "265278d485b1971f11b9b7c4d7e436ee44fe3259ac01b78250bdf2d06bc1bffb"
+    },
+    {
+     "init": 28,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "758ba829d459975b48ecb7e33a3cb75578e753711c1f7919a5d67059dee58286"
+    },
+    {
+     "init": 29,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "d322b5bfd8ea82d224f907a0fd94658af72e09c74f43fddccec28ba0adef4e0a"
+    },
+    {
+     "init": 30,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "516b7888c2ac90b56eb0625abcf40f71559ff6714ae3568f7bfb9b9268bb48d0"
+    },
+    {
+     "init": 31,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "0bf781b8c09f0bc0f75bba662deb7819b81d57dab4bf3b08489d9b317db95a31"
+    },
+    {
+     "init": 32,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "535ee96cd9cd303355864179968da391d745e22504922ac89c7031687efb5158"
+    },
+    {
+     "init": 33,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "74e4346be484a1c4e4ae1dd89836961ca8a3586d146e2710a50914a311e96abd"
+    },
+    {
+     "init": 34,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "7546baf87e392b27d074f684a6a588d9a1772356660e83fa387a4a5a38fea682"
+    },
+    {
+     "init": 35,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "4a7af7d5a6134b8336158f568ce9aba735b726e36bd1fbe9bbe55b9235617b04"
+    },
+    {
+     "init": 36,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "e206c4a896fb022c30ddcfb8e47cdd405bded3f3b593c05c32ee72ab380dfdf9"
+    },
+    {
+     "init": 37,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "fe92695637fc5181a6c292baab785088599cd087dba64c0401ac35a46617807b"
+    },
+    {
+     "init": 38,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "fac774712fec5c1302a76b4eed3935b8062ad63bd8134ef6df8bb3e0ec6414a7"
+    },
+    {
+     "init": 39,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "d17223435faaad078fc3bf0904353d132810a37eb6a4a29db4ac58a11675eab0"
+    },
+    {
+     "init": 40,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "c157496f8bc8245d2c5d4fbbbfbbbf08eb106f48a7c57c2c22a476574f266d01"
+    },
+    {
+     "init": 41,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "8413ff9e178cf44877964c1c17bf15f81734e0dfe609973f66f374ada7e4888e"
+    },
+    {
+     "init": 42,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "8e32e7195a09e7e5072bd6426aaeecc20ddbfaff0511ce81d66e9c4d70b960d8"
+    },
+    {
+     "init": 43,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "d47c9c16840e21cd928ca29efacfa4e85ca7927a7e6295afaa6b7923f78c7575"
+    },
+    {
+     "init": 44,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "4ffb019ca6a4a7f176bc4b85560dae6f05e51e37c769cd49c4e174026237daca"
+    },
+    {
+     "init": 45,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "a2d67950bba9739668f65f63fa276d6b3091f4f30bf0d3e961da583e87d03193"
+    },
+    {
+     "init": 46,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "d3cfd8b359f29c11ee3bf207c4b85032a4de65e45723b1bf81ac7d0fbe025256"
+    },
+    {
+     "init": 47,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "3d6a40067f7c03b8ecbcea697ae14502540d952d0733ef500ab45489d33d381b"
+    },
+    {
+     "init": 48,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "ad9ee5402d0b25e0b0035d737f570faee9597edeacfc75b31926a586942bf6dc"
+    },
+    {
+     "init": 49,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "287ab82a0550900446f73f261e955974c7c774663232ab2355eb1ff3f47b9fe4"
+    }
+   ]
+  },
+  "3": {
+   "bddl_file": "libero_cf_spatial/04-pick_up_the_cookie_box_and_place_it_on_the_plate.bddl",
+   "faithful_condition": "on cookies_1 plate_1",
+   "biased_condition": "on akita_black_bowl_1 plate_1",
+   "faithful_from_bddl_language": "cookies_1",
+   "qualifier": "",
+   "qualifier_reference": null,
+   "n_init_states": 50,
+   "bodies": {
+    "cookies_1": "cookies_1_main",
+    "plate_1": "plate_1_main",
+    "akita_black_bowl_2": "akita_black_bowl_2_main",
+    "akita_black_bowl_1": "akita_black_bowl_1_main",
+    "wooden_cabinet_1": "wooden_cabinet_1_main",
+    "glazed_rim_porcelain_ramekin_1": "glazed_rim_porcelain_ramekin_1_main"
+   },
+   "per_init": [
+    {
+     "init": 0,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "4e410b9b3ef01bdcce619205cc302f2b626662463a074042b0eacabb0dd671e8"
+    },
+    {
+     "init": 1,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "3ee59226cb9b17c48081cf9798917bc83715dfad3c1e97dbcefebec788335692"
+    },
+    {
+     "init": 2,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "5522982f5e72757e606f3e9df3881d3a99611aa9d0d6055e2aeb0e3ccbabaa40"
+    },
+    {
+     "init": 3,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "4ed703ed7e4b2a7fd864c7786bcded76d98458c182033e14baa0717ce0200591"
+    },
+    {
+     "init": 4,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "37c6c2d024ba75317de7bbb791c0bb547eba1c670d845bd82517c38754612619"
+    },
+    {
+     "init": 5,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "5655f0a303bf68e348dc00677704e33d3665beb79ec2f14aeb6e900934cedae0"
+    },
+    {
+     "init": 6,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "7ec80cf78c2f7cf7d2b100d39e23591a9860318d9d2bb28d743da576184a913b"
+    },
+    {
+     "init": 7,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "eb8485a132f091f2edcc89d9893a3dafe3152b1ee6a15192eedd5c1a79e33de5"
+    },
+    {
+     "init": 8,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "78e86562f33dc7e72f49e548d78254739bacfb2c1d0854144e830550412bd089"
+    },
+    {
+     "init": 9,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "586d34fe39b161c31d316ef5662b53555715d3cf5d297d42eec3a44ab3b111cb"
+    },
+    {
+     "init": 10,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "030cf2477ef71560bfb61aca75c614b36af83688cdd81b810aa7ea2ab62b4a10"
+    },
+    {
+     "init": 11,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "438cfa53bdaa7875157e517055b1132c521f4496030b83c4d65c5ee2017cee61"
+    },
+    {
+     "init": 12,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "bd9c085346a529d068973dbe380193cb22a5c2182c1dffc09ab48eb336affbcd"
+    },
+    {
+     "init": 13,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "4bc0b8ea0048afb0c4a634269e156425dab9b10478372ff00a419ea203d7fbd6"
+    },
+    {
+     "init": 14,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "694feabe0f0df7930301de913f42081c99979488e53a35b356c9397dc2f24c07"
+    },
+    {
+     "init": 15,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "db8bf1d0a56fe9cfb07abd9a6765ce29ff67c2366fc82d94728c35fe74991c91"
+    },
+    {
+     "init": 16,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "43f0a0a006ba1971f82a3c4ae10242f29c86199ba411e146e2389e3e12421f81"
+    },
+    {
+     "init": 17,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "9ab77d1f1ac47502284c985ee7d7386a853313ecc7c47b737c626e8454d08421"
+    },
+    {
+     "init": 18,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "03cffc9eeaec415ced54dffc5be8735a4f064b3f9b4fd77aff9756c46d5369e5"
+    },
+    {
+     "init": 19,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "88d608882ff8a0519f47d55819d00c58dc649c7899075fd30b567be39fa54f95"
+    },
+    {
+     "init": 20,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "8bda7340679fa899e73f2219b9ba2c16741e154618c3b0b4ffcbacb9e065dc54"
+    },
+    {
+     "init": 21,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "2168e136163d85b423ac0e482daed76d599cefdb84d2dce2aa9fe24d7afda0f9"
+    },
+    {
+     "init": 22,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "56fd1a6d5aa5c453ec9bce5b3d4111378be523b639f3b13dc8cc8c252e5d8d24"
+    },
+    {
+     "init": 23,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "6ef76eec1c3c3d81ed12a5f281cfa3366d06b8e3eb6a9da9464e0139a4ec96be"
+    },
+    {
+     "init": 24,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "8c85f93cc64acb37a97356b5c775fbeb2b00c78bcc4b807330a5446109e30bdd"
+    },
+    {
+     "init": 25,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "c573892d18b6cd22fd8eec086661bd5fa0c414772e986b40683cce2afda86f99"
+    },
+    {
+     "init": 26,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "e1a90d8614c8cbd094c45bc7be499b542dcb9c5c0cc398048f75caa6c1bff5ec"
+    },
+    {
+     "init": 27,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "265278d485b1971f11b9b7c4d7e436ee44fe3259ac01b78250bdf2d06bc1bffb"
+    },
+    {
+     "init": 28,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "758ba829d459975b48ecb7e33a3cb75578e753711c1f7919a5d67059dee58286"
+    },
+    {
+     "init": 29,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "d322b5bfd8ea82d224f907a0fd94658af72e09c74f43fddccec28ba0adef4e0a"
+    },
+    {
+     "init": 30,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "516b7888c2ac90b56eb0625abcf40f71559ff6714ae3568f7bfb9b9268bb48d0"
+    },
+    {
+     "init": 31,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "0bf781b8c09f0bc0f75bba662deb7819b81d57dab4bf3b08489d9b317db95a31"
+    },
+    {
+     "init": 32,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "535ee96cd9cd303355864179968da391d745e22504922ac89c7031687efb5158"
+    },
+    {
+     "init": 33,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "74e4346be484a1c4e4ae1dd89836961ca8a3586d146e2710a50914a311e96abd"
+    },
+    {
+     "init": 34,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "7546baf87e392b27d074f684a6a588d9a1772356660e83fa387a4a5a38fea682"
+    },
+    {
+     "init": 35,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "4a7af7d5a6134b8336158f568ce9aba735b726e36bd1fbe9bbe55b9235617b04"
+    },
+    {
+     "init": 36,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "e206c4a896fb022c30ddcfb8e47cdd405bded3f3b593c05c32ee72ab380dfdf9"
+    },
+    {
+     "init": 37,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "fe92695637fc5181a6c292baab785088599cd087dba64c0401ac35a46617807b"
+    },
+    {
+     "init": 38,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "fac774712fec5c1302a76b4eed3935b8062ad63bd8134ef6df8bb3e0ec6414a7"
+    },
+    {
+     "init": 39,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "d17223435faaad078fc3bf0904353d132810a37eb6a4a29db4ac58a11675eab0"
+    },
+    {
+     "init": 40,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "c157496f8bc8245d2c5d4fbbbfbbbf08eb106f48a7c57c2c22a476574f266d01"
+    },
+    {
+     "init": 41,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "8413ff9e178cf44877964c1c17bf15f81734e0dfe609973f66f374ada7e4888e"
+    },
+    {
+     "init": 42,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "8e32e7195a09e7e5072bd6426aaeecc20ddbfaff0511ce81d66e9c4d70b960d8"
+    },
+    {
+     "init": 43,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "d47c9c16840e21cd928ca29efacfa4e85ca7927a7e6295afaa6b7923f78c7575"
+    },
+    {
+     "init": 44,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "4ffb019ca6a4a7f176bc4b85560dae6f05e51e37c769cd49c4e174026237daca"
+    },
+    {
+     "init": 45,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "a2d67950bba9739668f65f63fa276d6b3091f4f30bf0d3e961da583e87d03193"
+    },
+    {
+     "init": 46,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "d3cfd8b359f29c11ee3bf207c4b85032a4de65e45723b1bf81ac7d0fbe025256"
+    },
+    {
+     "init": 47,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "3d6a40067f7c03b8ecbcea697ae14502540d952d0733ef500ab45489d33d381b"
+    },
+    {
+     "init": 48,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "ad9ee5402d0b25e0b0035d737f570faee9597edeacfc75b31926a586942bf6dc"
+    },
+    {
+     "init": 49,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "287ab82a0550900446f73f261e955974c7c774663232ab2355eb1ff3f47b9fe4"
+    }
+   ]
+  },
+  "4": {
+   "bddl_file": "libero_cf_spatial/05-pick_up_the_ramekin_and_place_it_on_the_plate.bddl",
+   "faithful_condition": "on glazed_rim_porcelain_ramekin_1 plate_1",
+   "biased_condition": "on akita_black_bowl_1 plate_1",
+   "faithful_from_bddl_language": "glazed_rim_porcelain_ramekin_1",
+   "qualifier": "",
+   "qualifier_reference": null,
+   "n_init_states": 50,
+   "bodies": {
+    "cookies_1": "cookies_1_main",
+    "plate_1": "plate_1_main",
+    "akita_black_bowl_2": "akita_black_bowl_2_main",
+    "akita_black_bowl_1": "akita_black_bowl_1_main",
+    "wooden_cabinet_1": "wooden_cabinet_1_main",
+    "glazed_rim_porcelain_ramekin_1": "glazed_rim_porcelain_ramekin_1_main"
+   },
+   "per_init": [
+    {
+     "init": 0,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "2c080999a9972f5e7f9906a9c9e18f444da15714c46e724e8d5b1b97c2f38220"
+    },
+    {
+     "init": 1,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "9f6f3ad50e505e96b689c9531fc87448cdeddd5a3190095dfe59bfddc3fb1f58"
+    },
+    {
+     "init": 2,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "578e1a9ec7401ba787ac40dc76a1f661e95581a26ee518590aebb7c32789f619"
+    },
+    {
+     "init": 3,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "41fa8d5bbf2ae3d0d1dc61ba2d97d542839d28d2fca3290d5f9385b11cd206d8"
+    },
+    {
+     "init": 4,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "3bfaa379e04a757b248dfc2d5e9b527d46a04f9ad9648f573dea01d0e1ea170b"
+    },
+    {
+     "init": 5,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "64604088db89f696186dee04206f8cbed38d35a1daa379ce9615176320da1ebc"
+    },
+    {
+     "init": 6,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "020f2e045568523e2881b73355c8894230416f0d126e443da74d84e786955b76"
+    },
+    {
+     "init": 7,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "e76ae692ac449b14b525bdaf30a41f61445e1ddfdf240be544434a986f901001"
+    },
+    {
+     "init": 8,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "1d700300b2db5e067f9a466a634533d6b772b6958ab826e28a0c2aee6679058d"
+    },
+    {
+     "init": 9,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "44592c33fc72307f93543d50cf683644aca67d1db5c363878919c39b0ba02588"
+    },
+    {
+     "init": 10,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "50c359bf105e0074ac6fecacb4877d580828e6261cfe2b5e62d25c94f22beda3"
+    },
+    {
+     "init": 11,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "85c658bb4622675841d0b2a12f4bbcb0f7e9f346fd658f7985a41e397fd06391"
+    },
+    {
+     "init": 12,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "670e825cf01b1332ffd97bd6afbc3297d373c93d0bc497202f2bd921b8ead17f"
+    },
+    {
+     "init": 13,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "97a5e921ab41017bb72e2fee6bcfb97f87cf537a0e16333e40ea923c533e1aa0"
+    },
+    {
+     "init": 14,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "916663774123537b85f2979d48ff7320fb7609d6ffabf5a3a90c0f357b1b6760"
+    },
+    {
+     "init": 15,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "dd6b246fd3cbf2d20a32b1abcf4bba122becbd77d0ba43fe2dfb780a9c2c663e"
+    },
+    {
+     "init": 16,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "7fb80b0fac39bbec10c0ce13c38191128dc0b7372862f3ff05b60cdb79a1a150"
+    },
+    {
+     "init": 17,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "bc2cd560d75b768d8f220fc5060ba1c16bab85f0e59b1f4a0d1f1e5440002f0d"
+    },
+    {
+     "init": 18,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "66a16737b4ce11d598627dce36b9a87605e94fddd7f4f82df77c090975f8d795"
+    },
+    {
+     "init": 19,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "45c6abfce2d6a7c86b43e11609716008fd1eb847956d242bc19af06dcd2525a1"
+    },
+    {
+     "init": 20,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "d3d7b1c6b5717a773e7d540a284a755e95ac797e9de4e571ff49959b2b316004"
+    },
+    {
+     "init": 21,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "7ac902e63566e356f8a45acb8219c4b9059edebb6f62b6cc2860171ec6315a7f"
+    },
+    {
+     "init": 22,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "b28a8393ae5020bdd3e76a4124ed8caf047f8f817e33339bb517910ebe2645cb"
+    },
+    {
+     "init": 23,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "e8c26b4068e71aceb9f78614ec38974e4daab6ee7f81c4c281c5a6400747a487"
+    },
+    {
+     "init": 24,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "4aa073ddb24b5aa72948d2697223262bd6a878c170aea964feb924f7c9efa52f"
+    },
+    {
+     "init": 25,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "2ab3f8e086af4f9b829bbfdbb3587f98d4d405abc70d57636726643159a509b3"
+    },
+    {
+     "init": 26,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "810c368bc6d42b3580d22a9eade2b26baaee7d596528ab42e8e703915593cdc0"
+    },
+    {
+     "init": 27,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "7e146477049ee83c94d2e8c6d1e01f596d96bd16cd2d14af76f2d448db4aa495"
+    },
+    {
+     "init": 28,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "9f1ab3d99611bc6c7080131827956e686c9e260430d036390aac3a561d8aa6fb"
+    },
+    {
+     "init": 29,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "ada629d28c0fc73e119609a00c36a6e8009da7623ad32e5790283371444f1475"
+    },
+    {
+     "init": 30,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "a66c44c1897f78e00707cff042c8b59732b59399eec91dbb828a10a370ea1ea6"
+    },
+    {
+     "init": 31,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "3343cc846028358bcb4ea2527237084db85243cb52c3f4c4f1c607655e77ff5c"
+    },
+    {
+     "init": 32,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "2381fc9e8defce8afcc5809463075ab4103a51658c938e7a82c70899ef2a9935"
+    },
+    {
+     "init": 33,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "26a8cdcffcfdd9bbf3c972398fd2ed1cd890dcc021683c2dabcdf8acb86982a9"
+    },
+    {
+     "init": 34,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "46bddb923ee36504b40e2edfaedf1740b16abd9fe94e7f689795c8b855aa78bc"
+    },
+    {
+     "init": 35,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "ce3862a05a214eeda66c0a3885884ab879846e64d417783c92c894bf0c39267e"
+    },
+    {
+     "init": 36,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "0394fe5e7573f336a376a0c2b366d1d84e50753919c6326b5f16c845de5b3571"
+    },
+    {
+     "init": 37,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "9b38077676dd339cc07755a2bc512a219c7e0f5b09eff0e629cef18b2ec628d5"
+    },
+    {
+     "init": 38,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "581059f395299f7adaddd72815455c51d68bd02d2460793417ac8becf62deede"
+    },
+    {
+     "init": 39,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "f6696de01313df23ae9ab0067e8e8dc24f01947f7459797fc0eb0edfa621efe0"
+    },
+    {
+     "init": 40,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "09772f253084b5cc16595e6fb4bc04890d974730f3bf451608467bda66a9ca48"
+    },
+    {
+     "init": 41,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "be814384effe06f34a261e0ceea8c2ff32337885b8125d8cd85a1391fc3b6e84"
+    },
+    {
+     "init": 42,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "78a64ee2e027c550d238d49357dca5dde74971b7bb7cae9227c1bd08b3dd8957"
+    },
+    {
+     "init": 43,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "e3409a87836a29c1fff2fae4935f58b6ee724e7ac0675f356a23957e28d18223"
+    },
+    {
+     "init": 44,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "e2191579b3eb68b80a5717b49de6a9ba65efe2e57a70d40c6fff86e05d698081"
+    },
+    {
+     "init": 45,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "4ceb97d2a06875fb3b44e2915078471f241138a4c972299167758eb9b00d9094"
+    },
+    {
+     "init": 46,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "37b6e5fce9aaa8eeec9499a43fb5b09f11be07ecc0c4e208301e1662d6c3d8b1"
+    },
+    {
+     "init": 47,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "1d995c1c0939df9f23f8c35c3b5ee97d5af99f039fe7352290f33265184296be"
+    },
+    {
+     "init": 48,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "1011779444f433622be71b0065d22e4ac77f56c0f798edb13453e296e8a8d09d"
+    },
+    {
+     "init": 49,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "69086bed2a7fda8a1eb9f7e3dd22882cde78c9cfac8124c669e46de8772eb13b"
+    }
+   ]
+  },
+  "5": {
+   "bddl_file": "libero_cf_spatial/06-pick_up_the_ramekin_and_place_it_on_the_plate.bddl",
+   "faithful_condition": "on glazed_rim_porcelain_ramekin_1 plate_1",
+   "biased_condition": "on akita_black_bowl_1 plate_1",
+   "faithful_from_bddl_language": "glazed_rim_porcelain_ramekin_1",
+   "qualifier": "",
+   "qualifier_reference": null,
+   "n_init_states": 50,
+   "bodies": {
+    "cookies_1": "cookies_1_main",
+    "plate_1": "plate_1_main",
+    "akita_black_bowl_2": "akita_black_bowl_2_main",
+    "akita_black_bowl_1": "akita_black_bowl_1_main",
+    "wooden_cabinet_1": "wooden_cabinet_1_main",
+    "glazed_rim_porcelain_ramekin_1": "glazed_rim_porcelain_ramekin_1_main"
+   },
+   "per_init": [
+    {
+     "init": 0,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "d5975efd8ee490e66f74de367673a545cdbe3b9f5d73f4d65696b5135925e5cf"
+    },
+    {
+     "init": 1,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "72466d024965e9511d3002f6a1faae576775abc5e6c9f1ccb95576115d507349"
+    },
+    {
+     "init": 2,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "0fd67665e30dd3568944f7543ce61a595b9ea84173b6e3a9bc1888df9a857cde"
+    },
+    {
+     "init": 3,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "00dabc49627d2efcfbd03d9e1a642a387702697c038ed19476a13ac3522a3d8a"
+    },
+    {
+     "init": 4,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "2c3f7e371fead6191d2dc7ccba9f7d6d99c93696559a2bfd88e10467ce62f048"
+    },
+    {
+     "init": 5,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "05ee9bfcf5c706ad50dd8af73b2aa85f02596f959707269750f0a6cfa452ad85"
+    },
+    {
+     "init": 6,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "7eabff974df9c0b56d41e2c9d3dd4b95d41df9518840e01f63b843db6d588d35"
+    },
+    {
+     "init": 7,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "311eecb38e3999527bf83b0a1706b5480f64efb880bee773751721d31884f6d9"
+    },
+    {
+     "init": 8,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "35d194987a3dfe2439079870123f789a2ebd5629f5e9291c855b129aee434fe4"
+    },
+    {
+     "init": 9,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "61fb6dd0c81b50883c2a25eff9b52323b219e575160f696d83c1aae7d7369395"
+    },
+    {
+     "init": 10,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "0a765cb4d113ba5794a2d56ddfd13af54a99c314a124aab0e118b5d2fd99e896"
+    },
+    {
+     "init": 11,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "57d84aab9d35a54cd0ebec3fc73d85800e6f488159d0f42528d6e216686bfd8b"
+    },
+    {
+     "init": 12,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "1994e8044bc41d7ae3e4aac26adbbd45f498576e7700070083562047eaf9fdc2"
+    },
+    {
+     "init": 13,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "66a16737b4ce11d598627dce36b9a87605e94fddd7f4f82df77c090975f8d795"
+    },
+    {
+     "init": 14,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "4d8b1058ec602dacecd9619378036c8b3e86dc7d6ef61d643a9eb2bbb466a71a"
+    },
+    {
+     "init": 15,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "35747166844bc9b4b5c3b14877ce2c9924de1689e6005a9bba877b707dac652b"
+    },
+    {
+     "init": 16,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "29a7206f75bf1286f836091b974b9f7a92a9b8fb918a98db09b3f8108f7d2b3d"
+    },
+    {
+     "init": 17,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "8c85f93cc64acb37a97356b5c775fbeb2b00c78bcc4b807330a5446109e30bdd"
+    },
+    {
+     "init": 18,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "d0a1360e244dd584a6de5c3e20dc84d69edf0429f6db758907fc1e858d5b61c8"
+    },
+    {
+     "init": 19,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "b5db234a832145b45203c70e7ba6dab554e86a56c2c73a4503f0e54c37c7ea05"
+    },
+    {
+     "init": 20,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "e009f79ebf02600a2a3fc5f4d75ef835e8af0e5f75e07052bfdb765dea474562"
+    },
+    {
+     "init": 21,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "5a9ef3cfb8f9607ba1b58871a65a796618f7dc574a51bd9c357a9e3b5cfbd06e"
+    },
+    {
+     "init": 22,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "5b224fa7a3ca6c61ec78d0f9230bdeb3665f74e6fec322f08c145051588edc62"
+    },
+    {
+     "init": 23,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "1aaba7eecb4df03028f3fce1c94fab4fbc968661b73165bd9750297351dc4121"
+    },
+    {
+     "init": 24,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "e6438b2bb86a213f0fc59afd1a8eb6aed4ae5459ad3b044ea23e989d64ce8dcd"
+    },
+    {
+     "init": 25,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "343667460e7798cfdc50bb0d02f158dc1d2444b1dc9aa26a99e0113c0c072e84"
+    },
+    {
+     "init": 26,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "a2ab75faeb31d950d39c0dc41a160f9271c3428ade80968ac9a7a834bcd1bf07"
+    },
+    {
+     "init": 27,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "745f758446e4e3fd6b6e98f067aae280943a8d53883096ae9c4f0d04d2aa57c6"
+    },
+    {
+     "init": 28,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "f2d64678bc313051a018fa906316e7b428ef9d13f2e1df9a02a7d4b63f403495"
+    },
+    {
+     "init": 29,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "22817d0547bbcd3d1b275a0038bb2ea1536d0a46feca7126b6cb1dd5c1c0a424"
+    },
+    {
+     "init": 30,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "287ab82a0550900446f73f261e955974c7c774663232ab2355eb1ff3f47b9fe4"
+    },
+    {
+     "init": 31,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "a8b6a311dac7c73f0867db3545b28654ba28edd803bd3132dcd8586fd341ec64"
+    },
+    {
+     "init": 32,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "4773795e9cdea945c538113b96397b7e9eb3dfb6c3cb0064e06a07f39811c0a3"
+    },
+    {
+     "init": 33,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "93f254aedc0208f7a1dceb3590a3bf979b69b24e3dd490bb0853ddbe47462637"
+    },
+    {
+     "init": 34,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "fd7db6af9be3a4178323fa1f2c1b5984e60e4b675b021379372299e4415b1891"
+    },
+    {
+     "init": 35,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "bccb6aa8d61976847d1b2d243ba77b1aa2015710766210574f8114d22bcb3650"
+    },
+    {
+     "init": 36,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "ec86de7a29dba0f80336252c8478760863a3b772504dd6dce56cb437c136b4fe"
+    },
+    {
+     "init": 37,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "cc92240048d4498c466428f562c97af0c1b0120b2d6e1644c17dfb612a980d3d"
+    },
+    {
+     "init": 38,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "908359d3012f2256ea26d0a2ee3e0e77cc89a39e6b299aedbbceab78494aeee4"
+    },
+    {
+     "init": 39,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "5ed06780959fcb633fc666626d5455c20e11624c3ccb626098e34612ad8096e9"
+    },
+    {
+     "init": 40,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "63f736b581bfc93c9414f1b075a95ef52926f5af46701824dcb74bef733e1c16"
+    },
+    {
+     "init": 41,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "255c644c428e10e2aedc4a32f5654af98c79433a5c2e63d615fc6ad8a2918f1e"
+    },
+    {
+     "init": 42,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "73cf02dfcd64ee648cffd8183454ebc58568e2019a37f7b3c448337bfb2da8ac"
+    },
+    {
+     "init": 43,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "7973174c0adfacb50d9079ed0ab3ce665dae6f3d11efc704595e7ca0bc34d770"
+    },
+    {
+     "init": 44,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "f22c268b3f66b02cc9f061b13c4f7ad656169e86ad224d6f7d43608cc28b8571"
+    },
+    {
+     "init": 45,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "3a4170d9a85cfea06ed891f1a433a65b74e4ebf87f00acb75b88a7db121e779c"
+    },
+    {
+     "init": 46,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "c647f40eeeed3f8ef3439f118bc11727491f77696a97974e422977c10cf5779b"
+    },
+    {
+     "init": 47,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "9c76831a147b2836b5110f5bea412cee7a5fb8fc88d1c978e39ff0d1becbccb4"
+    },
+    {
+     "init": 48,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "4b04a871c240891ab8382bbbd327531ee53acf97f7d74a9d8e230ab31b88a5cb"
+    },
+    {
+     "init": 49,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "440a6c9c91cab72ab24695fa46da791f0659afe81f34588fa9ca67c5f7da5986"
+    }
+   ]
+  },
+  "6": {
+   "bddl_file": "libero_cf_spatial/07-pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate.bddl",
+   "faithful_condition": "on akita_black_bowl_2 plate_1",
+   "biased_condition": "on akita_black_bowl_1 plate_1",
+   "faithful_from_bddl_language": "akita_black_bowl_2",
+   "qualifier": "on the cookie box",
+   "qualifier_reference": [
+    "cookies_1",
+    "on"
+   ],
+   "n_init_states": 50,
+   "bodies": {
+    "cookies_1": "cookies_1_main",
+    "plate_1": "plate_1_main",
+    "akita_black_bowl_2": "akita_black_bowl_2_main",
+    "akita_black_bowl_1": "akita_black_bowl_1_main",
+    "wooden_cabinet_1": "wooden_cabinet_1_main",
+    "glazed_rim_porcelain_ramekin_1": "glazed_rim_porcelain_ramekin_1_main"
+   },
+   "per_init": [
+    {
+     "init": 0,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "2c080999a9972f5e7f9906a9c9e18f444da15714c46e724e8d5b1b97c2f38220"
+    },
+    {
+     "init": 1,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "9f6f3ad50e505e96b689c9531fc87448cdeddd5a3190095dfe59bfddc3fb1f58"
+    },
+    {
+     "init": 2,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "578e1a9ec7401ba787ac40dc76a1f661e95581a26ee518590aebb7c32789f619"
+    },
+    {
+     "init": 3,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "41fa8d5bbf2ae3d0d1dc61ba2d97d542839d28d2fca3290d5f9385b11cd206d8"
+    },
+    {
+     "init": 4,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "3bfaa379e04a757b248dfc2d5e9b527d46a04f9ad9648f573dea01d0e1ea170b"
+    },
+    {
+     "init": 5,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "64604088db89f696186dee04206f8cbed38d35a1daa379ce9615176320da1ebc"
+    },
+    {
+     "init": 6,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "020f2e045568523e2881b73355c8894230416f0d126e443da74d84e786955b76"
+    },
+    {
+     "init": 7,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "e76ae692ac449b14b525bdaf30a41f61445e1ddfdf240be544434a986f901001"
+    },
+    {
+     "init": 8,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "1d700300b2db5e067f9a466a634533d6b772b6958ab826e28a0c2aee6679058d"
+    },
+    {
+     "init": 9,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "44592c33fc72307f93543d50cf683644aca67d1db5c363878919c39b0ba02588"
+    },
+    {
+     "init": 10,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "50c359bf105e0074ac6fecacb4877d580828e6261cfe2b5e62d25c94f22beda3"
+    },
+    {
+     "init": 11,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "85c658bb4622675841d0b2a12f4bbcb0f7e9f346fd658f7985a41e397fd06391"
+    },
+    {
+     "init": 12,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "670e825cf01b1332ffd97bd6afbc3297d373c93d0bc497202f2bd921b8ead17f"
+    },
+    {
+     "init": 13,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "97a5e921ab41017bb72e2fee6bcfb97f87cf537a0e16333e40ea923c533e1aa0"
+    },
+    {
+     "init": 14,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "916663774123537b85f2979d48ff7320fb7609d6ffabf5a3a90c0f357b1b6760"
+    },
+    {
+     "init": 15,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "dd6b246fd3cbf2d20a32b1abcf4bba122becbd77d0ba43fe2dfb780a9c2c663e"
+    },
+    {
+     "init": 16,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "7fb80b0fac39bbec10c0ce13c38191128dc0b7372862f3ff05b60cdb79a1a150"
+    },
+    {
+     "init": 17,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "bc2cd560d75b768d8f220fc5060ba1c16bab85f0e59b1f4a0d1f1e5440002f0d"
+    },
+    {
+     "init": 18,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "66a16737b4ce11d598627dce36b9a87605e94fddd7f4f82df77c090975f8d795"
+    },
+    {
+     "init": 19,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "45c6abfce2d6a7c86b43e11609716008fd1eb847956d242bc19af06dcd2525a1"
+    },
+    {
+     "init": 20,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "d3d7b1c6b5717a773e7d540a284a755e95ac797e9de4e571ff49959b2b316004"
+    },
+    {
+     "init": 21,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "7ac902e63566e356f8a45acb8219c4b9059edebb6f62b6cc2860171ec6315a7f"
+    },
+    {
+     "init": 22,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "b28a8393ae5020bdd3e76a4124ed8caf047f8f817e33339bb517910ebe2645cb"
+    },
+    {
+     "init": 23,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "e8c26b4068e71aceb9f78614ec38974e4daab6ee7f81c4c281c5a6400747a487"
+    },
+    {
+     "init": 24,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "4aa073ddb24b5aa72948d2697223262bd6a878c170aea964feb924f7c9efa52f"
+    },
+    {
+     "init": 25,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "2ab3f8e086af4f9b829bbfdbb3587f98d4d405abc70d57636726643159a509b3"
+    },
+    {
+     "init": 26,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "810c368bc6d42b3580d22a9eade2b26baaee7d596528ab42e8e703915593cdc0"
+    },
+    {
+     "init": 27,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "7e146477049ee83c94d2e8c6d1e01f596d96bd16cd2d14af76f2d448db4aa495"
+    },
+    {
+     "init": 28,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "9f1ab3d99611bc6c7080131827956e686c9e260430d036390aac3a561d8aa6fb"
+    },
+    {
+     "init": 29,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "ada629d28c0fc73e119609a00c36a6e8009da7623ad32e5790283371444f1475"
+    },
+    {
+     "init": 30,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "a66c44c1897f78e00707cff042c8b59732b59399eec91dbb828a10a370ea1ea6"
+    },
+    {
+     "init": 31,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "3343cc846028358bcb4ea2527237084db85243cb52c3f4c4f1c607655e77ff5c"
+    },
+    {
+     "init": 32,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "2381fc9e8defce8afcc5809463075ab4103a51658c938e7a82c70899ef2a9935"
+    },
+    {
+     "init": 33,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "26a8cdcffcfdd9bbf3c972398fd2ed1cd890dcc021683c2dabcdf8acb86982a9"
+    },
+    {
+     "init": 34,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "46bddb923ee36504b40e2edfaedf1740b16abd9fe94e7f689795c8b855aa78bc"
+    },
+    {
+     "init": 35,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "ce3862a05a214eeda66c0a3885884ab879846e64d417783c92c894bf0c39267e"
+    },
+    {
+     "init": 36,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "0394fe5e7573f336a376a0c2b366d1d84e50753919c6326b5f16c845de5b3571"
+    },
+    {
+     "init": 37,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "9b38077676dd339cc07755a2bc512a219c7e0f5b09eff0e629cef18b2ec628d5"
+    },
+    {
+     "init": 38,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "581059f395299f7adaddd72815455c51d68bd02d2460793417ac8becf62deede"
+    },
+    {
+     "init": 39,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "f6696de01313df23ae9ab0067e8e8dc24f01947f7459797fc0eb0edfa621efe0"
+    },
+    {
+     "init": 40,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "09772f253084b5cc16595e6fb4bc04890d974730f3bf451608467bda66a9ca48"
+    },
+    {
+     "init": 41,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "be814384effe06f34a261e0ceea8c2ff32337885b8125d8cd85a1391fc3b6e84"
+    },
+    {
+     "init": 42,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "78a64ee2e027c550d238d49357dca5dde74971b7bb7cae9227c1bd08b3dd8957"
+    },
+    {
+     "init": 43,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "e3409a87836a29c1fff2fae4935f58b6ee724e7ac0675f356a23957e28d18223"
+    },
+    {
+     "init": 44,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "e2191579b3eb68b80a5717b49de6a9ba65efe2e57a70d40c6fff86e05d698081"
+    },
+    {
+     "init": 45,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "4ceb97d2a06875fb3b44e2915078471f241138a4c972299167758eb9b00d9094"
+    },
+    {
+     "init": 46,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "37b6e5fce9aaa8eeec9499a43fb5b09f11be07ecc0c4e208301e1662d6c3d8b1"
+    },
+    {
+     "init": 47,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "1d995c1c0939df9f23f8c35c3b5ee97d5af99f039fe7352290f33265184296be"
+    },
+    {
+     "init": 48,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "1011779444f433622be71b0065d22e4ac77f56c0f798edb13453e296e8a8d09d"
+    },
+    {
+     "init": 49,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "69086bed2a7fda8a1eb9f7e3dd22882cde78c9cfac8124c669e46de8772eb13b"
+    }
+   ]
+  },
+  "7": {
+   "bddl_file": "libero_cf_spatial/08-pick_up_the_cookie_box_and_place_it_on_the_plate.bddl",
+   "faithful_condition": "on cookies_1 plate_1",
+   "biased_condition": "on akita_black_bowl_1 plate_1",
+   "faithful_from_bddl_language": "cookies_1",
+   "qualifier": "",
+   "qualifier_reference": null,
+   "n_init_states": 50,
+   "bodies": {
+    "cookies_1": "cookies_1_main",
+    "plate_1": "plate_1_main",
+    "akita_black_bowl_2": "akita_black_bowl_2_main",
+    "akita_black_bowl_1": "akita_black_bowl_1_main",
+    "wooden_cabinet_1": "wooden_cabinet_1_main",
+    "glazed_rim_porcelain_ramekin_1": "glazed_rim_porcelain_ramekin_1_main"
+   },
+   "per_init": [
+    {
+     "init": 0,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "863e5f0b856a687862513201f2d1146a5221be85ffc1dad4b1012c770422b111"
+    },
+    {
+     "init": 1,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "0f501472caf96ba0ec4a11620c2ed01aef2ec80b4d15911549cbe9306fcf6cab"
+    },
+    {
+     "init": 2,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "8d41a83326d3c4887013f8325fd3cfc77c18f01f6a08fb56e696733fa2342d20"
+    },
+    {
+     "init": 3,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "28acf1a07a61d7af0efa1a795b1926004fb8371b46b7b05b1b1fd40264e7b2f9"
+    },
+    {
+     "init": 4,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "6fa85d67492835b7b24d74cfe588bd549b60bc9092608343a0eee9d5618d1afc"
+    },
+    {
+     "init": 5,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "704bd67e3cf1c76724c6cfb2fc5ae646c4c5dc3dfab9598ac46f7fd8aa9f9289"
+    },
+    {
+     "init": 6,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "3d9662da4bd3b95594647a63b6932b14acffe0fa51b7d0afaf9a3b004ced725d"
+    },
+    {
+     "init": 7,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "d6a6b7c0d2c0c857c10a30e841fa2ee55d5324af802f94fb8069c826be985146"
+    },
+    {
+     "init": 8,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "4662c7b726e3619d229f1cb3639effcd9e50af34fa1d37f2732da44974a34e12"
+    },
+    {
+     "init": 9,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "51cfc5783ece99b69934624e7d7cfe9d18335c343abeafb88a34cc15be8d042b"
+    },
+    {
+     "init": 10,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "8d1deaf9fe68ad3eddd09cb2cd49e417c4e0f7dbe19fa98a6065b5616779e56e"
+    },
+    {
+     "init": 11,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "403172c9df3fbc420203147c58a0d34879eb30f11a01b5d03a221bf2a2ed5d6e"
+    },
+    {
+     "init": 12,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "84976bb05dac5a70c7f4d6abbae35ba7f9f315d57c573a428b517040df9dd1b2"
+    },
+    {
+     "init": 13,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "78500ef8d85748b8cb50c6ecb9f5293bcc537a08cd2568d16bc73dfc47a492f1"
+    },
+    {
+     "init": 14,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "48ca99dddfc99abbdbe3a98709ca915627bbe6c61b30671905bcdbf26e7e7513"
+    },
+    {
+     "init": 15,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "f89a4758a4033605ae014e34ece863b4a19e2582ad78408e82b8a2ec3af38228"
+    },
+    {
+     "init": 16,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "eb774f21bb41a6a682ebc0551056e94ae5c74deb766605a4efb7f35a07990120"
+    },
+    {
+     "init": 17,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "30305fc0d9df464964c2fe245aa6d8d0c1984ecefea61419998d42ec5a854171"
+    },
+    {
+     "init": 18,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "8364d121c57495a40dda8a3d59461dfd272ff232553a72c3af0979a92456bd03"
+    },
+    {
+     "init": 19,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "171e5ac6f45fffd256b92f1fe37608e9fc880fdc0a65a17ccab4de6184b4598f"
+    },
+    {
+     "init": 20,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "1f8b98f74ceecaab7fd15152a4b92daf56093bcf7c1addb7d075f896efc14179"
+    },
+    {
+     "init": 21,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "d326e32c1d4ded9e7fff80aad8a11a4ec49bf116e0b4db8122514e2b98f3b832"
+    },
+    {
+     "init": 22,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "3190529bf344ccb646a9bab9737eb4e4f13c6c97a91a0e7eec249b9a928703fc"
+    },
+    {
+     "init": 23,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "e10d64a911902870543099d331223a03b93d0b6190f3df35d89296f334af1fef"
+    },
+    {
+     "init": 24,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "8941e6f5bc6ca5196413018978b115edc944874630ba53c8506c9460cee681d9"
+    },
+    {
+     "init": 25,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "c86b4cb90cb5b2e5afa34ca8f1aaddccd631289aac6700f379a1bd326c5ff6f9"
+    },
+    {
+     "init": 26,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "02213f997cd3d9eda159317f8ad72478859a9fd8521c152ed55b724570ea8fd3"
+    },
+    {
+     "init": 27,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "faed9ee1524719c431af1bce2cbb7784674600d69b348a7682fc9f288636970a"
+    },
+    {
+     "init": 28,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "1c893ad9b85a91d924081396bc8fcf187bb476096c91a8cdc92a2b6057aaa02c"
+    },
+    {
+     "init": 29,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "646e52af5526873cd65cce1ff868577b313fd32e54f1b4daf2a7dce275c7a5ff"
+    },
+    {
+     "init": 30,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "c90a454f5d2ca4a68bbc9f516c05a88001b7fcdf42988831c83cc2c6cc6fddb2"
+    },
+    {
+     "init": 31,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "5855671ef3ccf26099f8cf772d416179cd76794272afa7993807fe5eeb6aeb34"
+    },
+    {
+     "init": 32,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "ed9000794f54a749997ccd36c563fc6dbe4e77028542eb54df521d3cddc99f2d"
+    },
+    {
+     "init": 33,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "6af07e317fcfb952fc300c61420e58a7070095fd04411bfbda0dc582eae83f66"
+    },
+    {
+     "init": 34,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "3b53ebaf13d49be525526f53433cca918e7cff53a620ecd9460237df37d2c13b"
+    },
+    {
+     "init": 35,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "028ac843d989b86eab870183bcb44f013e9c640d17f8ad48bd67abf431ad7deb"
+    },
+    {
+     "init": 36,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "c140d8b48d9190c0d1040883cd90b1b94020ea566ec8c2d09cc65037f7837896"
+    },
+    {
+     "init": 37,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "8f89dc48008fa5b1dd5a1a0b1c56aedb91699db564cf6b26d68b7ff38bfbdc1f"
+    },
+    {
+     "init": 38,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "708aa767d6064887b1aed4f51b28c491f5e614d1174bffa45795a86d91918800"
+    },
+    {
+     "init": 39,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "f3957f657be9dc8dc2eecc6dd33fa5f3bba8194831dd1844d322ebbe4408ca3e"
+    },
+    {
+     "init": 40,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "2544c4af09d0f2fa365fcb275e20b9b098fa92b411df9290957fe06490fd0a0a"
+    },
+    {
+     "init": 41,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "45560f5e75f6fb1d2f7a1b9a37498007b5133458c933b18157443a998d38f213"
+    },
+    {
+     "init": 42,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "143fecf3731c239b4f81fdc735414ff142939b13f28279ecebff679578db5f96"
+    },
+    {
+     "init": 43,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "ccc17287bc2f41a65b55d65c501e7e4a9cff0f1aeac7b1f528fd0fd6b25f0f42"
+    },
+    {
+     "init": 44,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "b002e275e4b32c6790b6aaf1ba7cc8541cdf5e786f966fb6fcbc623083af1959"
+    },
+    {
+     "init": 45,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "d7a883a8888388277b2ff925bf55029c55166758f33b85bc5c13cbd505abcbc8"
+    },
+    {
+     "init": 46,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "21ed9ffa4deb4256db3d42e9b7bb79b4d7694d87d04ad32ad10482fbdea1034c"
+    },
+    {
+     "init": 47,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "4c707ad0d88dffbb76b4d126689abb74fbae7c5bad0729f9128329833a91ecff"
+    },
+    {
+     "init": 48,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "dd200da3e4b89690a74e55c7bc9d993e18771ffa95487ee247bb763be9296e55"
+    },
+    {
+     "init": 49,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "c795358eeb64205ccfe9cc5dcb5e6395e991deffc1a5a5453398773d89db4f12"
+    }
+   ]
+  },
+  "8": {
+   "bddl_file": "libero_cf_spatial/09-pick_up_the_cookie_box_and_place_it_on_the_plate.bddl",
+   "faithful_condition": "on cookies_1 plate_1",
+   "biased_condition": "on akita_black_bowl_1 plate_1",
+   "faithful_from_bddl_language": "cookies_1",
+   "qualifier": "",
+   "qualifier_reference": null,
+   "n_init_states": 50,
+   "bodies": {
+    "cookies_1": "cookies_1_main",
+    "plate_1": "plate_1_main",
+    "akita_black_bowl_2": "akita_black_bowl_2_main",
+    "akita_black_bowl_1": "akita_black_bowl_1_main",
+    "wooden_cabinet_1": "wooden_cabinet_1_main",
+    "glazed_rim_porcelain_ramekin_1": "glazed_rim_porcelain_ramekin_1_main"
+   },
+   "per_init": [
+    {
+     "init": 0,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "2c080999a9972f5e7f9906a9c9e18f444da15714c46e724e8d5b1b97c2f38220"
+    },
+    {
+     "init": 1,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "9f6f3ad50e505e96b689c9531fc87448cdeddd5a3190095dfe59bfddc3fb1f58"
+    },
+    {
+     "init": 2,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "578e1a9ec7401ba787ac40dc76a1f661e95581a26ee518590aebb7c32789f619"
+    },
+    {
+     "init": 3,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "41fa8d5bbf2ae3d0d1dc61ba2d97d542839d28d2fca3290d5f9385b11cd206d8"
+    },
+    {
+     "init": 4,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "3bfaa379e04a757b248dfc2d5e9b527d46a04f9ad9648f573dea01d0e1ea170b"
+    },
+    {
+     "init": 5,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "64604088db89f696186dee04206f8cbed38d35a1daa379ce9615176320da1ebc"
+    },
+    {
+     "init": 6,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "020f2e045568523e2881b73355c8894230416f0d126e443da74d84e786955b76"
+    },
+    {
+     "init": 7,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "e76ae692ac449b14b525bdaf30a41f61445e1ddfdf240be544434a986f901001"
+    },
+    {
+     "init": 8,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "1d700300b2db5e067f9a466a634533d6b772b6958ab826e28a0c2aee6679058d"
+    },
+    {
+     "init": 9,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "44592c33fc72307f93543d50cf683644aca67d1db5c363878919c39b0ba02588"
+    },
+    {
+     "init": 10,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "50c359bf105e0074ac6fecacb4877d580828e6261cfe2b5e62d25c94f22beda3"
+    },
+    {
+     "init": 11,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "85c658bb4622675841d0b2a12f4bbcb0f7e9f346fd658f7985a41e397fd06391"
+    },
+    {
+     "init": 12,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "670e825cf01b1332ffd97bd6afbc3297d373c93d0bc497202f2bd921b8ead17f"
+    },
+    {
+     "init": 13,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "97a5e921ab41017bb72e2fee6bcfb97f87cf537a0e16333e40ea923c533e1aa0"
+    },
+    {
+     "init": 14,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "916663774123537b85f2979d48ff7320fb7609d6ffabf5a3a90c0f357b1b6760"
+    },
+    {
+     "init": 15,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "dd6b246fd3cbf2d20a32b1abcf4bba122becbd77d0ba43fe2dfb780a9c2c663e"
+    },
+    {
+     "init": 16,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "7fb80b0fac39bbec10c0ce13c38191128dc0b7372862f3ff05b60cdb79a1a150"
+    },
+    {
+     "init": 17,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "bc2cd560d75b768d8f220fc5060ba1c16bab85f0e59b1f4a0d1f1e5440002f0d"
+    },
+    {
+     "init": 18,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "66a16737b4ce11d598627dce36b9a87605e94fddd7f4f82df77c090975f8d795"
+    },
+    {
+     "init": 19,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "45c6abfce2d6a7c86b43e11609716008fd1eb847956d242bc19af06dcd2525a1"
+    },
+    {
+     "init": 20,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "d3d7b1c6b5717a773e7d540a284a755e95ac797e9de4e571ff49959b2b316004"
+    },
+    {
+     "init": 21,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "7ac902e63566e356f8a45acb8219c4b9059edebb6f62b6cc2860171ec6315a7f"
+    },
+    {
+     "init": 22,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "b28a8393ae5020bdd3e76a4124ed8caf047f8f817e33339bb517910ebe2645cb"
+    },
+    {
+     "init": 23,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "e8c26b4068e71aceb9f78614ec38974e4daab6ee7f81c4c281c5a6400747a487"
+    },
+    {
+     "init": 24,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "4aa073ddb24b5aa72948d2697223262bd6a878c170aea964feb924f7c9efa52f"
+    },
+    {
+     "init": 25,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "2ab3f8e086af4f9b829bbfdbb3587f98d4d405abc70d57636726643159a509b3"
+    },
+    {
+     "init": 26,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "810c368bc6d42b3580d22a9eade2b26baaee7d596528ab42e8e703915593cdc0"
+    },
+    {
+     "init": 27,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "7e146477049ee83c94d2e8c6d1e01f596d96bd16cd2d14af76f2d448db4aa495"
+    },
+    {
+     "init": 28,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "9f1ab3d99611bc6c7080131827956e686c9e260430d036390aac3a561d8aa6fb"
+    },
+    {
+     "init": 29,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "ada629d28c0fc73e119609a00c36a6e8009da7623ad32e5790283371444f1475"
+    },
+    {
+     "init": 30,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "a66c44c1897f78e00707cff042c8b59732b59399eec91dbb828a10a370ea1ea6"
+    },
+    {
+     "init": 31,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "3343cc846028358bcb4ea2527237084db85243cb52c3f4c4f1c607655e77ff5c"
+    },
+    {
+     "init": 32,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "2381fc9e8defce8afcc5809463075ab4103a51658c938e7a82c70899ef2a9935"
+    },
+    {
+     "init": 33,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "26a8cdcffcfdd9bbf3c972398fd2ed1cd890dcc021683c2dabcdf8acb86982a9"
+    },
+    {
+     "init": 34,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "46bddb923ee36504b40e2edfaedf1740b16abd9fe94e7f689795c8b855aa78bc"
+    },
+    {
+     "init": 35,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "ce3862a05a214eeda66c0a3885884ab879846e64d417783c92c894bf0c39267e"
+    },
+    {
+     "init": 36,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "0394fe5e7573f336a376a0c2b366d1d84e50753919c6326b5f16c845de5b3571"
+    },
+    {
+     "init": 37,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "9b38077676dd339cc07755a2bc512a219c7e0f5b09eff0e629cef18b2ec628d5"
+    },
+    {
+     "init": 38,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "581059f395299f7adaddd72815455c51d68bd02d2460793417ac8becf62deede"
+    },
+    {
+     "init": 39,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "f6696de01313df23ae9ab0067e8e8dc24f01947f7459797fc0eb0edfa621efe0"
+    },
+    {
+     "init": 40,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "09772f253084b5cc16595e6fb4bc04890d974730f3bf451608467bda66a9ca48"
+    },
+    {
+     "init": 41,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "be814384effe06f34a261e0ceea8c2ff32337885b8125d8cd85a1391fc3b6e84"
+    },
+    {
+     "init": 42,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "78a64ee2e027c550d238d49357dca5dde74971b7bb7cae9227c1bd08b3dd8957"
+    },
+    {
+     "init": 43,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "e3409a87836a29c1fff2fae4935f58b6ee724e7ac0675f356a23957e28d18223"
+    },
+    {
+     "init": 44,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "e2191579b3eb68b80a5717b49de6a9ba65efe2e57a70d40c6fff86e05d698081"
+    },
+    {
+     "init": 45,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "4ceb97d2a06875fb3b44e2915078471f241138a4c972299167758eb9b00d9094"
+    },
+    {
+     "init": 46,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "37b6e5fce9aaa8eeec9499a43fb5b09f11be07ecc0c4e208301e1662d6c3d8b1"
+    },
+    {
+     "init": 47,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "1d995c1c0939df9f23f8c35c3b5ee97d5af99f039fe7352290f33265184296be"
+    },
+    {
+     "init": 48,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "1011779444f433622be71b0065d22e4ac77f56c0f798edb13453e296e8a8d09d"
+    },
+    {
+     "init": 49,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "69086bed2a7fda8a1eb9f7e3dd22882cde78c9cfac8124c669e46de8772eb13b"
+    }
+   ]
+  },
+  "9": {
+   "bddl_file": "libero_cf_spatial/10-pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate.bddl",
+   "faithful_condition": "on akita_black_bowl_2 plate_1",
+   "biased_condition": "on akita_black_bowl_1 plate_1",
+   "faithful_from_bddl_language": "akita_black_bowl_2",
+   "qualifier": "next to the ramekin",
+   "qualifier_reference": [
+    "glazed_rim_porcelain_ramekin_1",
+    "next_to"
+   ],
+   "n_init_states": 50,
+   "bodies": {
+    "cookies_1": "cookies_1_main",
+    "plate_1": "plate_1_main",
+    "akita_black_bowl_2": "akita_black_bowl_2_main",
+    "akita_black_bowl_1": "akita_black_bowl_1_main",
+    "wooden_cabinet_1": "wooden_cabinet_1_main",
+    "glazed_rim_porcelain_ramekin_1": "glazed_rim_porcelain_ramekin_1_main"
+   },
+   "per_init": [
+    {
+     "init": 0,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "4e410b9b3ef01bdcce619205cc302f2b626662463a074042b0eacabb0dd671e8"
+    },
+    {
+     "init": 1,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "3ee59226cb9b17c48081cf9798917bc83715dfad3c1e97dbcefebec788335692"
+    },
+    {
+     "init": 2,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "5522982f5e72757e606f3e9df3881d3a99611aa9d0d6055e2aeb0e3ccbabaa40"
+    },
+    {
+     "init": 3,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "4ed703ed7e4b2a7fd864c7786bcded76d98458c182033e14baa0717ce0200591"
+    },
+    {
+     "init": 4,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "37c6c2d024ba75317de7bbb791c0bb547eba1c670d845bd82517c38754612619"
+    },
+    {
+     "init": 5,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "5655f0a303bf68e348dc00677704e33d3665beb79ec2f14aeb6e900934cedae0"
+    },
+    {
+     "init": 6,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "7ec80cf78c2f7cf7d2b100d39e23591a9860318d9d2bb28d743da576184a913b"
+    },
+    {
+     "init": 7,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "eb8485a132f091f2edcc89d9893a3dafe3152b1ee6a15192eedd5c1a79e33de5"
+    },
+    {
+     "init": 8,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "78e86562f33dc7e72f49e548d78254739bacfb2c1d0854144e830550412bd089"
+    },
+    {
+     "init": 9,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "586d34fe39b161c31d316ef5662b53555715d3cf5d297d42eec3a44ab3b111cb"
+    },
+    {
+     "init": 10,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "030cf2477ef71560bfb61aca75c614b36af83688cdd81b810aa7ea2ab62b4a10"
+    },
+    {
+     "init": 11,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "438cfa53bdaa7875157e517055b1132c521f4496030b83c4d65c5ee2017cee61"
+    },
+    {
+     "init": 12,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "bd9c085346a529d068973dbe380193cb22a5c2182c1dffc09ab48eb336affbcd"
+    },
+    {
+     "init": 13,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "4bc0b8ea0048afb0c4a634269e156425dab9b10478372ff00a419ea203d7fbd6"
+    },
+    {
+     "init": 14,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "694feabe0f0df7930301de913f42081c99979488e53a35b356c9397dc2f24c07"
+    },
+    {
+     "init": 15,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "db8bf1d0a56fe9cfb07abd9a6765ce29ff67c2366fc82d94728c35fe74991c91"
+    },
+    {
+     "init": 16,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "43f0a0a006ba1971f82a3c4ae10242f29c86199ba411e146e2389e3e12421f81"
+    },
+    {
+     "init": 17,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "9ab77d1f1ac47502284c985ee7d7386a853313ecc7c47b737c626e8454d08421"
+    },
+    {
+     "init": 18,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "03cffc9eeaec415ced54dffc5be8735a4f064b3f9b4fd77aff9756c46d5369e5"
+    },
+    {
+     "init": 19,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "88d608882ff8a0519f47d55819d00c58dc649c7899075fd30b567be39fa54f95"
+    },
+    {
+     "init": 20,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "8bda7340679fa899e73f2219b9ba2c16741e154618c3b0b4ffcbacb9e065dc54"
+    },
+    {
+     "init": 21,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "2168e136163d85b423ac0e482daed76d599cefdb84d2dce2aa9fe24d7afda0f9"
+    },
+    {
+     "init": 22,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "56fd1a6d5aa5c453ec9bce5b3d4111378be523b639f3b13dc8cc8c252e5d8d24"
+    },
+    {
+     "init": 23,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "6ef76eec1c3c3d81ed12a5f281cfa3366d06b8e3eb6a9da9464e0139a4ec96be"
+    },
+    {
+     "init": 24,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "8c85f93cc64acb37a97356b5c775fbeb2b00c78bcc4b807330a5446109e30bdd"
+    },
+    {
+     "init": 25,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "c573892d18b6cd22fd8eec086661bd5fa0c414772e986b40683cce2afda86f99"
+    },
+    {
+     "init": 26,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "e1a90d8614c8cbd094c45bc7be499b542dcb9c5c0cc398048f75caa6c1bff5ec"
+    },
+    {
+     "init": 27,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "265278d485b1971f11b9b7c4d7e436ee44fe3259ac01b78250bdf2d06bc1bffb"
+    },
+    {
+     "init": 28,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "758ba829d459975b48ecb7e33a3cb75578e753711c1f7919a5d67059dee58286"
+    },
+    {
+     "init": 29,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "d322b5bfd8ea82d224f907a0fd94658af72e09c74f43fddccec28ba0adef4e0a"
+    },
+    {
+     "init": 30,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "516b7888c2ac90b56eb0625abcf40f71559ff6714ae3568f7bfb9b9268bb48d0"
+    },
+    {
+     "init": 31,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "0bf781b8c09f0bc0f75bba662deb7819b81d57dab4bf3b08489d9b317db95a31"
+    },
+    {
+     "init": 32,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "535ee96cd9cd303355864179968da391d745e22504922ac89c7031687efb5158"
+    },
+    {
+     "init": 33,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "74e4346be484a1c4e4ae1dd89836961ca8a3586d146e2710a50914a311e96abd"
+    },
+    {
+     "init": 34,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "7546baf87e392b27d074f684a6a588d9a1772356660e83fa387a4a5a38fea682"
+    },
+    {
+     "init": 35,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "4a7af7d5a6134b8336158f568ce9aba735b726e36bd1fbe9bbe55b9235617b04"
+    },
+    {
+     "init": 36,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "e206c4a896fb022c30ddcfb8e47cdd405bded3f3b593c05c32ee72ab380dfdf9"
+    },
+    {
+     "init": 37,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "fe92695637fc5181a6c292baab785088599cd087dba64c0401ac35a46617807b"
+    },
+    {
+     "init": 38,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "fac774712fec5c1302a76b4eed3935b8062ad63bd8134ef6df8bb3e0ec6414a7"
+    },
+    {
+     "init": 39,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "d17223435faaad078fc3bf0904353d132810a37eb6a4a29db4ac58a11675eab0"
+    },
+    {
+     "init": 40,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "c157496f8bc8245d2c5d4fbbbfbbbf08eb106f48a7c57c2c22a476574f266d01"
+    },
+    {
+     "init": 41,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "8413ff9e178cf44877964c1c17bf15f81734e0dfe609973f66f374ada7e4888e"
+    },
+    {
+     "init": 42,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "8e32e7195a09e7e5072bd6426aaeecc20ddbfaff0511ce81d66e9c4d70b960d8"
+    },
+    {
+     "init": 43,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "d47c9c16840e21cd928ca29efacfa4e85ca7927a7e6295afaa6b7923f78c7575"
+    },
+    {
+     "init": 44,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "4ffb019ca6a4a7f176bc4b85560dae6f05e51e37c769cd49c4e174026237daca"
+    },
+    {
+     "init": 45,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "a2d67950bba9739668f65f63fa276d6b3091f4f30bf0d3e961da583e87d03193"
+    },
+    {
+     "init": 46,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "d3cfd8b359f29c11ee3bf207c4b85032a4de65e45723b1bf81ac7d0fbe025256"
+    },
+    {
+     "init": 47,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "3d6a40067f7c03b8ecbcea697ae14502540d952d0733ef500ab45489d33d381b"
+    },
+    {
+     "init": 48,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "ad9ee5402d0b25e0b0035d737f570faee9597edeacfc75b31926a586942bf6dc"
+    },
+    {
+     "init": 49,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "287ab82a0550900446f73f261e955974c7c774663232ab2355eb1ff3f47b9fe4"
+    }
+   ]
+  },
+  "10": {
+   "bddl_file": "libero_cf_spatial/11-pick_up_the_ramekin_and_place_it_on_the_plate.bddl",
+   "faithful_condition": "on glazed_rim_porcelain_ramekin_1 plate_1",
+   "biased_condition": "on akita_black_bowl_1 plate_1",
+   "faithful_from_bddl_language": "glazed_rim_porcelain_ramekin_1",
+   "qualifier": "",
+   "qualifier_reference": null,
+   "n_init_states": 50,
+   "bodies": {
+    "cookies_1": "cookies_1_main",
+    "plate_1": "plate_1_main",
+    "akita_black_bowl_2": "akita_black_bowl_2_main",
+    "akita_black_bowl_1": "akita_black_bowl_1_main",
+    "wooden_cabinet_1": "wooden_cabinet_1_main",
+    "glazed_rim_porcelain_ramekin_1": "glazed_rim_porcelain_ramekin_1_main"
+   },
+   "per_init": [
+    {
+     "init": 0,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "2c080999a9972f5e7f9906a9c9e18f444da15714c46e724e8d5b1b97c2f38220"
+    },
+    {
+     "init": 1,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "9f6f3ad50e505e96b689c9531fc87448cdeddd5a3190095dfe59bfddc3fb1f58"
+    },
+    {
+     "init": 2,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "578e1a9ec7401ba787ac40dc76a1f661e95581a26ee518590aebb7c32789f619"
+    },
+    {
+     "init": 3,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "41fa8d5bbf2ae3d0d1dc61ba2d97d542839d28d2fca3290d5f9385b11cd206d8"
+    },
+    {
+     "init": 4,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "3bfaa379e04a757b248dfc2d5e9b527d46a04f9ad9648f573dea01d0e1ea170b"
+    },
+    {
+     "init": 5,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "64604088db89f696186dee04206f8cbed38d35a1daa379ce9615176320da1ebc"
+    },
+    {
+     "init": 6,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "020f2e045568523e2881b73355c8894230416f0d126e443da74d84e786955b76"
+    },
+    {
+     "init": 7,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "e76ae692ac449b14b525bdaf30a41f61445e1ddfdf240be544434a986f901001"
+    },
+    {
+     "init": 8,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "1d700300b2db5e067f9a466a634533d6b772b6958ab826e28a0c2aee6679058d"
+    },
+    {
+     "init": 9,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "44592c33fc72307f93543d50cf683644aca67d1db5c363878919c39b0ba02588"
+    },
+    {
+     "init": 10,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "50c359bf105e0074ac6fecacb4877d580828e6261cfe2b5e62d25c94f22beda3"
+    },
+    {
+     "init": 11,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "85c658bb4622675841d0b2a12f4bbcb0f7e9f346fd658f7985a41e397fd06391"
+    },
+    {
+     "init": 12,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "670e825cf01b1332ffd97bd6afbc3297d373c93d0bc497202f2bd921b8ead17f"
+    },
+    {
+     "init": 13,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "97a5e921ab41017bb72e2fee6bcfb97f87cf537a0e16333e40ea923c533e1aa0"
+    },
+    {
+     "init": 14,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "916663774123537b85f2979d48ff7320fb7609d6ffabf5a3a90c0f357b1b6760"
+    },
+    {
+     "init": 15,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "dd6b246fd3cbf2d20a32b1abcf4bba122becbd77d0ba43fe2dfb780a9c2c663e"
+    },
+    {
+     "init": 16,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "7fb80b0fac39bbec10c0ce13c38191128dc0b7372862f3ff05b60cdb79a1a150"
+    },
+    {
+     "init": 17,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "bc2cd560d75b768d8f220fc5060ba1c16bab85f0e59b1f4a0d1f1e5440002f0d"
+    },
+    {
+     "init": 18,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "66a16737b4ce11d598627dce36b9a87605e94fddd7f4f82df77c090975f8d795"
+    },
+    {
+     "init": 19,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "45c6abfce2d6a7c86b43e11609716008fd1eb847956d242bc19af06dcd2525a1"
+    },
+    {
+     "init": 20,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "d3d7b1c6b5717a773e7d540a284a755e95ac797e9de4e571ff49959b2b316004"
+    },
+    {
+     "init": 21,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "7ac902e63566e356f8a45acb8219c4b9059edebb6f62b6cc2860171ec6315a7f"
+    },
+    {
+     "init": 22,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "b28a8393ae5020bdd3e76a4124ed8caf047f8f817e33339bb517910ebe2645cb"
+    },
+    {
+     "init": 23,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "e8c26b4068e71aceb9f78614ec38974e4daab6ee7f81c4c281c5a6400747a487"
+    },
+    {
+     "init": 24,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "4aa073ddb24b5aa72948d2697223262bd6a878c170aea964feb924f7c9efa52f"
+    },
+    {
+     "init": 25,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "2ab3f8e086af4f9b829bbfdbb3587f98d4d405abc70d57636726643159a509b3"
+    },
+    {
+     "init": 26,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "810c368bc6d42b3580d22a9eade2b26baaee7d596528ab42e8e703915593cdc0"
+    },
+    {
+     "init": 27,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "7e146477049ee83c94d2e8c6d1e01f596d96bd16cd2d14af76f2d448db4aa495"
+    },
+    {
+     "init": 28,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "9f1ab3d99611bc6c7080131827956e686c9e260430d036390aac3a561d8aa6fb"
+    },
+    {
+     "init": 29,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "ada629d28c0fc73e119609a00c36a6e8009da7623ad32e5790283371444f1475"
+    },
+    {
+     "init": 30,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "a66c44c1897f78e00707cff042c8b59732b59399eec91dbb828a10a370ea1ea6"
+    },
+    {
+     "init": 31,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "3343cc846028358bcb4ea2527237084db85243cb52c3f4c4f1c607655e77ff5c"
+    },
+    {
+     "init": 32,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "2381fc9e8defce8afcc5809463075ab4103a51658c938e7a82c70899ef2a9935"
+    },
+    {
+     "init": 33,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "26a8cdcffcfdd9bbf3c972398fd2ed1cd890dcc021683c2dabcdf8acb86982a9"
+    },
+    {
+     "init": 34,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "46bddb923ee36504b40e2edfaedf1740b16abd9fe94e7f689795c8b855aa78bc"
+    },
+    {
+     "init": 35,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "ce3862a05a214eeda66c0a3885884ab879846e64d417783c92c894bf0c39267e"
+    },
+    {
+     "init": 36,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "0394fe5e7573f336a376a0c2b366d1d84e50753919c6326b5f16c845de5b3571"
+    },
+    {
+     "init": 37,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "9b38077676dd339cc07755a2bc512a219c7e0f5b09eff0e629cef18b2ec628d5"
+    },
+    {
+     "init": 38,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "581059f395299f7adaddd72815455c51d68bd02d2460793417ac8becf62deede"
+    },
+    {
+     "init": 39,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "f6696de01313df23ae9ab0067e8e8dc24f01947f7459797fc0eb0edfa621efe0"
+    },
+    {
+     "init": 40,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "09772f253084b5cc16595e6fb4bc04890d974730f3bf451608467bda66a9ca48"
+    },
+    {
+     "init": 41,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "be814384effe06f34a261e0ceea8c2ff32337885b8125d8cd85a1391fc3b6e84"
+    },
+    {
+     "init": 42,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "78a64ee2e027c550d238d49357dca5dde74971b7bb7cae9227c1bd08b3dd8957"
+    },
+    {
+     "init": 43,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "e3409a87836a29c1fff2fae4935f58b6ee724e7ac0675f356a23957e28d18223"
+    },
+    {
+     "init": 44,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "e2191579b3eb68b80a5717b49de6a9ba65efe2e57a70d40c6fff86e05d698081"
+    },
+    {
+     "init": 45,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "4ceb97d2a06875fb3b44e2915078471f241138a4c972299167758eb9b00d9094"
+    },
+    {
+     "init": 46,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "37b6e5fce9aaa8eeec9499a43fb5b09f11be07ecc0c4e208301e1662d6c3d8b1"
+    },
+    {
+     "init": 47,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "1d995c1c0939df9f23f8c35c3b5ee97d5af99f039fe7352290f33265184296be"
+    },
+    {
+     "init": 48,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "1011779444f433622be71b0065d22e4ac77f56c0f798edb13453e296e8a8d09d"
+    },
+    {
+     "init": 49,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "69086bed2a7fda8a1eb9f7e3dd22882cde78c9cfac8124c669e46de8772eb13b"
+    }
+   ]
+  },
+  "11": {
+   "bddl_file": "libero_cf_spatial/12-pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate.bddl",
+   "faithful_condition": "on akita_black_bowl_2 plate_1",
+   "biased_condition": "on akita_black_bowl_1 plate_1",
+   "faithful_from_bddl_language": "akita_black_bowl_2",
+   "qualifier": "next to the plate",
+   "qualifier_reference": [
+    "plate_1",
+    "next_to"
+   ],
+   "n_init_states": 50,
+   "bodies": {
+    "cookies_1": "cookies_1_main",
+    "plate_1": "plate_1_main",
+    "akita_black_bowl_2": "akita_black_bowl_2_main",
+    "akita_black_bowl_1": "akita_black_bowl_1_main",
+    "wooden_cabinet_1": "wooden_cabinet_1_main",
+    "glazed_rim_porcelain_ramekin_1": "glazed_rim_porcelain_ramekin_1_main"
+   },
+   "per_init": [
+    {
+     "init": 0,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "4e410b9b3ef01bdcce619205cc302f2b626662463a074042b0eacabb0dd671e8"
+    },
+    {
+     "init": 1,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "3ee59226cb9b17c48081cf9798917bc83715dfad3c1e97dbcefebec788335692"
+    },
+    {
+     "init": 2,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "5522982f5e72757e606f3e9df3881d3a99611aa9d0d6055e2aeb0e3ccbabaa40"
+    },
+    {
+     "init": 3,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "4ed703ed7e4b2a7fd864c7786bcded76d98458c182033e14baa0717ce0200591"
+    },
+    {
+     "init": 4,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "37c6c2d024ba75317de7bbb791c0bb547eba1c670d845bd82517c38754612619"
+    },
+    {
+     "init": 5,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "5655f0a303bf68e348dc00677704e33d3665beb79ec2f14aeb6e900934cedae0"
+    },
+    {
+     "init": 6,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "7ec80cf78c2f7cf7d2b100d39e23591a9860318d9d2bb28d743da576184a913b"
+    },
+    {
+     "init": 7,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "eb8485a132f091f2edcc89d9893a3dafe3152b1ee6a15192eedd5c1a79e33de5"
+    },
+    {
+     "init": 8,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "78e86562f33dc7e72f49e548d78254739bacfb2c1d0854144e830550412bd089"
+    },
+    {
+     "init": 9,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "586d34fe39b161c31d316ef5662b53555715d3cf5d297d42eec3a44ab3b111cb"
+    },
+    {
+     "init": 10,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "030cf2477ef71560bfb61aca75c614b36af83688cdd81b810aa7ea2ab62b4a10"
+    },
+    {
+     "init": 11,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "438cfa53bdaa7875157e517055b1132c521f4496030b83c4d65c5ee2017cee61"
+    },
+    {
+     "init": 12,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "bd9c085346a529d068973dbe380193cb22a5c2182c1dffc09ab48eb336affbcd"
+    },
+    {
+     "init": 13,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "4bc0b8ea0048afb0c4a634269e156425dab9b10478372ff00a419ea203d7fbd6"
+    },
+    {
+     "init": 14,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "694feabe0f0df7930301de913f42081c99979488e53a35b356c9397dc2f24c07"
+    },
+    {
+     "init": 15,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "db8bf1d0a56fe9cfb07abd9a6765ce29ff67c2366fc82d94728c35fe74991c91"
+    },
+    {
+     "init": 16,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "43f0a0a006ba1971f82a3c4ae10242f29c86199ba411e146e2389e3e12421f81"
+    },
+    {
+     "init": 17,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "9ab77d1f1ac47502284c985ee7d7386a853313ecc7c47b737c626e8454d08421"
+    },
+    {
+     "init": 18,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "03cffc9eeaec415ced54dffc5be8735a4f064b3f9b4fd77aff9756c46d5369e5"
+    },
+    {
+     "init": 19,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "88d608882ff8a0519f47d55819d00c58dc649c7899075fd30b567be39fa54f95"
+    },
+    {
+     "init": 20,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "8bda7340679fa899e73f2219b9ba2c16741e154618c3b0b4ffcbacb9e065dc54"
+    },
+    {
+     "init": 21,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "2168e136163d85b423ac0e482daed76d599cefdb84d2dce2aa9fe24d7afda0f9"
+    },
+    {
+     "init": 22,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "56fd1a6d5aa5c453ec9bce5b3d4111378be523b639f3b13dc8cc8c252e5d8d24"
+    },
+    {
+     "init": 23,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "6ef76eec1c3c3d81ed12a5f281cfa3366d06b8e3eb6a9da9464e0139a4ec96be"
+    },
+    {
+     "init": 24,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "8c85f93cc64acb37a97356b5c775fbeb2b00c78bcc4b807330a5446109e30bdd"
+    },
+    {
+     "init": 25,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "c573892d18b6cd22fd8eec086661bd5fa0c414772e986b40683cce2afda86f99"
+    },
+    {
+     "init": 26,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "e1a90d8614c8cbd094c45bc7be499b542dcb9c5c0cc398048f75caa6c1bff5ec"
+    },
+    {
+     "init": 27,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "265278d485b1971f11b9b7c4d7e436ee44fe3259ac01b78250bdf2d06bc1bffb"
+    },
+    {
+     "init": 28,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "758ba829d459975b48ecb7e33a3cb75578e753711c1f7919a5d67059dee58286"
+    },
+    {
+     "init": 29,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "d322b5bfd8ea82d224f907a0fd94658af72e09c74f43fddccec28ba0adef4e0a"
+    },
+    {
+     "init": 30,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "516b7888c2ac90b56eb0625abcf40f71559ff6714ae3568f7bfb9b9268bb48d0"
+    },
+    {
+     "init": 31,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "0bf781b8c09f0bc0f75bba662deb7819b81d57dab4bf3b08489d9b317db95a31"
+    },
+    {
+     "init": 32,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "535ee96cd9cd303355864179968da391d745e22504922ac89c7031687efb5158"
+    },
+    {
+     "init": 33,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "74e4346be484a1c4e4ae1dd89836961ca8a3586d146e2710a50914a311e96abd"
+    },
+    {
+     "init": 34,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "7546baf87e392b27d074f684a6a588d9a1772356660e83fa387a4a5a38fea682"
+    },
+    {
+     "init": 35,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "4a7af7d5a6134b8336158f568ce9aba735b726e36bd1fbe9bbe55b9235617b04"
+    },
+    {
+     "init": 36,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "e206c4a896fb022c30ddcfb8e47cdd405bded3f3b593c05c32ee72ab380dfdf9"
+    },
+    {
+     "init": 37,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "fe92695637fc5181a6c292baab785088599cd087dba64c0401ac35a46617807b"
+    },
+    {
+     "init": 38,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "fac774712fec5c1302a76b4eed3935b8062ad63bd8134ef6df8bb3e0ec6414a7"
+    },
+    {
+     "init": 39,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "d17223435faaad078fc3bf0904353d132810a37eb6a4a29db4ac58a11675eab0"
+    },
+    {
+     "init": 40,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "c157496f8bc8245d2c5d4fbbbfbbbf08eb106f48a7c57c2c22a476574f266d01"
+    },
+    {
+     "init": 41,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "8413ff9e178cf44877964c1c17bf15f81734e0dfe609973f66f374ada7e4888e"
+    },
+    {
+     "init": 42,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "8e32e7195a09e7e5072bd6426aaeecc20ddbfaff0511ce81d66e9c4d70b960d8"
+    },
+    {
+     "init": 43,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "d47c9c16840e21cd928ca29efacfa4e85ca7927a7e6295afaa6b7923f78c7575"
+    },
+    {
+     "init": 44,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "4ffb019ca6a4a7f176bc4b85560dae6f05e51e37c769cd49c4e174026237daca"
+    },
+    {
+     "init": 45,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "a2d67950bba9739668f65f63fa276d6b3091f4f30bf0d3e961da583e87d03193"
+    },
+    {
+     "init": 46,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "d3cfd8b359f29c11ee3bf207c4b85032a4de65e45723b1bf81ac7d0fbe025256"
+    },
+    {
+     "init": 47,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "3d6a40067f7c03b8ecbcea697ae14502540d952d0733ef500ab45489d33d381b"
+    },
+    {
+     "init": 48,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "ad9ee5402d0b25e0b0035d737f570faee9597edeacfc75b31926a586942bf6dc"
+    },
+    {
+     "init": 49,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "287ab82a0550900446f73f261e955974c7c774663232ab2355eb1ff3f47b9fe4"
+    }
+   ]
+  },
+  "12": {
+   "bddl_file": "libero_cf_spatial/13-pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate.bddl",
+   "faithful_condition": "on akita_black_bowl_2 plate_1",
+   "biased_condition": "on akita_black_bowl_1 plate_1",
+   "faithful_from_bddl_language": "akita_black_bowl_2",
+   "qualifier": "on the wooden cabinet",
+   "qualifier_reference": [
+    "wooden_cabinet_1",
+    "on"
+   ],
+   "n_init_states": 50,
+   "bodies": {
+    "cookies_1": "cookies_1_main",
+    "plate_1": "plate_1_main",
+    "akita_black_bowl_2": "akita_black_bowl_2_main",
+    "akita_black_bowl_1": "akita_black_bowl_1_main",
+    "wooden_cabinet_1": "wooden_cabinet_1_main",
+    "glazed_rim_porcelain_ramekin_1": "glazed_rim_porcelain_ramekin_1_main"
+   },
+   "per_init": [
+    {
+     "init": 0,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "2c080999a9972f5e7f9906a9c9e18f444da15714c46e724e8d5b1b97c2f38220"
+    },
+    {
+     "init": 1,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "9f6f3ad50e505e96b689c9531fc87448cdeddd5a3190095dfe59bfddc3fb1f58"
+    },
+    {
+     "init": 2,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "578e1a9ec7401ba787ac40dc76a1f661e95581a26ee518590aebb7c32789f619"
+    },
+    {
+     "init": 3,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "41fa8d5bbf2ae3d0d1dc61ba2d97d542839d28d2fca3290d5f9385b11cd206d8"
+    },
+    {
+     "init": 4,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "3bfaa379e04a757b248dfc2d5e9b527d46a04f9ad9648f573dea01d0e1ea170b"
+    },
+    {
+     "init": 5,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "64604088db89f696186dee04206f8cbed38d35a1daa379ce9615176320da1ebc"
+    },
+    {
+     "init": 6,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "020f2e045568523e2881b73355c8894230416f0d126e443da74d84e786955b76"
+    },
+    {
+     "init": 7,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "e76ae692ac449b14b525bdaf30a41f61445e1ddfdf240be544434a986f901001"
+    },
+    {
+     "init": 8,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "1d700300b2db5e067f9a466a634533d6b772b6958ab826e28a0c2aee6679058d"
+    },
+    {
+     "init": 9,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "44592c33fc72307f93543d50cf683644aca67d1db5c363878919c39b0ba02588"
+    },
+    {
+     "init": 10,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "50c359bf105e0074ac6fecacb4877d580828e6261cfe2b5e62d25c94f22beda3"
+    },
+    {
+     "init": 11,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "85c658bb4622675841d0b2a12f4bbcb0f7e9f346fd658f7985a41e397fd06391"
+    },
+    {
+     "init": 12,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "670e825cf01b1332ffd97bd6afbc3297d373c93d0bc497202f2bd921b8ead17f"
+    },
+    {
+     "init": 13,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "97a5e921ab41017bb72e2fee6bcfb97f87cf537a0e16333e40ea923c533e1aa0"
+    },
+    {
+     "init": 14,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "916663774123537b85f2979d48ff7320fb7609d6ffabf5a3a90c0f357b1b6760"
+    },
+    {
+     "init": 15,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "dd6b246fd3cbf2d20a32b1abcf4bba122becbd77d0ba43fe2dfb780a9c2c663e"
+    },
+    {
+     "init": 16,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "7fb80b0fac39bbec10c0ce13c38191128dc0b7372862f3ff05b60cdb79a1a150"
+    },
+    {
+     "init": 17,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "bc2cd560d75b768d8f220fc5060ba1c16bab85f0e59b1f4a0d1f1e5440002f0d"
+    },
+    {
+     "init": 18,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "66a16737b4ce11d598627dce36b9a87605e94fddd7f4f82df77c090975f8d795"
+    },
+    {
+     "init": 19,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "45c6abfce2d6a7c86b43e11609716008fd1eb847956d242bc19af06dcd2525a1"
+    },
+    {
+     "init": 20,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "d3d7b1c6b5717a773e7d540a284a755e95ac797e9de4e571ff49959b2b316004"
+    },
+    {
+     "init": 21,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "7ac902e63566e356f8a45acb8219c4b9059edebb6f62b6cc2860171ec6315a7f"
+    },
+    {
+     "init": 22,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "b28a8393ae5020bdd3e76a4124ed8caf047f8f817e33339bb517910ebe2645cb"
+    },
+    {
+     "init": 23,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "e8c26b4068e71aceb9f78614ec38974e4daab6ee7f81c4c281c5a6400747a487"
+    },
+    {
+     "init": 24,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "4aa073ddb24b5aa72948d2697223262bd6a878c170aea964feb924f7c9efa52f"
+    },
+    {
+     "init": 25,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "2ab3f8e086af4f9b829bbfdbb3587f98d4d405abc70d57636726643159a509b3"
+    },
+    {
+     "init": 26,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "810c368bc6d42b3580d22a9eade2b26baaee7d596528ab42e8e703915593cdc0"
+    },
+    {
+     "init": 27,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "7e146477049ee83c94d2e8c6d1e01f596d96bd16cd2d14af76f2d448db4aa495"
+    },
+    {
+     "init": 28,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "9f1ab3d99611bc6c7080131827956e686c9e260430d036390aac3a561d8aa6fb"
+    },
+    {
+     "init": 29,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "ada629d28c0fc73e119609a00c36a6e8009da7623ad32e5790283371444f1475"
+    },
+    {
+     "init": 30,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "a66c44c1897f78e00707cff042c8b59732b59399eec91dbb828a10a370ea1ea6"
+    },
+    {
+     "init": 31,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "3343cc846028358bcb4ea2527237084db85243cb52c3f4c4f1c607655e77ff5c"
+    },
+    {
+     "init": 32,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "2381fc9e8defce8afcc5809463075ab4103a51658c938e7a82c70899ef2a9935"
+    },
+    {
+     "init": 33,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "26a8cdcffcfdd9bbf3c972398fd2ed1cd890dcc021683c2dabcdf8acb86982a9"
+    },
+    {
+     "init": 34,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "46bddb923ee36504b40e2edfaedf1740b16abd9fe94e7f689795c8b855aa78bc"
+    },
+    {
+     "init": 35,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "ce3862a05a214eeda66c0a3885884ab879846e64d417783c92c894bf0c39267e"
+    },
+    {
+     "init": 36,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "0394fe5e7573f336a376a0c2b366d1d84e50753919c6326b5f16c845de5b3571"
+    },
+    {
+     "init": 37,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "9b38077676dd339cc07755a2bc512a219c7e0f5b09eff0e629cef18b2ec628d5"
+    },
+    {
+     "init": 38,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "581059f395299f7adaddd72815455c51d68bd02d2460793417ac8becf62deede"
+    },
+    {
+     "init": 39,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "f6696de01313df23ae9ab0067e8e8dc24f01947f7459797fc0eb0edfa621efe0"
+    },
+    {
+     "init": 40,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "09772f253084b5cc16595e6fb4bc04890d974730f3bf451608467bda66a9ca48"
+    },
+    {
+     "init": 41,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "be814384effe06f34a261e0ceea8c2ff32337885b8125d8cd85a1391fc3b6e84"
+    },
+    {
+     "init": 42,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "78a64ee2e027c550d238d49357dca5dde74971b7bb7cae9227c1bd08b3dd8957"
+    },
+    {
+     "init": 43,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "e3409a87836a29c1fff2fae4935f58b6ee724e7ac0675f356a23957e28d18223"
+    },
+    {
+     "init": 44,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "e2191579b3eb68b80a5717b49de6a9ba65efe2e57a70d40c6fff86e05d698081"
+    },
+    {
+     "init": 45,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "4ceb97d2a06875fb3b44e2915078471f241138a4c972299167758eb9b00d9094"
+    },
+    {
+     "init": 46,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "37b6e5fce9aaa8eeec9499a43fb5b09f11be07ecc0c4e208301e1662d6c3d8b1"
+    },
+    {
+     "init": 47,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "1d995c1c0939df9f23f8c35c3b5ee97d5af99f039fe7352290f33265184296be"
+    },
+    {
+     "init": 48,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "1011779444f433622be71b0065d22e4ac77f56c0f798edb13453e296e8a8d09d"
+    },
+    {
+     "init": 49,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "69086bed2a7fda8a1eb9f7e3dd22882cde78c9cfac8124c669e46de8772eb13b"
+    }
+   ]
+  },
+  "13": {
+   "bddl_file": "libero_cf_spatial/14-pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate.bddl",
+   "faithful_condition": "on akita_black_bowl_2 plate_1",
+   "biased_condition": "on akita_black_bowl_1 plate_1",
+   "faithful_from_bddl_language": "akita_black_bowl_1",
+   "qualifier": "on the wooden cabinet",
+   "qualifier_reference": [
+    "wooden_cabinet_1",
+    "on"
+   ],
+   "n_init_states": 50,
+   "bodies": {
+    "cookies_1": "cookies_1_main",
+    "plate_1": "plate_1_main",
+    "akita_black_bowl_2": "akita_black_bowl_2_main",
+    "akita_black_bowl_1": "akita_black_bowl_1_main",
+    "wooden_cabinet_1": "wooden_cabinet_1_main",
+    "glazed_rim_porcelain_ramekin_1": "glazed_rim_porcelain_ramekin_1_main"
+   },
+   "per_init": [
+    {
+     "init": 0,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "d5975efd8ee490e66f74de367673a545cdbe3b9f5d73f4d65696b5135925e5cf"
+    },
+    {
+     "init": 1,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "72466d024965e9511d3002f6a1faae576775abc5e6c9f1ccb95576115d507349"
+    },
+    {
+     "init": 2,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "0fd67665e30dd3568944f7543ce61a595b9ea84173b6e3a9bc1888df9a857cde"
+    },
+    {
+     "init": 3,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "00dabc49627d2efcfbd03d9e1a642a387702697c038ed19476a13ac3522a3d8a"
+    },
+    {
+     "init": 4,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "2c3f7e371fead6191d2dc7ccba9f7d6d99c93696559a2bfd88e10467ce62f048"
+    },
+    {
+     "init": 5,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "05ee9bfcf5c706ad50dd8af73b2aa85f02596f959707269750f0a6cfa452ad85"
+    },
+    {
+     "init": 6,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "7eabff974df9c0b56d41e2c9d3dd4b95d41df9518840e01f63b843db6d588d35"
+    },
+    {
+     "init": 7,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "311eecb38e3999527bf83b0a1706b5480f64efb880bee773751721d31884f6d9"
+    },
+    {
+     "init": 8,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "35d194987a3dfe2439079870123f789a2ebd5629f5e9291c855b129aee434fe4"
+    },
+    {
+     "init": 9,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "61fb6dd0c81b50883c2a25eff9b52323b219e575160f696d83c1aae7d7369395"
+    },
+    {
+     "init": 10,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "0a765cb4d113ba5794a2d56ddfd13af54a99c314a124aab0e118b5d2fd99e896"
+    },
+    {
+     "init": 11,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "57d84aab9d35a54cd0ebec3fc73d85800e6f488159d0f42528d6e216686bfd8b"
+    },
+    {
+     "init": 12,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "1994e8044bc41d7ae3e4aac26adbbd45f498576e7700070083562047eaf9fdc2"
+    },
+    {
+     "init": 13,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "66a16737b4ce11d598627dce36b9a87605e94fddd7f4f82df77c090975f8d795"
+    },
+    {
+     "init": 14,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "4d8b1058ec602dacecd9619378036c8b3e86dc7d6ef61d643a9eb2bbb466a71a"
+    },
+    {
+     "init": 15,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "35747166844bc9b4b5c3b14877ce2c9924de1689e6005a9bba877b707dac652b"
+    },
+    {
+     "init": 16,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "29a7206f75bf1286f836091b974b9f7a92a9b8fb918a98db09b3f8108f7d2b3d"
+    },
+    {
+     "init": 17,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "8c85f93cc64acb37a97356b5c775fbeb2b00c78bcc4b807330a5446109e30bdd"
+    },
+    {
+     "init": 18,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "d0a1360e244dd584a6de5c3e20dc84d69edf0429f6db758907fc1e858d5b61c8"
+    },
+    {
+     "init": 19,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "b5db234a832145b45203c70e7ba6dab554e86a56c2c73a4503f0e54c37c7ea05"
+    },
+    {
+     "init": 20,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "e009f79ebf02600a2a3fc5f4d75ef835e8af0e5f75e07052bfdb765dea474562"
+    },
+    {
+     "init": 21,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "5a9ef3cfb8f9607ba1b58871a65a796618f7dc574a51bd9c357a9e3b5cfbd06e"
+    },
+    {
+     "init": 22,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "5b224fa7a3ca6c61ec78d0f9230bdeb3665f74e6fec322f08c145051588edc62"
+    },
+    {
+     "init": 23,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "1aaba7eecb4df03028f3fce1c94fab4fbc968661b73165bd9750297351dc4121"
+    },
+    {
+     "init": 24,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "e6438b2bb86a213f0fc59afd1a8eb6aed4ae5459ad3b044ea23e989d64ce8dcd"
+    },
+    {
+     "init": 25,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "343667460e7798cfdc50bb0d02f158dc1d2444b1dc9aa26a99e0113c0c072e84"
+    },
+    {
+     "init": 26,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "a2ab75faeb31d950d39c0dc41a160f9271c3428ade80968ac9a7a834bcd1bf07"
+    },
+    {
+     "init": 27,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "745f758446e4e3fd6b6e98f067aae280943a8d53883096ae9c4f0d04d2aa57c6"
+    },
+    {
+     "init": 28,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "f2d64678bc313051a018fa906316e7b428ef9d13f2e1df9a02a7d4b63f403495"
+    },
+    {
+     "init": 29,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "22817d0547bbcd3d1b275a0038bb2ea1536d0a46feca7126b6cb1dd5c1c0a424"
+    },
+    {
+     "init": 30,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "287ab82a0550900446f73f261e955974c7c774663232ab2355eb1ff3f47b9fe4"
+    },
+    {
+     "init": 31,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "a8b6a311dac7c73f0867db3545b28654ba28edd803bd3132dcd8586fd341ec64"
+    },
+    {
+     "init": 32,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "4773795e9cdea945c538113b96397b7e9eb3dfb6c3cb0064e06a07f39811c0a3"
+    },
+    {
+     "init": 33,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "93f254aedc0208f7a1dceb3590a3bf979b69b24e3dd490bb0853ddbe47462637"
+    },
+    {
+     "init": 34,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "fd7db6af9be3a4178323fa1f2c1b5984e60e4b675b021379372299e4415b1891"
+    },
+    {
+     "init": 35,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "bccb6aa8d61976847d1b2d243ba77b1aa2015710766210574f8114d22bcb3650"
+    },
+    {
+     "init": 36,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "ec86de7a29dba0f80336252c8478760863a3b772504dd6dce56cb437c136b4fe"
+    },
+    {
+     "init": 37,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "cc92240048d4498c466428f562c97af0c1b0120b2d6e1644c17dfb612a980d3d"
+    },
+    {
+     "init": 38,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "908359d3012f2256ea26d0a2ee3e0e77cc89a39e6b299aedbbceab78494aeee4"
+    },
+    {
+     "init": 39,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "5ed06780959fcb633fc666626d5455c20e11624c3ccb626098e34612ad8096e9"
+    },
+    {
+     "init": 40,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "63f736b581bfc93c9414f1b075a95ef52926f5af46701824dcb74bef733e1c16"
+    },
+    {
+     "init": 41,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "255c644c428e10e2aedc4a32f5654af98c79433a5c2e63d615fc6ad8a2918f1e"
+    },
+    {
+     "init": 42,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "73cf02dfcd64ee648cffd8183454ebc58568e2019a37f7b3c448337bfb2da8ac"
+    },
+    {
+     "init": 43,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "7973174c0adfacb50d9079ed0ab3ce665dae6f3d11efc704595e7ca0bc34d770"
+    },
+    {
+     "init": 44,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "f22c268b3f66b02cc9f061b13c4f7ad656169e86ad224d6f7d43608cc28b8571"
+    },
+    {
+     "init": 45,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "3a4170d9a85cfea06ed891f1a433a65b74e4ebf87f00acb75b88a7db121e779c"
+    },
+    {
+     "init": 46,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "c647f40eeeed3f8ef3439f118bc11727491f77696a97974e422977c10cf5779b"
+    },
+    {
+     "init": 47,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "9c76831a147b2836b5110f5bea412cee7a5fb8fc88d1c978e39ff0d1becbccb4"
+    },
+    {
+     "init": 48,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "4b04a871c240891ab8382bbbd327531ee53acf97f7d74a9d8e230ab31b88a5cb"
+    },
+    {
+     "init": 49,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": true,
+     "static_geometry_sha": "440a6c9c91cab72ab24695fa46da791f0659afe81f34588fa9ca67c5f7da5986"
+    }
+   ]
+  },
+  "14": {
+   "bddl_file": "libero_cf_spatial/15-pick_up_the_ramekin_and_place_it_on_the_plate.bddl",
+   "faithful_condition": "on glazed_rim_porcelain_ramekin_1 plate_1",
+   "biased_condition": "on akita_black_bowl_1 plate_1",
+   "faithful_from_bddl_language": "akita_black_bowl_1",
+   "qualifier": "",
+   "qualifier_reference": null,
+   "n_init_states": 50,
+   "bodies": {
+    "cookies_1": "cookies_1_main",
+    "plate_1": "plate_1_main",
+    "akita_black_bowl_2": "akita_black_bowl_2_main",
+    "akita_black_bowl_1": "akita_black_bowl_1_main",
+    "wooden_cabinet_1": "wooden_cabinet_1_main",
+    "glazed_rim_porcelain_ramekin_1": "glazed_rim_porcelain_ramekin_1_main"
+   },
+   "per_init": [
+    {
+     "init": 0,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "4e410b9b3ef01bdcce619205cc302f2b626662463a074042b0eacabb0dd671e8"
+    },
+    {
+     "init": 1,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "3ee59226cb9b17c48081cf9798917bc83715dfad3c1e97dbcefebec788335692"
+    },
+    {
+     "init": 2,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "5522982f5e72757e606f3e9df3881d3a99611aa9d0d6055e2aeb0e3ccbabaa40"
+    },
+    {
+     "init": 3,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "4ed703ed7e4b2a7fd864c7786bcded76d98458c182033e14baa0717ce0200591"
+    },
+    {
+     "init": 4,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "37c6c2d024ba75317de7bbb791c0bb547eba1c670d845bd82517c38754612619"
+    },
+    {
+     "init": 5,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "5655f0a303bf68e348dc00677704e33d3665beb79ec2f14aeb6e900934cedae0"
+    },
+    {
+     "init": 6,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "7ec80cf78c2f7cf7d2b100d39e23591a9860318d9d2bb28d743da576184a913b"
+    },
+    {
+     "init": 7,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "eb8485a132f091f2edcc89d9893a3dafe3152b1ee6a15192eedd5c1a79e33de5"
+    },
+    {
+     "init": 8,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "78e86562f33dc7e72f49e548d78254739bacfb2c1d0854144e830550412bd089"
+    },
+    {
+     "init": 9,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "586d34fe39b161c31d316ef5662b53555715d3cf5d297d42eec3a44ab3b111cb"
+    },
+    {
+     "init": 10,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "030cf2477ef71560bfb61aca75c614b36af83688cdd81b810aa7ea2ab62b4a10"
+    },
+    {
+     "init": 11,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "438cfa53bdaa7875157e517055b1132c521f4496030b83c4d65c5ee2017cee61"
+    },
+    {
+     "init": 12,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "bd9c085346a529d068973dbe380193cb22a5c2182c1dffc09ab48eb336affbcd"
+    },
+    {
+     "init": 13,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "4bc0b8ea0048afb0c4a634269e156425dab9b10478372ff00a419ea203d7fbd6"
+    },
+    {
+     "init": 14,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "694feabe0f0df7930301de913f42081c99979488e53a35b356c9397dc2f24c07"
+    },
+    {
+     "init": 15,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "db8bf1d0a56fe9cfb07abd9a6765ce29ff67c2366fc82d94728c35fe74991c91"
+    },
+    {
+     "init": 16,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "43f0a0a006ba1971f82a3c4ae10242f29c86199ba411e146e2389e3e12421f81"
+    },
+    {
+     "init": 17,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "9ab77d1f1ac47502284c985ee7d7386a853313ecc7c47b737c626e8454d08421"
+    },
+    {
+     "init": 18,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "03cffc9eeaec415ced54dffc5be8735a4f064b3f9b4fd77aff9756c46d5369e5"
+    },
+    {
+     "init": 19,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "88d608882ff8a0519f47d55819d00c58dc649c7899075fd30b567be39fa54f95"
+    },
+    {
+     "init": 20,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "8bda7340679fa899e73f2219b9ba2c16741e154618c3b0b4ffcbacb9e065dc54"
+    },
+    {
+     "init": 21,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "2168e136163d85b423ac0e482daed76d599cefdb84d2dce2aa9fe24d7afda0f9"
+    },
+    {
+     "init": 22,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "56fd1a6d5aa5c453ec9bce5b3d4111378be523b639f3b13dc8cc8c252e5d8d24"
+    },
+    {
+     "init": 23,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "6ef76eec1c3c3d81ed12a5f281cfa3366d06b8e3eb6a9da9464e0139a4ec96be"
+    },
+    {
+     "init": 24,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "8c85f93cc64acb37a97356b5c775fbeb2b00c78bcc4b807330a5446109e30bdd"
+    },
+    {
+     "init": 25,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "c573892d18b6cd22fd8eec086661bd5fa0c414772e986b40683cce2afda86f99"
+    },
+    {
+     "init": 26,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "e1a90d8614c8cbd094c45bc7be499b542dcb9c5c0cc398048f75caa6c1bff5ec"
+    },
+    {
+     "init": 27,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "265278d485b1971f11b9b7c4d7e436ee44fe3259ac01b78250bdf2d06bc1bffb"
+    },
+    {
+     "init": 28,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "758ba829d459975b48ecb7e33a3cb75578e753711c1f7919a5d67059dee58286"
+    },
+    {
+     "init": 29,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "d322b5bfd8ea82d224f907a0fd94658af72e09c74f43fddccec28ba0adef4e0a"
+    },
+    {
+     "init": 30,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "516b7888c2ac90b56eb0625abcf40f71559ff6714ae3568f7bfb9b9268bb48d0"
+    },
+    {
+     "init": 31,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "0bf781b8c09f0bc0f75bba662deb7819b81d57dab4bf3b08489d9b317db95a31"
+    },
+    {
+     "init": 32,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "535ee96cd9cd303355864179968da391d745e22504922ac89c7031687efb5158"
+    },
+    {
+     "init": 33,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "74e4346be484a1c4e4ae1dd89836961ca8a3586d146e2710a50914a311e96abd"
+    },
+    {
+     "init": 34,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "7546baf87e392b27d074f684a6a588d9a1772356660e83fa387a4a5a38fea682"
+    },
+    {
+     "init": 35,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "4a7af7d5a6134b8336158f568ce9aba735b726e36bd1fbe9bbe55b9235617b04"
+    },
+    {
+     "init": 36,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "e206c4a896fb022c30ddcfb8e47cdd405bded3f3b593c05c32ee72ab380dfdf9"
+    },
+    {
+     "init": 37,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "fe92695637fc5181a6c292baab785088599cd087dba64c0401ac35a46617807b"
+    },
+    {
+     "init": 38,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "fac774712fec5c1302a76b4eed3935b8062ad63bd8134ef6df8bb3e0ec6414a7"
+    },
+    {
+     "init": 39,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "d17223435faaad078fc3bf0904353d132810a37eb6a4a29db4ac58a11675eab0"
+    },
+    {
+     "init": 40,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "c157496f8bc8245d2c5d4fbbbfbbbf08eb106f48a7c57c2c22a476574f266d01"
+    },
+    {
+     "init": 41,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "8413ff9e178cf44877964c1c17bf15f81734e0dfe609973f66f374ada7e4888e"
+    },
+    {
+     "init": 42,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "8e32e7195a09e7e5072bd6426aaeecc20ddbfaff0511ce81d66e9c4d70b960d8"
+    },
+    {
+     "init": 43,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "d47c9c16840e21cd928ca29efacfa4e85ca7927a7e6295afaa6b7923f78c7575"
+    },
+    {
+     "init": 44,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "4ffb019ca6a4a7f176bc4b85560dae6f05e51e37c769cd49c4e174026237daca"
+    },
+    {
+     "init": 45,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "a2d67950bba9739668f65f63fa276d6b3091f4f30bf0d3e961da583e87d03193"
+    },
+    {
+     "init": 46,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "d3cfd8b359f29c11ee3bf207c4b85032a4de65e45723b1bf81ac7d0fbe025256"
+    },
+    {
+     "init": 47,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "3d6a40067f7c03b8ecbcea697ae14502540d952d0733ef500ab45489d33d381b"
+    },
+    {
+     "init": 48,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "ad9ee5402d0b25e0b0035d737f570faee9597edeacfc75b31926a586942bf6dc"
+    },
+    {
+     "init": 49,
+     "initially_true_conditions": [],
+     "qualifier_physically_holds": null,
+     "static_geometry_sha": "287ab82a0550900446f73f261e955974c7c774663232ab2355eb1ff3f47b9fe4"
+    }
+   ]
+  }
+ }
+}

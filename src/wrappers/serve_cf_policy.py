@@ -7,6 +7,11 @@ This wrapper only adds provenance to each response under the key "server_info": 
 the call (which fully determines the sampled flow-matching noise), the call index, latency, and peak GPU
 memory. It does not touch the RNG stream, the noise, or the returned actions.
 
+With --diagnostics (S2 pilot) the policy is wrapped by src/instrumentation/pi05_diagnostics.DiagnosticPolicy
+instead, which additionally returns, under "diag": per-branch noise fingerprints, CAG guidance magnitude
+(a_cond, a_uncond, translation/rotation/gripper/normalised norms) and action-expert attention entropies, with the
+returned actions unchanged (scripts/audit/diagnostics_identity_test.py).
+
 Usage:
   XLA_PYTHON_CLIENT_PREALLOCATE=false CUDA_VISIBLE_DEVICES=0 envs/openpi-cf/bin/python \
       src/wrappers/serve_cf_policy.py --mode cag_tf --guidance-scale 1.5 --port 8000
@@ -85,17 +90,29 @@ def main():
     parser.add_argument("--config", default="pi05_libero")
     parser.add_argument("--checkpoint", default="gs://openpi-assets/checkpoints/pi05_libero")
     parser.add_argument("--port", type=int, default=8000)
+    parser.add_argument("--diagnostics", action="store_true", help="guidance + attention logging (S2)")
     args = parser.parse_args()
     if args.mode == "cag_tf" and args.guidance_scale is None:
         parser.error("--guidance-scale is required for cag_tf (paper: 1.5; LIBERO-CF README: 2.0)")
 
+    if args.diagnostics:
+        import sys  # noqa: PLC0415
+
+        sys.path.insert(0, str(REPO_ROOT))
+        from src.instrumentation import pi05_attention  # noqa: PLC0415
+        from src.instrumentation.pi05_diagnostics import DiagnosticPolicy  # noqa: PLC0415
+
+        pi05_attention.install()  # before the policy is first traced; capture OFF on the control path
     train_config = _config.get_config(args.config)
     base = _policy_config.create_trained_policy(train_config, args.checkpoint)
     if args.mode == "vanilla":
         policy = base
     else:
         policy = _load_cag_class()(base, guidance_scale=args.guidance_scale, uncond_empty_prompt=False)
-    wrapped = ProvenancePolicy(policy, base, args.mode, args.guidance_scale)
+    if args.diagnostics:
+        wrapped = DiagnosticPolicy(policy, base, mode=args.mode, guidance_scale=args.guidance_scale, attention=True)
+    else:
+        wrapped = ProvenancePolicy(policy, base, args.mode, args.guidance_scale)
     logging.info("Serving %s", json.dumps(wrapped.metadata, default=str))
 
     server = websocket_policy_server.WebsocketPolicyServer(

@@ -6,7 +6,9 @@ gripper post-processing) and calls SCALE's own functions. Additions are logging 
   * per step: token-level self-uncertainty u_k (the `uncertainty_history[1]` SCALE returns), the decoding
     temperature tau_k = T0 * sigmoid(u_k) implied by Eq. 4, the visual-attention temperature gamma actually
     applied to the vision encoder (read back from the patched attention scale), latency;
-  * per episode: success, length, peak CUDA memory; a run manifest.
+  * per episode: success, length, peak CUDA memory, exception + traceback (an exception episode is NOT a
+    behavioural failure and is reported separately), static scene-geometry fingerprint after set_init_state
+    (src/wrappers/geometry.py; env seed is SCALE's hard-coded env.seed(0)); a run manifest.
 
 Usage:
   CUDA_VISIBLE_DEVICES=0 envs/scale/bin/python scripts/run_scale/run_scale_eval.py \
@@ -15,6 +17,7 @@ Usage:
 
 import argparse
 import json
+import traceback
 import math
 import os
 import pathlib
@@ -49,6 +52,7 @@ from experiments.robot.robot_utils import (  # noqa: E402
 )
 from libero.libero import benchmark  # noqa: E402
 
+from src.wrappers.geometry import scene_fingerprint  # noqa: E402
 from src.wrappers.manifest import write_manifest  # noqa: E402
 
 # Copied from eval_libero() (a local there, so not importable).
@@ -71,6 +75,7 @@ def main():
     p.add_argument("--decoding-mode", choices=scale_eval.VALID_DECODING_MODES, required=True)
     p.add_argument("--seed", type=int, default=7, help="SCALE default (GenerateConfig.seed)")
     p.add_argument("--load-in-8bit", action="store_true", help="NON-PAPER-FAITHFUL smoke mode only")
+    p.add_argument("--label", default="released-code SCALE reproduction")
     p.add_argument("--out", required=True)
     args = p.parse_args()
 
@@ -105,7 +110,12 @@ def main():
         seed={"set_seed_everywhere": cfg.seed, "env_seed": 0},
         task={"suite": cfg.task_suite, "task_ids": cfg.task_ids},
         initial_state_indices=range(args.episodes),
-        extra={"precision": "8bit NON-PAPER-FAITHFUL" if args.load_in_8bit else "bf16", "load_peak_bytes": load_peak},
+        extra={
+            "label": args.label,
+            "precision": "8bit NON-PAPER-FAITHFUL" if args.load_in_8bit else "bf16",
+            "load_peak_bytes": load_peak,
+            "released_code_defaults": {k: getattr(cfg, k, None) for k in scale_eval.SCALE_PARAMS},
+        },
     )
 
     suite = benchmark.get_benchmark_dict()[cfg.task_suite]()
@@ -120,7 +130,8 @@ def main():
             for episode_idx in range(cfg.num_trials_per_task):
                 env.reset()
                 obs = env.set_init_state(initial_states[episode_idx])
-                t, done, error = 0, False, None
+                geometry = scene_fingerprint(env, include_values=True)
+                t, done, error, error_tb = 0, False, None, None
                 uncertainty_history = None
                 steps = []
                 torch.cuda.reset_peak_memory_stats()
@@ -168,6 +179,7 @@ def main():
                         t += 1
                     except Exception as e:  # mirrors run_libero_eval.py
                         error = repr(e)
+                        error_tb = traceback.format_exc()
                         break
                 rec = {
                     "suite": cfg.task_suite,
@@ -176,12 +188,16 @@ def main():
                     "decoding_mode": cfg.decoding_mode,
                     "initial_state_index": episode_idx,
                     "seed": cfg.seed,
+                    "env_seed": 0,
                     "success": bool(done),
                     "episode_length": len(steps),
                     "episode_wall_s": time.monotonic() - ep_start,
                     "peak_cuda_bytes": torch.cuda.max_memory_allocated(),
                     "mean_latency_ms": float(np.mean([s["latency_ms"] for s in steps])) if steps else None,
                     "error": error,
+                    "exception": error is not None,
+                    "error_traceback": error_tb,
+                    "geometry": geometry,
                     "steps": steps,
                 }
                 records.write(json.dumps(rec) + "\n")

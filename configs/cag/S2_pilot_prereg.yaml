@@ -1,0 +1,70 @@
+# S2 pilot (+ S3 attention diagnostics) - PREREGISTRATION. Frozen and committed before any pilot outcome exists.
+# Label: PILOT. Nothing here may be changed on the basis of S2/S3 pilot outcomes.
+
+suite: libero_cf_spatial
+task_manifest: configs/cag/libero_cf_spatial_task_validity.csv   # textual + physical audit of all 15 tasks
+task_selection_rule: "first, median, and last task among the valid clean tasks (median = lower median)"
+valid_clean_tasks: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+primary_tasks: [0, 6, 12]
+excluded_tasks:            # benchmark defects; EXPLORATORY only, never pooled into primary results
+  13: "prompt != BDDL :language; BDDL language would make the faithful object the biased one (akita_black_bowl_1)"
+  14: "prompt != BDDL :language ('ramekin' vs 'akita black bowl next to the plate'; BDDL language -> biased object)"
+labels:                    # frozen faithful/biased mapping (src/metrics/libero_cf_labels.py, asserted at run time)
+  0:  {faithful: cookies_1,          biased: akita_black_bowl_1, faithful_condition: "on cookies_1 plate_1"}
+  6:  {faithful: akita_black_bowl_2, biased: akita_black_bowl_1, faithful_condition: "on akita_black_bowl_2 plate_1"}
+  12: {faithful: akita_black_bowl_2, biased: akita_black_bowl_1, faithful_condition: "on akita_black_bowl_2 plate_1"}
+  biased_condition: "on akita_black_bowl_1 plate_1"
+
+conditions:
+  B: vanilla pi0.5 (gs://openpi-assets/checkpoints/pi05_libero)
+  S: pi0.5 + CAG-TF (LIBERO-CF CounterfactualActionGuidedPolicy, language-token-masked unconditional branch)
+guidance_scale:
+  primary: 1.5             # PRIMARY / PREREGISTERED: paper Appendix B value for pi0/pi0.5 training-free CAG
+  sensitivity_only: 2.0    # public README example; FUTURE SENSITIVITY ANALYSIS ONLY - not run in this pilot
+episodes_per_task_per_condition: 20
+initial_state_indices: [0, 19]          # inclusive, same order in both conditions
+env_seed: 7                             # main_cf.py default (np.random.seed + env.seed)
+replan_steps: 5                         # of action_horizon 10
+max_steps: 220
+num_steps_wait: 10
+rng_protocol: >-
+  matched initial states under native policy stochasticity. Fresh policy server per condition; the policy RNG
+  stream starts at jax.random.key(0) and advances once per call. NOT noise-paired; no per-episode noise reset.
+
+logging:                                # all logging is output-preserving (scripts/audit/diagnostics_identity_test.py)
+  guidance: per call a_conditioned, a_unconditioned (env action space, 10x7), translation (0-2) / rotation (3-5) L2,
+            |gripper diff| (6), L2 of the difference in quantile-normalised model space (dims 0-6), guidance scale
+  attention: per call and branch, [denoising_step=10, layer=18, head=8, action_horizon_index=10]
+    obs: action -> valid image keys (valid_key_count = 512), raw entropy H = -sum p ln p after renormalisation,
+         normalized_entropy = H / ln(valid_key_count)
+    vlm: action -> all valid prefix keys (images + valid language), same definitions
+    obs_mass: attention mass on valid image keys; kwts_E: KWTS Eq.1-2 reference value (reported, never thresholded)
+  raw_attention: full probs for the first 2 episodes per task per condition (~16 GB); summaries for all episodes
+  geometry: static (non-free-joint) body_pos/body_quat SHA-256 + values after set_init_state; sim-state SHA-256
+  stopping_threshold: none. The published 0.95*ln(968) threshold is unreachable on pi05_libero and is NOT used.
+
+analysis:
+  primary_outcomes: [faithful_touch, biased_touch, faithful_success, biased_success]
+  intervals: Wilson 95% per task and pooled over tasks 0/6/12
+  inference: none claimed. McNemar is NOT the primary test (noise not paired). State-matched B->S transition
+             tables are reported descriptively and labelled "not noise-controlled".
+  exception_episodes: reported separately; not counted as behavioural failures
+
+s3_attention_diagnostics:   # DIAGNOSTIC ONLY; no adaptive chunking, no threshold
+  primary_scalar: obs normalized entropy at the FINAL denoising step, mean over layers and heads, per horizon index k
+  secondary: same for vlm; per-layer profiles; obs_mass; kwts_E / ln(968)
+  horizon_test: H(k) per call; per-episode Spearman(k, H) and the k=9 minus k=0 difference; per task and pooled
+  replanning_disagreement:
+    pairs: call c at env step t predicts a(t+k|t), k=0..9; call c+1 at t+5 predicts a(t+5+j|t+5), j=0..9.
+           Overlap k=5..9 <-> j=k-5. Only consecutive calls of the same episode, both completed.
+    actions: the executed policy output of that condition (S: CAG-combined chunk), env action space
+    D_translation: L2 over dims 0-2;  D_rotation: L2 over dims 3-5;  D_gripper: |diff| dim 6
+    D_combined: L2 over dims 0-6 after dividing each dim by (q99 - q01)/2 from pi05_libero norm_stats
+                (q01 = [-0.7474, -0.7961, -0.9375, -0.1158, -0.1694, -0.1945, -1.0],
+                 q99 = [ 0.9371,  0.8595,  0.9371,  0.1402,  0.1810,  0.3115, 0.9996])
+    test: Spearman(H(t,k), D(t,k)) per condition, pooled over tasks; 95% CI by bootstrap over episodes (2000 resamples)
+  failure_prediction:
+    episode_scalars: [mean_entropy, max_entropy, late_horizon_entropy (k=5..9), entropy_slope_over_k, first_call_entropy]
+    targets: [faithful failure, biased touch, faithful touch failure (failed grounding), top-quartile mean D_combined]
+    metrics: AUROC (bootstrap 95% CI over episodes), AUPRC with base rate; calibration not computed (no probabilistic model)
+    labels: EXPLORATORY (60 episodes per condition)

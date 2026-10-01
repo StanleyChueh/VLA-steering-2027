@@ -7,7 +7,11 @@ own helper functions; differences are additive only:
   * per-episode JSONL records: faithful/biased touch + success (labels from src/metrics/libero_cf_labels.py),
     episode length, policy-call count, client round-trip latency, server_info (RNG-key fingerprint, server
     latency, peak GPU memory), executed actions and full predicted chunks;
-  * a run manifest; videos are optional.
+  * a run manifest; videos are optional;
+  * static scene-geometry fingerprint after set_init_state (src/wrappers/geometry.py), logging only;
+  * with a --diagnostics server: per-call guidance magnitude / branch noise fingerprints (in the JSONL) and
+    action-expert attention entropies (one <out>/attn/task<T>_init<I>.npz per episode); raw attention probs for the
+    first --raw-attention-episodes episodes per task, written by the server to <out>/raw/.
 
 Usage (server already running, see src/wrappers/serve_cf_policy.py):
   MUJOCO_GL=egl envs/libero-cf-client/bin/python scripts/run_cag/run_cf_eval.py \
@@ -38,7 +42,10 @@ from openpi_client import image_tools  # noqa: E402
 from openpi_client import websocket_client_policy as _websocket_client_policy  # noqa: E402
 
 from src.metrics.libero_cf_labels import resolve_labels  # noqa: E402
+from src.wrappers.geometry import scene_fingerprint  # noqa: E402
 from src.wrappers.manifest import write_manifest  # noqa: E402
+
+RNG_PROTOCOL = "matched initial states under native policy stochasticity (fresh server per condition; not noise-paired)"
 
 LIBERO_DUMMY_ACTION = [0.0] * 6 + [-1.0]
 LIBERO_ENV_RESOLUTION = 256
@@ -58,10 +65,12 @@ def _load_main_cf():
     return module
 
 
-def run_episode(cf, env, client, init_state, conditions, subject_to_body, args, max_steps, record_video):
+def run_episode(cf, env, client, init_state, conditions, subject_to_body, args, max_steps, record_video, raw_prefix):
     env.reset()
     action_plan = collections.deque()
     obs = env.set_init_state(init_state)
+    geometry = scene_fingerprint(env, include_values=True)
+    attention = collections.defaultdict(list)
     touched = {c: False for c in conditions}
     t, done = 0, False
     executed, chunks, calls, replay = [], [], [], []
@@ -88,6 +97,11 @@ def run_episode(cf, env, client, init_state, conditions, subject_to_body, args, 
                         (obs["robot0_eef_pos"], cf._quat2axisangle(obs["robot0_eef_quat"]), obs["robot0_gripper_qpos"])
                     ),
                     "prompt": str(args._task_description),
+                    "diag_meta": {
+                        "t": int(t),
+                        "call": len(calls),
+                        "save_raw_path": None if raw_prefix is None else f"{raw_prefix}_call{len(calls):03d}",
+                    },
                 }
                 start = time.monotonic()
                 result = client.infer(element)
@@ -104,8 +118,13 @@ def run_episode(cf, env, client, init_state, conditions, subject_to_body, args, 
                         "client_rtt_ms": rtt_ms,
                         "policy_timing": result.get("policy_timing"),
                         "server_info": result.get("server_info"),
+                        "diag": {k: v for k, v in result.get("diag", {}).items() if k != "attention"},
                     }
                 )
+                for branch, summ in result.get("diag", {}).get("attention", {}).items():
+                    for k, v in summ.items():
+                        attention[f"{branch}/{k}"].append(np.asarray(v))
+                    attention[f"{branch}/rollout_step"].append(np.asarray(t))
             action = action_plan.popleft()
             obs, reward, done, info = env.step(action.tolist())
             executed.append(np.asarray(action, dtype=float).tolist())
@@ -136,6 +155,8 @@ def run_episode(cf, env, client, init_state, conditions, subject_to_body, args, 
         "policy_calls": calls,
         "error": error,
         "replay": replay,
+        "geometry": geometry,
+        "attention": attention,
     }
 
 
@@ -153,16 +174,24 @@ def main():
     p.add_argument("--num-steps-wait", type=int, default=10)
     p.add_argument("--seed", type=int, default=7, help="main_cf.py default; used for np.random.seed and env.seed")
     p.add_argument("--video", action="store_true")
+    p.add_argument("--raw-attention-episodes", type=int, default=2, help="episodes/task with raw attention probs")
+    p.add_argument("--task-manifest", default=str(REPO_ROOT / "configs/cag/libero_cf_spatial_task_validity.csv"))
     p.add_argument("--out", required=True)
     args = p.parse_args()
 
     cf = _load_main_cf()
     np.random.seed(args.seed)
-    out = pathlib.Path(args.out)
+    out = pathlib.Path(args.out).resolve()  # the server writes raw attention files to paths under it
     out.mkdir(parents=True, exist_ok=True)
     task_ids = [int(x) for x in args.task_ids.split(",")]
     suite = benchmark.get_benchmark_dict()[args.suite]()
     conditions_db = cf._load_custom_conditions_db(args.suite)
+    task_manifest = {}
+    if args.task_manifest and pathlib.Path(args.task_manifest).exists():
+        import csv  # noqa: PLC0415
+
+        with open(args.task_manifest) as f:
+            task_manifest = {int(r["task_id"]): (r["faithful_object"], r["biased_object"]) for r in csv.DictReader(f)}
     client = _websocket_client_policy.WebsocketClientPolicy(args.host, args.port)
     server_metadata = client.get_server_metadata()
 
@@ -171,7 +200,12 @@ def main():
         config=vars(args),
         checkpoint=args.checkpoint,
         condition=args.condition,
-        seed={"np_random_seed": args.seed, "env_seed": args.seed, "policy_rng": "server-side jax.random.key(0) stream"},
+        seed={
+            "np_random_seed": args.seed,
+            "env_seed": args.seed,
+            "policy_rng": "server-side jax.random.key(0) stream",
+            "protocol": RNG_PROTOCOL,
+        },
         task={"suite": args.suite, "task_ids": task_ids},
         initial_state_indices=range(args.episodes),
         extra={"server_metadata": server_metadata},
@@ -197,12 +231,25 @@ def main():
                 subj = cf._condition_subject_token(cond)
                 subject_to_body[subj] = cf._resolve_instance_root_body_name(env, subj)
 
+            frozen = task_manifest.get(task_id)
+            if frozen is not None:  # labels must equal the frozen, committed task manifest
+                assert (labels["faithful_subject"], labels["biased_subject"]) == frozen, (task_id, labels, frozen)
             for ep in range(args.episodes):
                 start = time.monotonic()
+                raw_prefix = str(out / "raw" / f"task{task_id:02d}_init{ep:03d}") if ep < args.raw_attention_episodes else None
                 r = run_episode(
                     cf, env, client, initial_states[ep], conditions, subject_to_body, args,
-                    MAX_STEPS[args.suite], args.video,
+                    MAX_STEPS[args.suite], args.video, raw_prefix,
                 )
+                attn_file = None
+                if r["attention"]:
+                    attn_file = out / "attn" / f"task{task_id:02d}_init{ep:03d}.npz"
+                    attn_file.parent.mkdir(parents=True, exist_ok=True)
+                    np.savez_compressed(
+                        attn_file,
+                        dims=np.asarray(["policy_call", "denoising_step", "layer", "head", "action_horizon_index"]),
+                        **{k: np.stack(v) for k, v in r["attention"].items()},
+                    )
                 fc, bc = labels["faithful_condition"], labels["biased_condition"]
                 rec = {
                     "suite": args.suite,
@@ -212,6 +259,7 @@ def main():
                     "bddl_language": labels["bddl_language"],
                     "initial_state_index": ep,
                     "env_seed": args.seed,
+                    "rng_protocol": RNG_PROTOCOL,
                     "faithful_condition": fc,
                     "biased_condition": bc,
                     "success_any": r["done"],
@@ -228,7 +276,11 @@ def main():
                     "executed_actions": r["executed_actions"],
                     "predicted_chunks": r["predicted_chunks"],
                     "error": r["error"],
+                    "exception": r["error"] is not None,
                     "subject_to_body": subject_to_body,
+                    "geometry": r["geometry"],
+                    "attention_file": None if attn_file is None else str(attn_file),
+                    "raw_attention_prefix": raw_prefix,
                 }
                 records.write(json.dumps(rec) + "\n")
                 records.flush()

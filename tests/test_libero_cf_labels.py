@@ -44,3 +44,19 @@ def test_known_prompt_language_mismatches():
     #   14: prompt "ramekin" vs :language "akita black bowl next to the plate"
     labels = _labels()
     assert [tid for tid, lab in labels.items() if lab["prompt_language_mismatch"]] == [13, 14]
+
+
+def test_frozen_task_manifest_matches_labels():
+    import csv  # noqa: PLC0415
+
+    rows = list(csv.DictReader(open(ROOT / "configs/cag/libero_cf_spatial_task_validity.csv")))
+    labels = _labels()
+    assert len(rows) == 15
+    for r in rows:
+        lab = labels[int(r["task_id"])]
+        assert (r["faithful_object"], r["biased_object"]) == (lab["faithful_subject"], lab["biased_subject"])
+        assert r["actual_policy_prompt"] == lab["prompt"]
+        assert (r["prompt_bddl_match"] == "True") == (not lab["prompt_language_mismatch"])
+    valid = [int(r["task_id"]) for r in rows if r["include_primary"] == "True"]
+    assert valid == list(range(13))
+    assert [valid[0], valid[(len(valid) - 1) // 2], valid[-1]] == [0, 6, 12]
