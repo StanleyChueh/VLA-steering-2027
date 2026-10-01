@@ -1,0 +1,86 @@
+{
+  "timestamp": "2026-10-01T18:25:20.793775+08:00",
+  "command": "/home/stanley/Stanley_ws/VLA-steering-2027/scripts/run_cag/run_cf_eval.py --suite libero_cf_spatial --task-ids 0 --episodes 2 --condition B --port 8765 --out results/S2_smoke/B",
+  "cwd": "/home/stanley/Stanley_ws/VLA-steering-2027",
+  "host": "stanley-Z790-AORUS-ELITE-AX",
+  "python": "3.8.20 (default, Oct  2 2024, 16:34:12) \n[Clang 18.1.8 ]",
+  "our_repo": {
+    "sha": "HEAD",
+    "dirty": true
+  },
+  "external_repos": {
+    "scale": {
+      "sha": "b4ad2a69d14f91712704711e810cf9830e2b7121",
+      "dirty": false
+    },
+    "libero-cf": {
+      "sha": "8460457bfca6e0ef2e856bc104e2c60b023ef2a7",
+      "dirty": false
+    },
+    "mechanistic-steering-vlas": {
+      "sha": "559c0f25a3cc5a20fc8b804774a88415404e0d22",
+      "dirty": false
+    },
+    "vla-explain": {
+      "sha": "202d2a9a00fb4b99083559525d54d8f2a7eb4d3f",
+      "dirty": false
+    },
+    "deps/LIBERO": {
+      "sha": "8f1084e3132a39270c3a13ebe37270a43ece2a01",
+      "dirty": false
+    }
+  },
+  "checkpoint": "gs://openpi-assets/checkpoints/pi05_libero",
+  "condition": "B",
+  "seed": {
+    "np_random_seed": 7,
+    "env_seed": 7,
+    "policy_rng": "server-side jax.random.key(0) stream"
+  },
+  "task": {
+    "suite": "libero_cf_spatial",
+    "task_ids": [
+      0
+    ]
+  },
+  "initial_state_indices": [
+    0,
+    1
+  ],
+  "config": {
+    "suite": "libero_cf_spatial",
+    "task_ids": "0",
+    "episodes": 2,
+    "condition": "B",
+    "checkpoint": "gs://openpi-assets/checkpoints/pi05_libero",
+    "host": "0.0.0.0",
+    "port": 8765,
+    "resize_size": 224,
+    "replan_steps": 5,
+    "num_steps_wait": 10,
+    "seed": 7,
+    "video": false,
+    "out": "results/S2_smoke/B"
+  },
+  "gpu": {
+    "nvidia_smi": [
+      "0, NVIDIA GeForce RTX 4090, 580.178.04, 24564 MiB, 8658 MiB",
+      "1, NVIDIA GeForce RTX 4090, 580.178.04, 24564 MiB, 449 MiB"
+    ],
+    "driver_cuda_version": "13.0",
+    "CUDA_VISIBLE_DEVICES": null
+  },
+  "frameworks": {
+    "torch": "1.11.0+cpu",
+    "numpy": "1.22.4",
+    "robosuite": "1.4.1",
+    "mujoco": "3.2.3",
+    "torch_cuda": null
+  },
+  "extra": {
+    "server_metadata": {
+      "wrapper_mode": "vanilla",
+      "wrapper_guidance_scale": null
+    }
+  }
+}

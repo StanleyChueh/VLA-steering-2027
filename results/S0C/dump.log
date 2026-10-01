@@ -1,0 +1,50 @@
+[robosuite WARNING] No private macro file found! (macros.py:53)
+[robosuite WARNING] It is recommended to use a private macro file (macros.py:54)
+[robosuite WARNING] To setup, run: python /home/stanley/Stanley_ws/VLA-steering-2027/envs/libero-cf-client/lib/python3.8/site-packages/robosuite/scripts/setup_macros.py (macros.py:55)
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+/home/stanley/Stanley_ws/VLA-steering-2027/envs/libero-cf-client/lib/python3.8/site-packages/numba/np/arraymath.py:3845: DeprecationWarning: `np.MachAr` is deprecated (NumPy 1.22).
+  @overload(np.MachAr)
+[Warning]: datasets path /home/stanley/Stanley_ws/VLA-steering-2027/external/libero-cf/libero/libero/../datasets does not exist!
+[Warning]: datasets path /home/stanley/Stanley_ws/VLA-steering-2027/external/libero-cf/libero/libero/../datasets does not exist!
+saved results/S0C/obs_cf_spatial_t0_i0.npz pick up the cookie box and place it on the plate (224, 224, 3) [-2.11241627e-01 -1.10906019e-02  1.17424952e+00  3.14089540e+00
+ -2.84781983e-03 -8.77393103e-02  3.87233651e-02 -3.87222021e-02]
+Exception ignored in: <function MjRenderContext.__del__ at 0x7358c7058430>
+Traceback (most recent call last):
+  File "/home/stanley/Stanley_ws/VLA-steering-2027/envs/libero-cf-client/lib/python3.8/site-packages/robosuite/utils/binding_utils.py", line 199, in __del__
+    self.gl_ctx.free()
+  File "/home/stanley/Stanley_ws/VLA-steering-2027/envs/libero-cf-client/lib/python3.8/site-packages/robosuite/renderers/context/egl_context.py", line 149, in free
+    EGL.eglMakeCurrent(EGL_DISPLAY, EGL.EGL_NO_SURFACE, EGL.EGL_NO_SURFACE, EGL.EGL_NO_CONTEXT)
+  File "/home/stanley/Stanley_ws/VLA-steering-2027/envs/libero-cf-client/lib/python3.8/site-packages/OpenGL/error.py", line 230, in glCheckError
+    raise self._errorClass(
+OpenGL.raw.EGL._errors.EGLError: EGLError(
+	err = EGL_NOT_INITIALIZED,
+	baseOperation = eglMakeCurrent,
+	cArguments = (
+		<OpenGL._opaque.EGLDisplay_pointer object at 0x7358b0865b40>,
+		<OpenGL._opaque.EGLSurface_pointer object at 0x7358c71345c0>,
+		<OpenGL._opaque.EGLSurface_pointer object at 0x7358c71345c0>,
+		<OpenGL._opaque.EGLContext_pointer object at 0x7358c7134240>,
+	),
+	result = 0
+)
+Exception ignored in: <function EGLGLContext.__del__ at 0x7358c7058280>
+Traceback (most recent call last):
+  File "/home/stanley/Stanley_ws/VLA-steering-2027/envs/libero-cf-client/lib/python3.8/site-packages/robosuite/renderers/context/egl_context.py", line 155, in __del__
+    self.free()
+  File "/home/stanley/Stanley_ws/VLA-steering-2027/envs/libero-cf-client/lib/python3.8/site-packages/robosuite/renderers/context/egl_context.py", line 149, in free
+    EGL.eglMakeCurrent(EGL_DISPLAY, EGL.EGL_NO_SURFACE, EGL.EGL_NO_SURFACE, EGL.EGL_NO_CONTEXT)
+  File "/home/stanley/Stanley_ws/VLA-steering-2027/envs/libero-cf-client/lib/python3.8/site-packages/OpenGL/error.py", line 230, in glCheckError
+    raise self._errorClass(
+OpenGL.raw.EGL._errors.EGLError: EGLError(
+	err = EGL_NOT_INITIALIZED,
+	baseOperation = eglMakeCurrent,
+	cArguments = (
+		<OpenGL._opaque.EGLDisplay_pointer object at 0x7358b0865b40>,
+		<OpenGL._opaque.EGLSurface_pointer object at 0x7358c71345c0>,
+		<OpenGL._opaque.EGLSurface_pointer object at 0x7358c71345c0>,
+		<OpenGL._opaque.EGLContext_pointer object at 0x7358c7134240>,
+	),
+	result = 0
+)

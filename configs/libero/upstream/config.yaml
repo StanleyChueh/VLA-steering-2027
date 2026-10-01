@@ -1,0 +1,6 @@
+# Upstream LIBERO (external/deps/LIBERO). Used by the SCALE evaluation via LIBERO_CONFIG_PATH.
+benchmark_root: /home/stanley/Stanley_ws/VLA-steering-2027/external/deps/LIBERO/libero/libero
+bddl_files: /home/stanley/Stanley_ws/VLA-steering-2027/external/deps/LIBERO/libero/libero/bddl_files
+init_states: /home/stanley/Stanley_ws/VLA-steering-2027/external/deps/LIBERO/libero/libero/init_files
+datasets: /home/stanley/Stanley_ws/VLA-steering-2027/external/deps/LIBERO/libero/libero/../datasets
+assets: /home/stanley/Stanley_ws/VLA-steering-2027/external/deps/LIBERO/libero/libero/assets

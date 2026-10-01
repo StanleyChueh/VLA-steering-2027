@@ -1,0 +1,82 @@
+{
+  "shapes": {
+    "actions": [
+      1,
+      10,
+      32
+    ],
+    "probs": [
+      10,
+      18,
+      1,
+      1,
+      8,
+      10,
+      978
+    ],
+    "probs_dtype": "bfloat16"
+  },
+  "identity": {
+    "A_vs_A2_bit_identical": true,
+    "A_vs_B_max_abs": 0.0,
+    "A_vs_B_bit_identical": true,
+    "A_vs_C_max_abs": 0.0,
+    "A_vs_C_bit_identical": true,
+    "C_vs_C2_bit_identical": true,
+    "policy_infer_stock_vs_patched_max_abs": 0.0,
+    "policy_infer_stock_vs_patched_bit_identical": true
+  },
+  "probs_sanity": {
+    "row_sum_min": 0.9971820712089539,
+    "row_sum_max": 1.0029420852661133,
+    "mass_on_masked_prefix_cols_max": 0.0,
+    "n_image_valid": 512,
+    "n_language_valid": 13,
+    "n_prefix": 968
+  },
+  "cost": {
+    "probs_bytes_per_query_bf16": 28166400,
+    "control_ms": 72.96185400628019,
+    "diagnostic_ms_warm": 68.09151198831387,
+    "diagnostic_ms_first_call_incl_compile": 4386.90886599943,
+    "peak_gpu_bytes": 14002692864
+  },
+  "entropy_preview": {
+    "H_obs_final_step_mean_by_k": [
+      0.6690999865531921,
+      0.6751999855041504,
+      0.6805999875068665,
+      0.6859999895095825,
+      0.6881999969482422,
+      0.6873000264167786,
+      0.6880000233650208,
+      0.6894000172615051,
+      0.6848000288009644,
+      0.6771000027656555
+    ],
+    "kwts_Enorm_final_step_by_k": [
+      0.43790000677108765,
+      0.45410001277923584,
+      0.46389999985694885,
+      0.4749000072479248,
+      0.48660001158714294,
+      0.4945000112056732,
+      0.5012000203132629,
+      0.5013999938964844,
+      0.4973999857902527,
+      0.49869999289512634
+    ],
+    "obs_mass_final_step_mean_by_k": [
+      0.25679999589920044,
+      0.26260000467300415,
+      0.26429998874664307,
+      0.26510000228881836,
+      0.27129998803138733,
+      0.27309998869895935,
+      0.2791000008583069,
+      0.28209999203681946,
+      0.2784000039100647,
+      0.2816999852657318
+    ]
+  }
+}

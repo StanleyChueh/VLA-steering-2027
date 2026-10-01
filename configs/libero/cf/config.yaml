@@ -1,0 +1,7 @@
+# LIBERO-CF fork (external/libero-cf). Used by the LIBERO-CF eval client via LIBERO_CONFIG_PATH.
+benchmark_root: /home/stanley/Stanley_ws/VLA-steering-2027/external/libero-cf/libero/libero
+bddl_files: /home/stanley/Stanley_ws/VLA-steering-2027/external/libero-cf/libero/libero/bddl_files
+init_states: /home/stanley/Stanley_ws/VLA-steering-2027/external/libero-cf/libero/libero/init_files
+datasets: /home/stanley/Stanley_ws/VLA-steering-2027/external/libero-cf/libero/libero/../datasets
+assets: /home/stanley/Stanley_ws/VLA-steering-2027/external/libero-cf/libero/libero/assets
+conditions: /home/stanley/Stanley_ws/VLA-steering-2027/external/libero-cf/libero/libero/conditions

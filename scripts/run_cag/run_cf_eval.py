@@ -1,0 +1,249 @@
+"""LIBERO-CF evaluation client with per-episode faithful/biased records (runs in envs/libero-cf-client).
+
+The episode loop mirrors external/libero-cf/eval/main_cf.py::eval_libero line for line (same env construction,
+seeding, wait steps, preprocessing, replanning, touch detection and condition evaluation) and calls LIBERO-CF's
+own helper functions; differences are additive only:
+  * --task-ids selects tasks (main_cf.py can only start at a task id and run to the end of the suite);
+  * per-episode JSONL records: faithful/biased touch + success (labels from src/metrics/libero_cf_labels.py),
+    episode length, policy-call count, client round-trip latency, server_info (RNG-key fingerprint, server
+    latency, peak GPU memory), executed actions and full predicted chunks;
+  * a run manifest; videos are optional.
+
+Usage (server already running, see src/wrappers/serve_cf_policy.py):
+  MUJOCO_GL=egl envs/libero-cf-client/bin/python scripts/run_cag/run_cf_eval.py \
+      --suite libero_cf_spatial --task-ids 0 --episodes 2 --condition B --port 8000 --out results/S2_smoke/B
+"""
+
+import argparse
+import collections
+import importlib.util
+import json
+import os
+import pathlib
+import sys
+import time
+
+os.environ.setdefault("MUJOCO_GL", "egl")
+os.environ.setdefault("PYOPENGL_PLATFORM", "egl")
+
+REPO_ROOT = pathlib.Path(__file__).resolve().parents[2]
+LIBERO_CF = REPO_ROOT / "external/libero-cf"
+os.environ.setdefault("LIBERO_CONFIG_PATH", str(REPO_ROOT / "configs/libero/cf"))
+sys.path.insert(0, str(REPO_ROOT))
+
+import imageio  # noqa: E402
+import numpy as np  # noqa: E402
+from libero.libero import benchmark, get_libero_path  # noqa: E402
+from openpi_client import image_tools  # noqa: E402
+from openpi_client import websocket_client_policy as _websocket_client_policy  # noqa: E402
+
+from src.metrics.libero_cf_labels import resolve_labels  # noqa: E402
+from src.wrappers.manifest import write_manifest  # noqa: E402
+
+LIBERO_DUMMY_ACTION = [0.0] * 6 + [-1.0]
+LIBERO_ENV_RESOLUTION = 256
+MAX_STEPS = {  # identical to main_cf.py
+    "libero_cf_spatial": 220,
+    "libero_cf_spatial_focused": 220,
+    "libero_cf_ood": 220,
+    "libero_cf_object": 280,
+    "libero_cf_long": 500,
+}
+
+
+def _load_main_cf():
+    spec = importlib.util.spec_from_file_location("libero_cf_main_cf", LIBERO_CF / "eval/main_cf.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def run_episode(cf, env, client, init_state, conditions, subject_to_body, args, max_steps, record_video):
+    env.reset()
+    action_plan = collections.deque()
+    obs = env.set_init_state(init_state)
+    touched = {c: False for c in conditions}
+    t, done = 0, False
+    executed, chunks, calls, replay = [], [], [], []
+    error = None
+    while t < max_steps + args.num_steps_wait:
+        try:
+            if t < args.num_steps_wait:
+                obs, reward, done, info = env.step(LIBERO_DUMMY_ACTION)
+                t += 1
+                continue
+            img = np.ascontiguousarray(obs["agentview_image"][::-1, ::-1])
+            wrist_img = np.ascontiguousarray(obs["robot0_eye_in_hand_image"][::-1, ::-1])
+            img = image_tools.convert_to_uint8(image_tools.resize_with_pad(img, args.resize_size, args.resize_size))
+            wrist_img = image_tools.convert_to_uint8(
+                image_tools.resize_with_pad(wrist_img, args.resize_size, args.resize_size)
+            )
+            if record_video:
+                replay.append(img)
+            if not action_plan:
+                element = {
+                    "observation/image": img,
+                    "observation/wrist_image": wrist_img,
+                    "observation/state": np.concatenate(
+                        (obs["robot0_eef_pos"], cf._quat2axisangle(obs["robot0_eef_quat"]), obs["robot0_gripper_qpos"])
+                    ),
+                    "prompt": str(args._task_description),
+                }
+                start = time.monotonic()
+                result = client.infer(element)
+                rtt_ms = (time.monotonic() - start) * 1000
+                action_chunk = result["actions"]
+                if action_chunk.ndim == 1:
+                    action_chunk = action_chunk.reshape(1, -1)
+                assert len(action_chunk) >= args.replan_steps
+                action_plan.extend(action_chunk[: args.replan_steps])
+                chunks.append(np.asarray(action_chunk, dtype=float).tolist())
+                calls.append(
+                    {
+                        "t": int(t),
+                        "client_rtt_ms": rtt_ms,
+                        "policy_timing": result.get("policy_timing"),
+                        "server_info": result.get("server_info"),
+                    }
+                )
+            action = action_plan.popleft()
+            obs, reward, done, info = env.step(action.tolist())
+            executed.append(np.asarray(action, dtype=float).tolist())
+            contact_names = cf._get_gripper_contact_body_names(env)
+            for cond in conditions:
+                if not touched[cond]:
+                    resolved = subject_to_body.get(cf._condition_subject_token(cond))
+                    if resolved and resolved in contact_names:
+                        touched[cond] = True
+            if done:
+                break
+            t += 1
+        except Exception as e:  # mirrors main_cf.py: log and end the episode
+            error = repr(e)
+            break
+    try:
+        cond_results = env.evaluate_conditions(conditions)
+    except Exception:  # noqa: BLE001
+        cond_results = {}
+    return {
+        "done": bool(done),
+        "t_final": int(t),
+        "env_steps_executed": len(executed),
+        "touched": touched,
+        "cond_success": {c: bool(cond_results.get(c, False)) for c in conditions},
+        "executed_actions": executed,
+        "predicted_chunks": chunks,
+        "policy_calls": calls,
+        "error": error,
+        "replay": replay,
+    }
+
+
+def main():
+    p = argparse.ArgumentParser()
+    p.add_argument("--suite", default="libero_cf_spatial")
+    p.add_argument("--task-ids", required=True, help="comma-separated task ids")
+    p.add_argument("--episodes", type=int, required=True, help="episodes per task (init states 0..N-1)")
+    p.add_argument("--condition", required=True, help="label stored in records, e.g. B or S")
+    p.add_argument("--checkpoint", default="gs://openpi-assets/checkpoints/pi05_libero")
+    p.add_argument("--host", default="0.0.0.0")
+    p.add_argument("--port", type=int, default=8000)
+    p.add_argument("--resize-size", type=int, default=224)
+    p.add_argument("--replan-steps", type=int, default=5)
+    p.add_argument("--num-steps-wait", type=int, default=10)
+    p.add_argument("--seed", type=int, default=7, help="main_cf.py default; used for np.random.seed and env.seed")
+    p.add_argument("--video", action="store_true")
+    p.add_argument("--out", required=True)
+    args = p.parse_args()
+
+    cf = _load_main_cf()
+    np.random.seed(args.seed)
+    out = pathlib.Path(args.out)
+    out.mkdir(parents=True, exist_ok=True)
+    task_ids = [int(x) for x in args.task_ids.split(",")]
+    suite = benchmark.get_benchmark_dict()[args.suite]()
+    conditions_db = cf._load_custom_conditions_db(args.suite)
+    client = _websocket_client_policy.WebsocketClientPolicy(args.host, args.port)
+    server_metadata = client.get_server_metadata()
+
+    write_manifest(
+        out,
+        config=vars(args),
+        checkpoint=args.checkpoint,
+        condition=args.condition,
+        seed={"np_random_seed": args.seed, "env_seed": args.seed, "policy_rng": "server-side jax.random.key(0) stream"},
+        task={"suite": args.suite, "task_ids": task_ids},
+        initial_state_indices=range(args.episodes),
+        extra={"server_metadata": server_metadata},
+    )
+
+    records_path = out / "episodes.jsonl"
+    with open(records_path, "w") as records:
+        for task_id in task_ids:
+            task = suite.get_task(task_id)
+            initial_states = suite.get_task_init_states(task_id)
+            env, task_description = cf._get_libero_env(task, LIBERO_ENV_RESOLUTION, args.seed)
+            args._task_description = task_description
+            bddl_key = task.problem_folder + "/" + task.bddl_file
+            conditions = cf._get_conditions_for_task(conditions_db, bddl_key)
+            labels = resolve_labels(pathlib.Path(get_libero_path("bddl_files")) / bddl_key, conditions)
+            assert labels["prompt"] == task_description, (labels["prompt"], task_description)
+            # main_cf.py calls env.set_custom_conditions() inside try/except-pass, but that method is commented out in
+            # LIBERO-CF's ControlEnv (envs/env_wrapper.py L109), so upstream it is a silent no-op. Conditions are
+            # passed explicitly to evaluate_conditions() instead, exactly as main_cf.py does.
+            env.set_success_any_conditions(conditions)  # OR-termination: done = any listed condition holds
+            subject_to_body = {}
+            for cond in conditions:
+                subj = cf._condition_subject_token(cond)
+                subject_to_body[subj] = cf._resolve_instance_root_body_name(env, subj)
+
+            for ep in range(args.episodes):
+                start = time.monotonic()
+                r = run_episode(
+                    cf, env, client, initial_states[ep], conditions, subject_to_body, args,
+                    MAX_STEPS[args.suite], args.video,
+                )
+                fc, bc = labels["faithful_condition"], labels["biased_condition"]
+                rec = {
+                    "suite": args.suite,
+                    "task_id": task_id,
+                    "condition": args.condition,
+                    "instruction": task_description,
+                    "bddl_language": labels["bddl_language"],
+                    "initial_state_index": ep,
+                    "env_seed": args.seed,
+                    "faithful_condition": fc,
+                    "biased_condition": bc,
+                    "success_any": r["done"],
+                    "faithful_touch": r["touched"][fc],
+                    "biased_touch": r["touched"][bc],
+                    "faithful_success": r["cond_success"][fc],
+                    "biased_success": r["cond_success"][bc],
+                    "touched": r["touched"],
+                    "cond_success": r["cond_success"],
+                    "episode_length": r["env_steps_executed"],
+                    "policy_call_count": len(r["policy_calls"]),
+                    "episode_wall_s": time.monotonic() - start,
+                    "policy_calls": r["policy_calls"],
+                    "executed_actions": r["executed_actions"],
+                    "predicted_chunks": r["predicted_chunks"],
+                    "error": r["error"],
+                    "subject_to_body": subject_to_body,
+                }
+                records.write(json.dumps(rec) + "\n")
+                records.flush()
+                if args.video and r["replay"]:
+                    imageio.mimwrite(out / f"task{task_id:02d}_ep{ep:03d}.mp4", r["replay"], fps=10)
+                print(
+                    f"[{args.condition}] task {task_id} ep {ep}: any={r['done']} "
+                    f"F(touch={rec['faithful_touch']}, succ={rec['faithful_success']}) "
+                    f"B(touch={rec['biased_touch']}, succ={rec['biased_success']}) "
+                    f"len={rec['episode_length']} calls={rec['policy_call_count']} err={r['error']}",
+                    flush=True,
+                )
+            env.close()
+    print(f"wrote {records_path}")
+
+
+if __name__ == "__main__":
+    main()

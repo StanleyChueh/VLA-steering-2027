@@ -1,0 +1,74 @@
+--- external/libero-cf/openpi-cf/src/openpi/models/gemma.py::Attention
++++ src/instrumentation/pi05_attention.py::CapturingAttention
+@@ -1,7 +1,12 @@
+-class Attention(nn.Module):
+-    """Attention module."""
++class CapturingAttention(nn.Module):
++    """Verbatim copy of openpi-cf gemma.Attention (gemma.py L158-250) + one optional extra output.
+ 
+-    configs: Sequence[Config]
++    Same dataclass field, same submodule names -> same parameter tree. The only change (see
++    patches/gemma_attention_capture.diff) is the final return: when capture is ON and a KV cache is supplied,
++    `probs` (the exact tensor multiplied into V) is appended to the returned cache tuple.
++    """
++
++    configs: Sequence[_gemma.Config]
+ 
+     @nn.compact
+     def __call__(self, xs, positions, attn_mask, kv_cache):
+@@ -19,7 +24,7 @@
+             if config.num_kv_heads == config.num_heads:
+                 qkv_einsum = lora.Einsum(
+                     shape=(3, config.num_heads, config.width, config.head_dim),
+-                    name=_name("qkv_einsum", i),
++                    name=_gemma._name("qkv_einsum", i),
+                     init_fn=nn.initializers.lecun_normal(in_axis=-2, out_axis=-1, batch_axis=(0, 1)),
+                     lora_config=config.lora_configs.get("attn"),
+                 )
+@@ -27,14 +32,14 @@
+             else:
+                 q_einsum = lora.Einsum(
+                     shape=(config.num_heads, config.width, config.head_dim),
+-                    name=_name("q_einsum", i),
++                    name=_gemma._name("q_einsum", i),
+                     init_fn=nn.initializers.lecun_normal(in_axis=-2, out_axis=-1, batch_axis=(0,)),
+                     lora_config=config.lora_configs.get("attn"),
+                 )
+                 q = q_einsum("BTD,NDH->BTNH", x)
+                 kv_einsum = lora.Einsum(
+                     shape=(2, config.num_kv_heads, config.width, config.head_dim),
+-                    name=_name("kv_einsum", i),
++                    name=_gemma._name("kv_einsum", i),
+                     init_fn=nn.initializers.lecun_normal(in_axis=-2, out_axis=-1, batch_axis=(0, 1)),
+                     lora_config=config.lora_configs.get("attn"),
+                 )
+@@ -43,10 +48,10 @@
+ 
+         q, k, v = (jnp.concatenate(y, axis=1) for y in zip(*qkvs, strict=True))
+ 
+-        q = _apply_rope(q, positions=positions)
++        q = _gemma._apply_rope(q, positions=positions)
+         q *= self.configs[0].head_dim ** -0.5
+ 
+-        k = _apply_rope(k, positions=positions)
++        k = _gemma._apply_rope(k, positions=positions)
+ 
+         # should still be half-precision here (if input was half-precision)
+         assert q.dtype == k.dtype == v.dtype == dtype
+@@ -80,7 +85,7 @@
+                 end = start + x.shape[1]
+                 out_einsum = lora.Einsum(
+                     shape=(config.num_heads, config.head_dim, config.width),
+-                    name=_name("attn_vec_einsum", i),
++                    name=_gemma._name("attn_vec_einsum", i),
+                     init_fn=nn.initializers.lecun_normal(in_axis=(-3, -2), out_axis=-1),
+                     lora_config=config.lora_configs.get("attn"),
+                 )
+@@ -89,4 +94,7 @@
+             else:
+                 out.append(None)
+ 
++        # --- instrumentation (the only deviation from the original) ---
++        if _CAPTURE["on"] and kv_cache is not None:
++            return out, (k, v, probs)
+         return out, (k, v)
