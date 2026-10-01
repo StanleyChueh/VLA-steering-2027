@@ -1,0 +1,73 @@
+2026-10-01 20:27:23.311472: I tensorflow/core/util/port.cc:113] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-10-01 20:27:23.332895: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-10-01 20:27:23.332923: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-10-01 20:27:23.333755: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-10-01 20:27:23.337513: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-10-01 20:27:23.693160: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[robosuite WARNING] No private macro file found! (macros.py:53)
+[robosuite WARNING] It is recommended to use a private macro file (macros.py:54)
+[robosuite WARNING] To setup, run: python /home/stanley/Stanley_ws/VLA-steering-2027/envs/scale/lib/python3.10/site-packages/robosuite/scripts/setup_macros.py (macros.py:55)
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+Users of this version of Gym should be able to simply replace 'import gym' with 'import gymnasium as gym' in the vast majority of cases.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+[*] Instantiating Pretrained VLA model
+[*] Loading in BF16 with Flash-Attention Enabled
+Fetching 16 files:   0%|          | 0/16 [00:00<?, ?it/s]Fetching 16 files: 100%|██████████| 16/16 [00:00<00:00, 3489.26it/s]
+You are attempting to use Flash Attention 2.0 with a model not initialized on GPU. Make sure to move the model to GPU after initializing it on CPU with `model.to('cuda')`.
+You are attempting to use Flash Attention 2.0 without specifying a torch dtype. This might lead to unexpected behaviour
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:00<00:00,  9.40it/s]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:00<00:00, 10.56it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 10.68it/s]
+/home/stanley/Stanley_ws/VLA-steering-2027/envs/scale/lib/python3.10/site-packages/huggingface_hub/file_download.py:949: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+<frozen importlib._bootstrap>:283: DeprecationWarning: the load_module() method is deprecated and slated for removal in Python 3.12; use exec_module() instead
+2026-10-01 20:27:34.758644: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:901] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2026-10-01 20:27:34.760067: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:901] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2026-10-01 20:27:34.765225: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:901] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2026-10-01 20:27:34.766292: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:901] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2026-10-01 20:27:34.766941: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:901] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2026-10-01 20:27:34.767561: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:901] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2026-10-01 20:27:34.768242: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:901] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2026-10-01 20:27:34.768825: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:901] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2026-10-01 20:27:34.769471: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:901] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2026-10-01 20:27:34.770095: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1929] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 6630 MB memory:  -> device: 0, name: NVIDIA GeForce RTX 4090, pci bus id: 0000:05:00.0, compute capability: 8.9
+2026-10-01 20:27:34.852569: I external/local_tsl/tsl/platform/default/subprocess.cc:304] Start cannot spawn child process: No such file or directory
+[SCALE] Loaded model using SCALE modeling code: prismatic.extern.hf.modeling_prismatic.OpenVLAForActionPrediction
+Loaded model: <class 'prismatic.extern.hf.modeling_prismatic.OpenVLAForActionPrediction'>
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[Warning]: datasets path /home/stanley/Stanley_ws/VLA-steering-2027/external/deps/LIBERO/libero/libero/../datasets does not exist!
+[Warning]: datasets path /home/stanley/Stanley_ws/VLA-steering-2027/external/deps/LIBERO/libero/libero/../datasets does not exist!
+[greedy] task 0 ep 0: success=False len=520 lat=172.8ms peak=14.42GiB err=None
+[greedy] task 0 ep 1: success=True len=254 lat=172.7ms peak=14.42GiB err=None
+[greedy] task 0 ep 2: success=True len=292 lat=171.9ms peak=14.42GiB err=None
+[greedy] task 0 ep 3: success=True len=275 lat=171.7ms peak=14.42GiB err=None
+[greedy] task 0 ep 4: success=False len=520 lat=180.2ms peak=14.42GiB err=None
+[greedy] task 0 ep 5: success=True len=240 lat=186.0ms peak=14.42GiB err=None
+[greedy] task 0 ep 6: success=True len=432 lat=180.1ms peak=14.42GiB err=None
+[greedy] task 0 ep 7: success=False len=520 lat=179.3ms peak=14.42GiB err=None
+[greedy] task 0 ep 8: success=True len=244 lat=171.7ms peak=14.42GiB err=None
+[greedy] task 0 ep 9: success=True len=264 lat=172.1ms peak=14.42GiB err=None
+[Warning]: datasets path /home/stanley/Stanley_ws/VLA-steering-2027/external/deps/LIBERO/libero/libero/../datasets does not exist!
+[Warning]: datasets path /home/stanley/Stanley_ws/VLA-steering-2027/external/deps/LIBERO/libero/libero/../datasets does not exist!
+[greedy] task 4 ep 0: success=False len=520 lat=171.2ms peak=14.43GiB err=None
+[greedy] task 4 ep 1: success=False len=520 lat=170.3ms peak=14.43GiB err=None
+[greedy] task 4 ep 2: success=True len=261 lat=170.3ms peak=14.43GiB err=None
+[greedy] task 4 ep 3: success=True len=256 lat=170.2ms peak=14.43GiB err=None
+[greedy] task 4 ep 4: success=False len=520 lat=170.3ms peak=14.43GiB err=None
+[greedy] task 4 ep 5: success=False len=520 lat=170.9ms peak=14.43GiB err=None
+[greedy] task 4 ep 6: success=False len=520 lat=177.1ms peak=14.43GiB err=None
+[greedy] task 4 ep 7: success=False len=520 lat=170.7ms peak=14.43GiB err=None
+[greedy] task 4 ep 8: success=True len=212 lat=170.1ms peak=14.43GiB err=None
+[greedy] task 4 ep 9: success=True len=239 lat=170.2ms peak=14.43GiB err=None
+[Warning]: datasets path /home/stanley/Stanley_ws/VLA-steering-2027/external/deps/LIBERO/libero/libero/../datasets does not exist!
+[Warning]: datasets path /home/stanley/Stanley_ws/VLA-steering-2027/external/deps/LIBERO/libero/libero/../datasets does not exist!
+[greedy] task 9 ep 0: success=True len=268 lat=170.1ms peak=14.42GiB err=None
+[greedy] task 9 ep 1: success=False len=520 lat=170.0ms peak=14.42GiB err=None
+[greedy] task 9 ep 2: success=True len=248 lat=170.2ms peak=14.42GiB err=None
+[greedy] task 9 ep 3: success=False len=520 lat=169.8ms peak=14.42GiB err=None
+[greedy] task 9 ep 4: success=True len=430 lat=170.2ms peak=14.42GiB err=None
+[greedy] task 9 ep 5: success=True len=302 lat=169.8ms peak=14.42GiB err=None
+[greedy] task 9 ep 6: success=True len=248 lat=170.2ms peak=14.42GiB err=None
+[greedy] task 9 ep 7: success=False len=520 lat=170.0ms peak=14.42GiB err=None
+[greedy] task 9 ep 8: success=True len=262 lat=170.1ms peak=14.42GiB err=None
+[greedy] task 9 ep 9: success=False len=520 lat=170.1ms peak=14.42GiB err=None

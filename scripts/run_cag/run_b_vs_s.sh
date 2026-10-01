@@ -4,14 +4,15 @@
 # matched initial states under native policy stochasticity (NOT noise-paired).
 # DIAG=1 (default) serves through DiagnosticPolicy: guidance magnitude + action-expert attention logging with
 # bit-identical actions (scripts/audit/diagnostics_identity_test.py).
-# Usage: [TASKS=0] [EPISODES=2] [PORT=8765] [DIAG=1] [RAW_EPISODES=2] bash scripts/run_cag/run_b_vs_s.sh <gpu> <guidance_scale> <out_dir>
+# Usage: [TASKS=0] [EPISODES=2] [INIT_START=0] [CONDS="B S"] [POLICY_SEED=0] [PORT=8765] [DIAG=1] [RAW_EPISODES=2] bash scripts/run_cag/run_b_vs_s.sh <gpu> <guidance_scale> <out_dir>
 #   smoke : DIAG=0 bash scripts/run_cag/run_b_vs_s.sh 0 1.5 results/S2_smoke
 #   pilot : TASKS=0,6,12 EPISODES=20 bash scripts/run_cag/run_b_vs_s.sh 0 1.5 results/S2_pilot
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 GPU=${1:-0}; W=${2:-1.5}; OUT=${3:-$ROOT/results/S2_smoke}
 PORT=${PORT:-8765}; TASKS=${TASKS:-0}; EPISODES=${EPISODES:-2}; DIAG=${DIAG:-1}; RAW_EPISODES=${RAW_EPISODES:-2}
-SERVER_FLAGS=(); [ "$DIAG" = "1" ] && SERVER_FLAGS+=(--diagnostics)
+INIT_START=${INIT_START:-0}; CONDS=${CONDS:-"B S"}; POLICY_SEED=${POLICY_SEED:-0}
+SERVER_FLAGS=(--policy-seed "$POLICY_SEED"); [ "$DIAG" = "1" ] && SERVER_FLAGS+=(--diagnostics)
 run_condition() {
   local cond=$1; shift
   mkdir -p "$OUT/$cond"
@@ -23,9 +24,13 @@ run_condition() {
   kill -0 $pid || { echo "server for $cond died"; tail -20 "$OUT/$cond/server.log"; exit 1; }
   MUJOCO_GL=egl "$ROOT/envs/libero-cf-client/bin/python" "$ROOT/scripts/run_cag/run_cf_eval.py" \
     --suite libero_cf_spatial --task-ids "$TASKS" --episodes "$EPISODES" --condition "$cond" --port $PORT --out "$OUT/$cond" \
-    --raw-attention-episodes "$RAW_EPISODES" \
-    2>&1 | grep -v -E "EGL|Warning|^\s|^\)|Traceback|Exception ignored|OpenGL|cArguments|result =" | tee "$OUT/$cond/client.log"
+    --raw-attention-episodes "$RAW_EPISODES" --init-start "$INIT_START" \
+    2>&1 | grep --line-buffered -v -E "EGL|Warning|^\s|^\)|Traceback|Exception ignored|OpenGL|cArguments|result =" | tee "$OUT/$cond/client.log"
   kill $pid; wait $pid 2>/dev/null || true
 }
-run_condition B --mode vanilla
-run_condition S --mode cag_tf --guidance-scale "$W"
+for c in $CONDS; do
+  case $c in
+    B) run_condition B --mode vanilla ;;
+    S) run_condition S --mode cag_tf --guidance-scale "$W" ;;
+  esac
+done

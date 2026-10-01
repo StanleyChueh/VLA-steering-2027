@@ -91,6 +91,7 @@ def main():
     parser.add_argument("--checkpoint", default="gs://openpi-assets/checkpoints/pi05_libero")
     parser.add_argument("--port", type=int, default=8000)
     parser.add_argument("--diagnostics", action="store_true", help="guidance + attention logging (S2)")
+    parser.add_argument("--policy-seed", type=int, default=0, help="policy RNG stream key; 0 = openpi native default")
     args = parser.parse_args()
     if args.mode == "cag_tf" and args.guidance_scale is None:
         parser.error("--guidance-scale is required for cag_tf (paper: 1.5; LIBERO-CF README: 2.0)")
@@ -105,6 +106,8 @@ def main():
         pi05_attention.install()  # before the policy is first traced; capture OFF on the control path
     train_config = _config.get_config(args.config)
     base = _policy_config.create_trained_policy(train_config, args.checkpoint)
+    if args.policy_seed != 0:  # openpi's Policy default is jax.random.key(0); only the stream start changes
+        base._rng = jax.random.key(args.policy_seed)
     if args.mode == "vanilla":
         policy = base
     else:

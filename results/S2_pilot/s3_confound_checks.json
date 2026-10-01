@@ -1,0 +1,49 @@
+{
+ "label": "EXPLORATORY (post hoc)",
+ "B": {
+  "auroc_faithful_failure": {
+   "slope_all_calls": 0.7430555555555556,
+   "slope_first5_calls": 0.4982638888888889,
+   "slope_first5_ci95": [
+    0.2931777662755924,
+    0.7120396072013092
+   ],
+   "episode_length_calls": 0.6380208333333334
+  },
+  "spearman_slope_vs_length": 0.21260695820570588,
+  "spearman_call_slope_vs_episode_phase": -0.10357902013475014,
+  "spearman_call_slope_vs_call_index": -0.08086442392468997,
+  "H_vlm_vs_D_comb": {
+   "pooled": 0.22795897487607425,
+   "within_episode_demeaned": 0.18017429602827373,
+   "within_call_index_bins_mean": 0.24823733038946924
+  },
+  "H_obs_vs_D_comb": {
+   "pooled": -0.04804996686672128,
+   "within_episode_demeaned": -0.014713942428626278
+  }
+ },
+ "S": {
+  "auroc_faithful_failure": {
+   "slope_all_calls": 0.7610474631751227,
+   "slope_first5_calls": 0.6824877250409165,
+   "slope_first5_ci95": [
+    0.48609457671957673,
+    0.8679432413597296
+   ],
+   "episode_length_calls": 0.953355155482815
+  },
+  "spearman_slope_vs_length": 0.2291541580469609,
+  "spearman_call_slope_vs_episode_phase": -0.08495328254919021,
+  "spearman_call_slope_vs_call_index": -0.03734352479930289,
+  "H_vlm_vs_D_comb": {
+   "pooled": 0.17230117481714022,
+   "within_episode_demeaned": 0.1609460970695592,
+   "within_call_index_bins_mean": 0.21305985075302938
+  },
+  "H_obs_vs_D_comb": {
+   "pooled": 0.037907104983390144,
+   "within_episode_demeaned": 0.03498461610363073
+  }
+ }
+}

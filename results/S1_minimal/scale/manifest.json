@@ -1,0 +1,116 @@
+{
+  "timestamp": "2026-10-01T21:03:58.309328+08:00",
+  "command": "/home/stanley/Stanley_ws/VLA-steering-2027/scripts/run_scale/run_scale_eval.py --task-suite libero_10 --task-ids 0,4,9 --episodes 10 --decoding-mode scale --out results/S1_minimal/scale",
+  "cwd": "/home/stanley/Stanley_ws/VLA-steering-2027",
+  "host": "stanley-Z790-AORUS-ELITE-AX",
+  "python": "3.10.12 (main, Aug 31 2026, 10:18:17) [GCC 11.4.0]",
+  "our_repo": {
+    "sha": "58b56678718d3477cb714b08e349d94d58bd2378",
+    "dirty": true
+  },
+  "external_repos": {
+    "scale": {
+      "sha": "b4ad2a69d14f91712704711e810cf9830e2b7121",
+      "dirty": false
+    },
+    "libero-cf": {
+      "sha": "8460457bfca6e0ef2e856bc104e2c60b023ef2a7",
+      "dirty": false
+    },
+    "mechanistic-steering-vlas": {
+      "sha": "559c0f25a3cc5a20fc8b804774a88415404e0d22",
+      "dirty": false
+    },
+    "vla-explain": {
+      "sha": "202d2a9a00fb4b99083559525d54d8f2a7eb4d3f",
+      "dirty": false
+    },
+    "deps/LIBERO": {
+      "sha": "8f1084e3132a39270c3a13ebe37270a43ece2a01",
+      "dirty": false
+    }
+  },
+  "checkpoint": "openvla/openvla-7b-finetuned-libero-10",
+  "condition": "scale",
+  "seed": {
+    "set_seed_everywhere": 7,
+    "env_seed": 0
+  },
+  "task": {
+    "suite": "libero_10",
+    "task_ids": "0,4,9"
+  },
+  "initial_state_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "config": {
+    "model_family": "openvla",
+    "pretrained_checkpoint": "openvla/openvla-7b-finetuned-libero-10",
+    "load_in_8bit": false,
+    "load_in_4bit": false,
+    "center_crop": true,
+    "decoding_mode": "scale",
+    "temperature": 1.0,
+    "top_k": 40,
+    "top_p": 0.9,
+    "scale_config": "/home/stanley/Stanley_ws/VLA-steering-2027/external/scale/configs/scale.yaml",
+    "T0": 1.0,
+    "kappa": 2.0,
+    "alpha": 0.8,
+    "epsilon": 1e-12,
+    "num_logits": 256,
+    "attn_sensitivity": 0.3,
+    "task_suite": "libero_10",
+    "num_steps_wait": 10,
+    "num_trials_per_task": 10,
+    "task_ids": "0,4,9",
+    "more_time": false,
+    "run_id_note": null,
+    "local_log_dir": "./experiments/logs",
+    "save_video": false,
+    "use_wandb": false,
+    "wandb_project": "YOUR_WANDB_PROJECT",
+    "wandb_entity": "YOUR_WANDB_ENTITY",
+    "seed": 7,
+    "unnorm_key": "libero_10"
+  },
+  "gpu": {
+    "nvidia_smi": [
+      "0, NVIDIA GeForce RTX 4090, 580.178.04, 24564 MiB, 9186 MiB",
+      "1, NVIDIA GeForce RTX 4090, 580.178.04, 24564 MiB, 15215 MiB"
+    ],
+    "driver_cuda_version": "13.0",
+    "CUDA_VISIBLE_DEVICES": "1"
+  },
+  "frameworks": {
+    "torch": "2.2.0+cu121",
+    "transformers": "4.40.1",
+    "numpy": "1.26.4",
+    "robosuite": "1.4.1",
+    "mujoco": "3.3.2",
+    "tensorflow": "2.15.0",
+    "torch_cuda": "12.1"
+  },
+  "extra": {
+    "label": "released-code SCALE reproduction",
+    "precision": "bf16",
+    "load_peak_bytes": 15129554944,
+    "released_code_defaults": {
+      "T0": 1.0,
+      "kappa": 2.0,
+      "alpha": 0.8,
+      "epsilon": 1e-12,
+      "num_logits": 256,
+      "attn_sensitivity": 0.3
+    }
+  }
+}

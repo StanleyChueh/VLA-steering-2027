@@ -164,7 +164,8 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument("--suite", default="libero_cf_spatial")
     p.add_argument("--task-ids", required=True, help="comma-separated task ids")
-    p.add_argument("--episodes", type=int, required=True, help="episodes per task (init states 0..N-1)")
+    p.add_argument("--episodes", type=int, required=True, help="episodes per task (init states S..S+N-1)")
+    p.add_argument("--init-start", type=int, default=0, help="first initial-state index S (default 0)")
     p.add_argument("--condition", required=True, help="label stored in records, e.g. B or S")
     p.add_argument("--checkpoint", default="gs://openpi-assets/checkpoints/pi05_libero")
     p.add_argument("--host", default="0.0.0.0")
@@ -207,7 +208,7 @@ def main():
             "protocol": RNG_PROTOCOL,
         },
         task={"suite": args.suite, "task_ids": task_ids},
-        initial_state_indices=range(args.episodes),
+        initial_state_indices=range(args.init_start, args.init_start + args.episodes),
         extra={"server_metadata": server_metadata},
     )
 
@@ -234,9 +235,13 @@ def main():
             frozen = task_manifest.get(task_id)
             if frozen is not None:  # labels must equal the frozen, committed task manifest
                 assert (labels["faithful_subject"], labels["biased_subject"]) == frozen, (task_id, labels, frozen)
-            for ep in range(args.episodes):
+            for ep in range(args.init_start, args.init_start + args.episodes):
                 start = time.monotonic()
-                raw_prefix = str(out / "raw" / f"task{task_id:02d}_init{ep:03d}") if ep < args.raw_attention_episodes else None
+                raw_prefix = (
+                    str(out / "raw" / f"task{task_id:02d}_init{ep:03d}")
+                    if ep - args.init_start < args.raw_attention_episodes
+                    else None
+                )
                 r = run_episode(
                     cf, env, client, initial_states[ep], conditions, subject_to_body, args,
                     MAX_STEPS[args.suite], args.video, raw_prefix,
