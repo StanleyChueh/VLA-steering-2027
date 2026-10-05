@@ -5,8 +5,9 @@
 #   envs/openpi-cf         : openpi as bundled in LIBERO-CF (policy server: vanilla pi0.5 + CAG-TF)
 #   envs/libero-cf-client  : LIBERO-CF simulator/eval client (py3.8, per LIBERO-CF README)
 #   envs/scale             : SCALE OpenVLA + upstream LIBERO (py3.10, per SCALE README)
+#   envs/analysis          : offline analysis only (numpy/scipy/scikit-learn/matplotlib; S2b H1/H2 models)
 #
-# Usage: bash scripts/audit/setup_envs.sh [openpi|client|scale|all]
+# Usage: bash scripts/audit/setup_envs.sh [openpi|client|scale|analysis|all]
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 EXT="$ROOT/external"
@@ -59,9 +60,16 @@ setup_scale() {
   printf '%s\n%s\n' "$EXT/deps/LIBERO" "$EXT/scale" > "$(site_packages "$ROOT/envs/scale")/scale_src.pth"
 }
 
+setup_analysis() {
+  uv venv --clear --python 3.11 "$ROOT/envs/analysis"
+  uv pip install --python "$ROOT/envs/analysis/bin/python" numpy==1.26.4 scipy==1.13.1 scikit-learn==1.5.2 \
+    matplotlib==3.9.2 pyyaml
+}
+
 case "$WHAT" in
   openpi) setup_openpi ;;
   client) setup_client ;;
   scale) setup_scale ;;
-  all) setup_openpi; setup_client; setup_scale ;;
+  analysis) setup_analysis ;;
+  all) setup_openpi; setup_client; setup_scale; setup_analysis ;;
 esac

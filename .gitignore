@@ -7,3 +7,9 @@ __pycache__/
 *.pyc
 .pytest_cache/
 results/**/attn/
+
+# S2b raw experiment artifacts
+results/S2b/seed0/
+results/S2b/seed1/
+results/S2b_rng_validation/
+results/S2b/*.log
