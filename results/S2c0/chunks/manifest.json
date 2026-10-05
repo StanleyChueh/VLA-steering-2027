@@ -1,0 +1,118 @@
+{
+  "timestamp": "2026-10-05T15:55:07.971856+08:00",
+  "command": "scripts/run_cag/s2c0_language_query.py --out results/S2c0/chunks",
+  "cwd": "/home/stanley/Stanley_ws/VLA-steering-2027",
+  "host": "stanley-Z790-AORUS-ELITE-AX",
+  "python": "3.11.16 (main, Sep  1 2026, 14:18:37) [Clang 22.1.3 ]",
+  "our_repo": {
+    "sha": "651a1abae883ca2f593456668ea4b4f198eefd43",
+    "dirty": true
+  },
+  "external_repos": {
+    "scale": {
+      "sha": "b4ad2a69d14f91712704711e810cf9830e2b7121",
+      "dirty": false
+    },
+    "libero-cf": {
+      "sha": "8460457bfca6e0ef2e856bc104e2c60b023ef2a7",
+      "dirty": false
+    },
+    "mechanistic-steering-vlas": {
+      "sha": "559c0f25a3cc5a20fc8b804774a88415404e0d22",
+      "dirty": false
+    },
+    "vla-explain": {
+      "sha": "202d2a9a00fb4b99083559525d54d8f2a7eb4d3f",
+      "dirty": false
+    },
+    "deps/LIBERO": {
+      "sha": "8f1084e3132a39270c3a13ebe37270a43ece2a01",
+      "dirty": false
+    }
+  },
+  "checkpoint": "gs://openpi-assets/checkpoints/pi05_libero",
+  "condition": "S2c0-language-query",
+  "seed": {
+    "crn_master_seeds": [
+      0,
+      1,
+      1000,
+      1001,
+      1002,
+      1003,
+      1004,
+      1005,
+      1006,
+      1007
+    ],
+    "call_index": 0
+  },
+  "task": {
+    "suite": "libero_cf_spatial",
+    "task_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ]
+  },
+  "initial_state_indices": [
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29
+  ],
+  "config": {
+    "obs": "/home/stanley/Stanley_ws/VLA-steering-2027/results/S2c0/obs",
+    "s2b": "/home/stanley/Stanley_ws/VLA-steering-2027/results/S2b",
+    "lang": "/home/stanley/Stanley_ws/VLA-steering-2027/configs/cag/S2c0_language_conditions.json",
+    "out": "results/S2c0/chunks"
+  },
+  "gpu": {
+    "nvidia_smi": [
+      "0, NVIDIA GeForce RTX 4090, 580.178.04, 24564 MiB, 8618 MiB",
+      "1, NVIDIA GeForce RTX 4090, 580.178.04, 24564 MiB, 400 MiB"
+    ],
+    "driver_cuda_version": "13.0",
+    "CUDA_VISIBLE_DEVICES": "0"
+  },
+  "frameworks": {
+    "torch": "2.7.1+cu126",
+    "jax": "0.5.3",
+    "jaxlib": "0.5.3",
+    "flax": "0.10.2",
+    "transformers": "4.53.2",
+    "numpy": "1.26.4",
+    "torch_cuda": "12.6"
+  },
+  "extra": {
+    "summary": {
+      "n_scenes": 130,
+      "noise_identical_across_conditions": 130,
+      "cag_cond_pass_eq_plain_f": 130,
+      "obs_sha_eq_s2b": 260,
+      "noise_sha_eq_s2b": 260,
+      "A_f_eq_s2b_B_chunk": 260,
+      "A_f_eq_s2b_S_a_cond": 260,
+      "A_u_eq_s2b_S_a_uncond": 260,
+      "n_seed_scene_checks": 260,
+      "PASS": true
+    },
+    "xla_flags": "--xla_gpu_autotune_level=0 --xla_gpu_deterministic_ops=true"
+  }
+}

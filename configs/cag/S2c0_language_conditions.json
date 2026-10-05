@@ -1,0 +1,472 @@
+{
+ "pool": [
+  "pick up the black bowl between the plate and the ramekin and place it on the plate",
+  "pick up the black bowl from table center and place it on the plate",
+  "pick up the black bowl in the top drawer of the wooden cabinet and place it on the plate",
+  "pick up the black bowl next to the cookie box and place it on the plate",
+  "pick up the black bowl next to the plate and place it on the plate",
+  "pick up the black bowl next to the ramekin and place it on the plate",
+  "pick up the black bowl on the cookie box and place it on the plate",
+  "pick up the black bowl on the ramekin and place it on the plate",
+  "pick up the black bowl on the stove and place it on the plate",
+  "pick up the black bowl on the wooden cabinet and place it on the plate",
+  "pick up the cookie box and place it on the plate",
+  "pick up the ramekin and place it on the plate"
+ ],
+ "qualifier_targets": {
+  "between the plate and the ramekin": "main_table_between_plate_ramekin_region",
+  "from table center": "main_table_table_center",
+  "in the top drawer of the wooden cabinet": "wooden_cabinet_1_top_region",
+  "next to the cookie box": "main_table_next_to_box_region",
+  "next to the plate": "main_table_next_to_plate_region",
+  "next to the ramekin": "main_table_next_to_ramekin_region",
+  "on the cookie box": "cookies_1",
+  "on the ramekin": "glazed_rim_porcelain_ramekin_1",
+  "on the stove": "flat_stove_1_cook_region",
+  "on the wooden cabinet": "wooden_cabinet_1_top_side"
+ },
+ "tasks": {
+  "0": {
+   "cf_bddl": "01-pick_up_the_cookie_box_and_place_it_on_the_plate.bddl",
+   "source_libero_spatial_bddl": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate.bddl",
+   "init_file_identical_to_source": true,
+   "conditions": [
+    "on cookies_1 plate_1",
+    "on akita_black_bowl_1 plate_1",
+    "on akita_black_bowl_2 plate_1",
+    "on glazed_rim_porcelain_ramekin_1 plate_1"
+   ],
+   "faithful_subject": "cookies_1",
+   "biased_subject": "akita_black_bowl_1",
+   "l_f": "pick up the cookie box and place it on the plate",
+   "l_b": "pick up the black bowl between the plate and the ramekin and place it on the plate",
+   "l_o": [
+    "pick up the black bowl next to the ramekin and place it on the plate",
+    "pick up the ramekin and place it on the plate"
+   ],
+   "valid_instructions_by_subject": {
+    "akita_black_bowl_1": [
+     "pick up the black bowl between the plate and the ramekin and place it on the plate"
+    ],
+    "akita_black_bowl_2": [
+     "pick up the black bowl next to the ramekin and place it on the plate"
+    ],
+    "cookies_1": [
+     "pick up the cookie box and place it on the plate"
+    ],
+    "glazed_rim_porcelain_ramekin_1": [
+     "pick up the ramekin and place it on the plate"
+    ]
+   },
+   "all_conditions_have_exactly_one_instruction": true
+  },
+  "1": {
+   "cf_bddl": "02-pick_up_the_ramekin_and_place_it_on_the_plate.bddl",
+   "source_libero_spatial_bddl": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate.bddl",
+   "init_file_identical_to_source": true,
+   "conditions": [
+    "on cookies_1 plate_1",
+    "on akita_black_bowl_1 plate_1",
+    "on akita_black_bowl_2 plate_1",
+    "on glazed_rim_porcelain_ramekin_1 plate_1"
+   ],
+   "faithful_subject": "glazed_rim_porcelain_ramekin_1",
+   "biased_subject": "akita_black_bowl_1",
+   "l_f": "pick up the ramekin and place it on the plate",
+   "l_b": "pick up the black bowl between the plate and the ramekin and place it on the plate",
+   "l_o": [
+    "pick up the black bowl next to the ramekin and place it on the plate",
+    "pick up the cookie box and place it on the plate"
+   ],
+   "valid_instructions_by_subject": {
+    "akita_black_bowl_1": [
+     "pick up the black bowl between the plate and the ramekin and place it on the plate"
+    ],
+    "akita_black_bowl_2": [
+     "pick up the black bowl next to the ramekin and place it on the plate"
+    ],
+    "cookies_1": [
+     "pick up the cookie box and place it on the plate"
+    ],
+    "glazed_rim_porcelain_ramekin_1": [
+     "pick up the ramekin and place it on the plate"
+    ]
+   },
+   "all_conditions_have_exactly_one_instruction": true
+  },
+  "2": {
+   "cf_bddl": "03-pick_up_the_cookie_box_and_place_it_on_the_plate.bddl",
+   "source_libero_spatial_bddl": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate.bddl",
+   "init_file_identical_to_source": true,
+   "conditions": [
+    "on cookies_1 plate_1",
+    "on akita_black_bowl_1 plate_1",
+    "on akita_black_bowl_2 plate_1",
+    "on glazed_rim_porcelain_ramekin_1 plate_1"
+   ],
+   "faithful_subject": "cookies_1",
+   "biased_subject": "akita_black_bowl_1",
+   "l_f": "pick up the cookie box and place it on the plate",
+   "l_b": "pick up the black bowl next to the ramekin and place it on the plate",
+   "l_o": [
+    "pick up the black bowl next to the cookie box and place it on the plate",
+    "pick up the ramekin and place it on the plate"
+   ],
+   "valid_instructions_by_subject": {
+    "akita_black_bowl_2": [
+     "pick up the black bowl next to the cookie box and place it on the plate"
+    ],
+    "akita_black_bowl_1": [
+     "pick up the black bowl next to the ramekin and place it on the plate"
+    ],
+    "cookies_1": [
+     "pick up the cookie box and place it on the plate"
+    ],
+    "glazed_rim_porcelain_ramekin_1": [
+     "pick up the ramekin and place it on the plate"
+    ]
+   },
+   "all_conditions_have_exactly_one_instruction": true
+  },
+  "3": {
+   "cf_bddl": "04-pick_up_the_cookie_box_and_place_it_on_the_plate.bddl",
+   "source_libero_spatial_bddl": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate.bddl",
+   "init_file_identical_to_source": true,
+   "conditions": [
+    "on cookies_1 plate_1",
+    "on akita_black_bowl_1 plate_1",
+    "on akita_black_bowl_2 plate_1",
+    "on glazed_rim_porcelain_ramekin_1 plate_1"
+   ],
+   "faithful_subject": "cookies_1",
+   "biased_subject": "akita_black_bowl_1",
+   "l_f": "pick up the cookie box and place it on the plate",
+   "l_b": "pick up the black bowl from table center and place it on the plate",
+   "l_o": [
+    "pick up the black bowl next to the plate and place it on the plate",
+    "pick up the ramekin and place it on the plate"
+   ],
+   "valid_instructions_by_subject": {
+    "akita_black_bowl_1": [
+     "pick up the black bowl from table center and place it on the plate"
+    ],
+    "akita_black_bowl_2": [
+     "pick up the black bowl next to the plate and place it on the plate"
+    ],
+    "cookies_1": [
+     "pick up the cookie box and place it on the plate"
+    ],
+    "glazed_rim_porcelain_ramekin_1": [
+     "pick up the ramekin and place it on the plate"
+    ]
+   },
+   "all_conditions_have_exactly_one_instruction": true
+  },
+  "4": {
+   "cf_bddl": "05-pick_up_the_ramekin_and_place_it_on_the_plate.bddl",
+   "source_libero_spatial_bddl": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate.bddl",
+   "init_file_identical_to_source": true,
+   "conditions": [
+    "on cookies_1 plate_1",
+    "on akita_black_bowl_1 plate_1",
+    "on akita_black_bowl_2 plate_1",
+    "on glazed_rim_porcelain_ramekin_1 plate_1"
+   ],
+   "faithful_subject": "glazed_rim_porcelain_ramekin_1",
+   "biased_subject": "akita_black_bowl_1",
+   "l_f": "pick up the ramekin and place it on the plate",
+   "l_b": "pick up the black bowl on the cookie box and place it on the plate",
+   "l_o": [
+    "pick up the black bowl on the wooden cabinet and place it on the plate",
+    "pick up the cookie box and place it on the plate"
+   ],
+   "valid_instructions_by_subject": {
+    "akita_black_bowl_1": [
+     "pick up the black bowl on the cookie box and place it on the plate"
+    ],
+    "akita_black_bowl_2": [
+     "pick up the black bowl on the wooden cabinet and place it on the plate"
+    ],
+    "cookies_1": [
+     "pick up the cookie box and place it on the plate"
+    ],
+    "glazed_rim_porcelain_ramekin_1": [
+     "pick up the ramekin and place it on the plate"
+    ]
+   },
+   "all_conditions_have_exactly_one_instruction": true
+  },
+  "5": {
+   "cf_bddl": "06-pick_up_the_ramekin_and_place_it_on_the_plate.bddl",
+   "source_libero_spatial_bddl": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate.bddl",
+   "init_file_identical_to_source": true,
+   "conditions": [
+    "on cookies_1 plate_1",
+    "on akita_black_bowl_1 plate_1",
+    "on akita_black_bowl_2 plate_1",
+    "on glazed_rim_porcelain_ramekin_1 plate_1"
+   ],
+   "faithful_subject": "glazed_rim_porcelain_ramekin_1",
+   "biased_subject": "akita_black_bowl_1",
+   "l_f": "pick up the ramekin and place it on the plate",
+   "l_b": "pick up the black bowl in the top drawer of the wooden cabinet and place it on the plate",
+   "l_o": [
+    "pick up the black bowl on the wooden cabinet and place it on the plate",
+    "pick up the cookie box and place it on the plate"
+   ],
+   "valid_instructions_by_subject": {
+    "akita_black_bowl_1": [
+     "pick up the black bowl in the top drawer of the wooden cabinet and place it on the plate"
+    ],
+    "akita_black_bowl_2": [
+     "pick up the black bowl on the wooden cabinet and place it on the plate"
+    ],
+    "cookies_1": [
+     "pick up the cookie box and place it on the plate"
+    ],
+    "glazed_rim_porcelain_ramekin_1": [
+     "pick up the ramekin and place it on the plate"
+    ]
+   },
+   "all_conditions_have_exactly_one_instruction": true
+  },
+  "6": {
+   "cf_bddl": "07-pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate.bddl",
+   "source_libero_spatial_bddl": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate.bddl",
+   "init_file_identical_to_source": true,
+   "conditions": [
+    "on cookies_1 plate_1",
+    "on akita_black_bowl_1 plate_1",
+    "on akita_black_bowl_2 plate_1",
+    "on glazed_rim_porcelain_ramekin_1 plate_1"
+   ],
+   "faithful_subject": "akita_black_bowl_2",
+   "biased_subject": "akita_black_bowl_1",
+   "l_f": "pick up the black bowl on the cookie box and place it on the plate",
+   "l_b": "pick up the black bowl on the ramekin and place it on the plate",
+   "l_o": [
+    "pick up the cookie box and place it on the plate",
+    "pick up the ramekin and place it on the plate"
+   ],
+   "valid_instructions_by_subject": {
+    "akita_black_bowl_2": [
+     "pick up the black bowl on the cookie box and place it on the plate"
+    ],
+    "akita_black_bowl_1": [
+     "pick up the black bowl on the ramekin and place it on the plate"
+    ],
+    "cookies_1": [
+     "pick up the cookie box and place it on the plate"
+    ],
+    "glazed_rim_porcelain_ramekin_1": [
+     "pick up the ramekin and place it on the plate"
+    ]
+   },
+   "all_conditions_have_exactly_one_instruction": true
+  },
+  "7": {
+   "cf_bddl": "08-pick_up_the_cookie_box_and_place_it_on_the_plate.bddl",
+   "source_libero_spatial_bddl": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate.bddl",
+   "init_file_identical_to_source": true,
+   "conditions": [
+    "on cookies_1 plate_1",
+    "on akita_black_bowl_1 plate_1",
+    "on akita_black_bowl_2 plate_1",
+    "on glazed_rim_porcelain_ramekin_1 plate_1"
+   ],
+   "faithful_subject": "cookies_1",
+   "biased_subject": "akita_black_bowl_1",
+   "l_f": "pick up the cookie box and place it on the plate",
+   "l_b": "pick up the black bowl next to the cookie box and place it on the plate",
+   "l_o": [
+    "pick up the black bowl on the stove and place it on the plate",
+    "pick up the ramekin and place it on the plate"
+   ],
+   "valid_instructions_by_subject": {
+    "akita_black_bowl_1": [
+     "pick up the black bowl next to the cookie box and place it on the plate"
+    ],
+    "akita_black_bowl_2": [
+     "pick up the black bowl on the stove and place it on the plate"
+    ],
+    "cookies_1": [
+     "pick up the cookie box and place it on the plate"
+    ],
+    "glazed_rim_porcelain_ramekin_1": [
+     "pick up the ramekin and place it on the plate"
+    ]
+   },
+   "all_conditions_have_exactly_one_instruction": true
+  },
+  "8": {
+   "cf_bddl": "09-pick_up_the_cookie_box_and_place_it_on_the_plate.bddl",
+   "source_libero_spatial_bddl": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate.bddl",
+   "init_file_identical_to_source": true,
+   "conditions": [
+    "on cookies_1 plate_1",
+    "on akita_black_bowl_1 plate_1",
+    "on akita_black_bowl_2 plate_1",
+    "on glazed_rim_porcelain_ramekin_1 plate_1"
+   ],
+   "faithful_subject": "cookies_1",
+   "biased_subject": "akita_black_bowl_1",
+   "l_f": "pick up the cookie box and place it on the plate",
+   "l_b": "pick up the black bowl on the stove and place it on the plate",
+   "l_o": [
+    "pick up the black bowl on the wooden cabinet and place it on the plate",
+    "pick up the ramekin and place it on the plate"
+   ],
+   "valid_instructions_by_subject": {
+    "akita_black_bowl_1": [
+     "pick up the black bowl on the stove and place it on the plate"
+    ],
+    "akita_black_bowl_2": [
+     "pick up the black bowl on the wooden cabinet and place it on the plate"
+    ],
+    "cookies_1": [
+     "pick up the cookie box and place it on the plate"
+    ],
+    "glazed_rim_porcelain_ramekin_1": [
+     "pick up the ramekin and place it on the plate"
+    ]
+   },
+   "all_conditions_have_exactly_one_instruction": true
+  },
+  "9": {
+   "cf_bddl": "10-pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate.bddl",
+   "source_libero_spatial_bddl": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate.bddl",
+   "init_file_identical_to_source": true,
+   "conditions": [
+    "on cookies_1 plate_1",
+    "on akita_black_bowl_1 plate_1",
+    "on akita_black_bowl_2 plate_1",
+    "on glazed_rim_porcelain_ramekin_1 plate_1"
+   ],
+   "faithful_subject": "akita_black_bowl_2",
+   "biased_subject": "akita_black_bowl_1",
+   "l_f": "pick up the black bowl next to the ramekin and place it on the plate",
+   "l_b": "pick up the black bowl next to the plate and place it on the plate",
+   "l_o": [
+    "pick up the cookie box and place it on the plate",
+    "pick up the ramekin and place it on the plate"
+   ],
+   "valid_instructions_by_subject": {
+    "akita_black_bowl_1": [
+     "pick up the black bowl next to the plate and place it on the plate"
+    ],
+    "akita_black_bowl_2": [
+     "pick up the black bowl next to the ramekin and place it on the plate"
+    ],
+    "cookies_1": [
+     "pick up the cookie box and place it on the plate"
+    ],
+    "glazed_rim_porcelain_ramekin_1": [
+     "pick up the ramekin and place it on the plate"
+    ]
+   },
+   "all_conditions_have_exactly_one_instruction": true
+  },
+  "10": {
+   "cf_bddl": "11-pick_up_the_ramekin_and_place_it_on_the_plate.bddl",
+   "source_libero_spatial_bddl": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate.bddl",
+   "init_file_identical_to_source": true,
+   "conditions": [
+    "on cookies_1 plate_1",
+    "on akita_black_bowl_1 plate_1",
+    "on akita_black_bowl_2 plate_1",
+    "on glazed_rim_porcelain_ramekin_1 plate_1"
+   ],
+   "faithful_subject": "glazed_rim_porcelain_ramekin_1",
+   "biased_subject": "akita_black_bowl_1",
+   "l_f": "pick up the ramekin and place it on the plate",
+   "l_b": "pick up the black bowl on the wooden cabinet and place it on the plate",
+   "l_o": [
+    "pick up the black bowl on the stove and place it on the plate",
+    "pick up the cookie box and place it on the plate"
+   ],
+   "valid_instructions_by_subject": {
+    "akita_black_bowl_2": [
+     "pick up the black bowl on the stove and place it on the plate"
+    ],
+    "akita_black_bowl_1": [
+     "pick up the black bowl on the wooden cabinet and place it on the plate"
+    ],
+    "cookies_1": [
+     "pick up the cookie box and place it on the plate"
+    ],
+    "glazed_rim_porcelain_ramekin_1": [
+     "pick up the ramekin and place it on the plate"
+    ]
+   },
+   "all_conditions_have_exactly_one_instruction": true
+  },
+  "11": {
+   "cf_bddl": "12-pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate.bddl",
+   "source_libero_spatial_bddl": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate.bddl",
+   "init_file_identical_to_source": true,
+   "conditions": [
+    "on cookies_1 plate_1",
+    "on akita_black_bowl_1 plate_1",
+    "on akita_black_bowl_2 plate_1",
+    "on glazed_rim_porcelain_ramekin_1 plate_1"
+   ],
+   "faithful_subject": "akita_black_bowl_2",
+   "biased_subject": "akita_black_bowl_1",
+   "l_f": "pick up the black bowl next to the plate and place it on the plate",
+   "l_b": "pick up the black bowl from table center and place it on the plate",
+   "l_o": [
+    "pick up the cookie box and place it on the plate",
+    "pick up the ramekin and place it on the plate"
+   ],
+   "valid_instructions_by_subject": {
+    "akita_black_bowl_1": [
+     "pick up the black bowl from table center and place it on the plate"
+    ],
+    "akita_black_bowl_2": [
+     "pick up the black bowl next to the plate and place it on the plate"
+    ],
+    "cookies_1": [
+     "pick up the cookie box and place it on the plate"
+    ],
+    "glazed_rim_porcelain_ramekin_1": [
+     "pick up the ramekin and place it on the plate"
+    ]
+   },
+   "all_conditions_have_exactly_one_instruction": true
+  },
+  "12": {
+   "cf_bddl": "13-pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate.bddl",
+   "source_libero_spatial_bddl": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate.bddl",
+   "init_file_identical_to_source": true,
+   "conditions": [
+    "on cookies_1 plate_1",
+    "on akita_black_bowl_1 plate_1",
+    "on akita_black_bowl_2 plate_1",
+    "on glazed_rim_porcelain_ramekin_1 plate_1"
+   ],
+   "faithful_subject": "akita_black_bowl_2",
+   "biased_subject": "akita_black_bowl_1",
+   "l_f": "pick up the black bowl on the wooden cabinet and place it on the plate",
+   "l_b": "pick up the black bowl on the cookie box and place it on the plate",
+   "l_o": [
+    "pick up the cookie box and place it on the plate",
+    "pick up the ramekin and place it on the plate"
+   ],
+   "valid_instructions_by_subject": {
+    "akita_black_bowl_1": [
+     "pick up the black bowl on the cookie box and place it on the plate"
+    ],
+    "akita_black_bowl_2": [
+     "pick up the black bowl on the wooden cabinet and place it on the plate"
+    ],
+    "cookies_1": [
+     "pick up the cookie box and place it on the plate"
+    ],
+    "glazed_rim_porcelain_ramekin_1": [
+     "pick up the ramekin and place it on the plate"
+    ]
+   },
+   "all_conditions_have_exactly_one_instruction": true
+  }
+ }
+}

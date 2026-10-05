@@ -1,0 +1,279 @@
+{
+ "label": "POST-HOC EXPLORATORY; not preregistered; cannot change the preregistered decision",
+ "X1_G_mag_components": {
+  "0": {
+   "trans": 0.7924,
+   "rot": 0.339,
+   "grip": 0.9991,
+   "full": 1.3561
+  },
+  "1": {
+   "trans": 0.7059,
+   "rot": 0.274,
+   "grip": 0.9988,
+   "full": 1.2903
+  },
+  "2": {
+   "trans": 0.7891,
+   "rot": 0.4038,
+   "grip": 1.0007,
+   "full": 1.3775
+  },
+  "3": {
+   "trans": 0.7103,
+   "rot": 0.3671,
+   "grip": 1.0001,
+   "full": 1.3077
+  },
+  "4": {
+   "trans": 0.6823,
+   "rot": 0.3343,
+   "grip": 0.9992,
+   "full": 1.3039
+  },
+  "5": {
+   "trans": 0.6748,
+   "rot": 0.2954,
+   "grip": 1.0,
+   "full": 1.2892
+  },
+  "6": {
+   "trans": 0.8407,
+   "rot": 0.4798,
+   "grip": 0.9999,
+   "full": 1.4306
+  },
+  "7": {
+   "trans": 0.7641,
+   "rot": 0.4436,
+   "grip": 0.9994,
+   "full": 1.3671
+  },
+  "8": {
+   "trans": 0.7316,
+   "rot": 0.4506,
+   "grip": 0.9989,
+   "full": 1.3606
+  },
+  "9": {
+   "trans": 0.7529,
+   "rot": 0.3327,
+   "grip": 1.0016,
+   "full": 1.3283
+  },
+  "10": {
+   "trans": 0.7208,
+   "rot": 0.3451,
+   "grip": 0.9992,
+   "full": 1.304
+  },
+  "11": {
+   "trans": 0.6524,
+   "rot": 0.3056,
+   "grip": 1.0009,
+   "full": 1.2796
+  },
+  "12": {
+   "trans": 0.823,
+   "rot": 0.3707,
+   "grip": 1.0004,
+   "full": 1.3851
+  }
+ },
+ "X1_cliffs_delta": {
+  "trans": -0.943,
+  "rot": -0.829,
+  "grip": -0.257,
+  "full": -1.0
+ },
+ "X2_scene_pairs": {
+  "0-1": {
+   "rescue_rate": [
+    0.25,
+    0.0
+   ],
+   "SCNR|full": [
+    2.489,
+    2.085
+   ],
+   "S_fb|full": [
+    1.119,
+    0.75
+   ],
+   "N_f|full": [
+    0.405,
+    0.345
+   ],
+   "ALIGN|full": [
+    0.677,
+    0.229
+   ],
+   "ALIGN|exec": [
+    0.651,
+    0.01
+   ],
+   "ALIGN|trans": [
+    0.537,
+    0.244
+   ],
+   "P_cov": [
+    0.302,
+    0.073
+   ],
+   "sep_snr": [
+    3.511,
+    3.133
+   ],
+   "L_cag": [
+    0.92,
+    0.524
+   ],
+   "G_mag": [
+    1.356,
+    1.29
+   ]
+  },
+  "3-11": {
+   "rescue_rate": [
+    0.21052631578947367,
+    0.0
+   ],
+   "SCNR|full": [
+    2.473,
+    1.354
+   ],
+   "S_fb|full": [
+    1.036,
+    0.557
+   ],
+   "N_f|full": [
+    0.454,
+    0.405
+   ],
+   "ALIGN|full": [
+    0.822,
+    0.12
+   ],
+   "ALIGN|exec": [
+    0.824,
+    0.489
+   ],
+   "ALIGN|trans": [
+    0.854,
+    0.181
+   ],
+   "P_cov": [
+    0.334,
+    0.064
+   ],
+   "sep_snr": [
+    2.063,
+    1.353
+   ],
+   "L_cag": [
+    0.875,
+    0.52
+   ],
+   "G_mag": [
+    1.308,
+    1.28
+   ]
+  },
+  "12-4": {
+   "rescue_rate": [
+    0.5,
+    0.0
+   ],
+   "SCNR|full": [
+    5.799,
+    2.727
+   ],
+   "S_fb|full": [
+    3.134,
+    1.588
+   ],
+   "N_f|full": [
+    0.556,
+    0.649
+   ],
+   "ALIGN|full": [
+    0.939,
+    0.559
+   ],
+   "ALIGN|exec": [
+    0.863,
+    0.462
+   ],
+   "ALIGN|trans": [
+    0.955,
+    0.238
+   ],
+   "P_cov": [
+    0.4,
+    0.114
+   ],
+   "sep_snr": [
+    4.932,
+    2.896
+   ],
+   "L_cag": [
+    2.793,
+    0.733
+   ],
+   "G_mag": [
+    1.385,
+    1.304
+   ]
+  }
+ },
+ "X2_rescued_member_higher": {
+  "SCNR|full": 3,
+  "S_fb|full": 3,
+  "N_f|full": 2,
+  "ALIGN|full": 3,
+  "ALIGN|exec": 3,
+  "ALIGN|trans": 3,
+  "P_cov": 3,
+  "sep_snr": 3,
+  "L_cag": 3,
+  "G_mag": 3
+ },
+ "X3_partial_spearman_given_G_mag": {
+  "SCNR|full": {
+   "rho": 0.527,
+   "partial": 0.1
+  },
+  "S_fb|full": {
+   "rho": 0.516,
+   "partial": 0.099
+  },
+  "N_f|full": {
+   "rho": -0.305,
+   "partial": -0.55
+  },
+  "ALIGN|full": {
+   "rho": 0.574,
+   "partial": 0.266
+  },
+  "ALIGN|exec": {
+   "rho": 0.596,
+   "partial": 0.442
+  },
+  "ALIGN|trans": {
+   "rho": 0.814,
+   "partial": 0.573
+  },
+  "P_cov": {
+   "rho": 0.603,
+   "partial": 0.481
+  },
+  "sep_snr": {
+   "rho": 0.817,
+   "partial": 0.56
+  },
+  "L_cag": {
+   "rho": 0.825,
+   "partial": 0.484
+  }
+ }
+}
