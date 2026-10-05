@@ -1,0 +1,177 @@
+# S2b causal-discovery preregistration. Frozen BEFORE any S2b rollout (initial states 20-29) exists.
+# Label: DISCOVERY. Nothing here may be changed on the basis of S2b outcomes. Gates are research gates, not theorems.
+# No steering method, adaptive guidance strength, or adaptive chunking is implemented in this phase.
+
+phase: S2b
+hypotheses:
+  H1: "geometry of R(k) = A_cond(k) - A_uncond(k), observable BEFORE executing the steered action, predicts whether
+       CAG rescues or harms the episode"
+  H2: "horizon-wise geometry of R(k) predicts future replanning disagreement (candidate semantic trust horizon)"
+  note: both are discovery hypotheses; neither is assumed true. Correlation is not evidence that chunk length causes
+        anything; no execution horizon other than h=5 is run.
+
+data_split:                           # frozen
+  already_used: [0, 19]
+  s2b_discovery: [20, 29]             # the only states executed in S2b
+  reserved_method_development: [30, 39]   # not inspected / executed (client guard --forbid-init-from 30)
+  final_confirmation: [40, 49]            # untouched
+suite: libero_cf_spatial
+tasks: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]   # all valid tasks; no outcome-based selection
+excluded_tasks: [13, 14]              # prompt/BDDL inconsistency (configs/cag/libero_cf_spatial_task_validity.csv)
+
+policy:
+  checkpoint: gs://openpi-assets/checkpoints/pi05_libero
+  B: vanilla pi0.5 (openpi create_trained_policy)
+  S: pi0.5 + CAG-TF (LIBERO-CF CounterfactualActionGuidedPolicy, language-token-masked unconditional branch)
+  omega: 1.5                          # not tuned
+  executed_horizon_h: 5               # replan_steps; not changed
+  predicted_horizon_H: 10
+  env_seed: 7
+  max_steps: 220
+  num_steps_wait: 10
+
+rng:
+  protocol: common random numbers (src/wrappers/crn.py; validation reports/S2B_RNG_VALIDATION.md)
+  noise: "flow-matching noise of policy call = jax.random.normal(fold_in^4(key(0x53324220), master_seed, task_id,
+          init_id, call_index), (1,10,32)) float32, passed through the public noise= argument; S feeds the same tensor
+          to its cond and uncond passes (public CAG behaviour)"
+  master_seeds: [0, 1]
+  xla_flags: "--xla_gpu_autotune_level=0 --xla_gpu_deterministic_ops=true"   # cross-process bit-determinism
+  env: identical (env seed 7, same task / state / reset order in all four runs) -> seeds 0 and 1 share scenes,
+       differ only in policy noise
+episodes: 520                         # 2 seeds x 13 tasks x 10 states x {B, S}
+order: tasks ascending, states 20..29 ascending, one env per task per run; seed m on GPU m, B and S concurrent
+raw_attention: none (summaries only)
+
+validity:                             # per B/S pair (src/analysis/s2b_pair_checks.py); invalid pairs are excluded
+  - static geometry and initial sim state identical
+  - CRN tuple present and correct at every call; B and S noise fingerprints identical at every common call index
+  - call-0 observation hash identical
+  - B call-0 action chunk == S call-0 conditioned (pre-CAG) chunk, bit-for-bit, env action space
+  - diagnostic re-runs bit-identical; CAG reconstruction error < 1e-5
+  - no exception in either episode
+  also reported: B seed0 vs B seed1 geometry identity (shared scenes)
+
+features:                             # per S policy call c, from the logged A_cond[k], A_uncond[k], k = 0..9
+  units:
+    normalized: "model quantile-normalised action space, dims 0-6 (the space the model outputs;
+                 = 2 (a_env - q01) / (q99 - q01 + 1e-6) - 1)"
+    env: "LIBERO environment action units"
+  components: {comb: [0, 6], trans: [0, 2], rot: [3, 5], grip: [6]}
+  primary: normalized units, comb component        # every other unit/component is SECONDARY (exploratory)
+  R: R[k] = A_cond[k] - A_uncond[k]; stored per component, never averaged over dims before storage
+  d: d[k] = ||R[k]||, k = 0..9 (F5, kept as a profile)
+  F1: {L_mean: "mean_k=0..9 d[k]", L_early: "mean_k=0..2 d[k]", L_exec: "mean_k=0..4 d[k]"}
+  F2: {G: "OLS slope beta1 of d[k] on k, k = 0..9"}
+  F3:
+    C_mean: "mean_k cos(R[k], Rbar), Rbar = mean_k=0..9 R[k]"
+    C_exec: "mean_k=0..4 cos(R[k], Rbar_exec), Rbar_exec = mean_k=0..4 R[k]"
+    near_zero_rule: >-
+      a residual vector is near-zero if its normalized-unit norm (same component) < 1e-3 (0.05 % of the ~2-unit
+      quantile range; ~1e4 x float32 resolution). Near-zero R[k] terms are dropped from the mean; if the reference
+      mean vector is near-zero or no term remains, C = NaN. The same mask is used for env units. NaN features are
+      excluded from that feature's analyses and counted; > 5 % NaN in a primary feature is flagged.
+      For the 1-D gripper component cos = sign agreement.
+  F4: {J: "mean_k=0..8 ||R[k+1] - R[k]||", J_exec: "mean_k=0..3 ||R[k+1] - R[k]||"}
+  guidance_magnitude: "(omega - 1) * mean_k=0..4 ||R_env,trans[k]||  (executed translation shift, env units)"
+
+h1:
+  unit: valid B/S pair (task, init, seed); N <= 260
+  windows:
+    W0: "S call 0 - PRIMARY. Strictly pre-treatment: observation and noise identical to B call 0 (verified)"
+    W5: "mean over S calls 0..4 - SECONDARY (S2-pilot lead window; calls 1-4 are partially post-treatment, but each
+         call's features exist before that call's steered chunk is executed)"
+    Wall: "mean over all S calls - DESCRIPTIVE ONLY (post-treatment; never gate-eligible)"
+  primary_features: "8 scalars {L_mean, L_early, L_exec, G, C_mean, C_exec, J, J_exec} in W0 and W5, plus d[k]
+                     k = 0..9 in W0 (normalized, comb)"
+  comparators:
+    negative_control: "image-only normalized action->observation entropy (cond branch, final denoising step, mean over
+                       layers, heads, k) - the failed S3 signal; no KWTS threshold"
+    internal_signals: [vlm (image+language) normalized entropy, language mass, vision mass, observation (prefix) mass]
+    generic_action_magnitude: "mean_k ||A_cond[k]|| (normalized, comb)"
+    call_index_phase: "not applicable to W0/W5 episode-level features (constant); used in H2"
+    task_id: "seed transfer only: score = training-seed event rate of the task (LOTO: undefined)"
+  outcomes:
+    success: faithful_success (the instructed task)
+    TE_success: success_S - success_B in {-1, 0, +1}; rescue = +1, harm = -1
+    TE_faithful_touch, TE_biased_touch: touch_S - touch_B
+    grounding_class: "by first gripper contact with a labelled object: faithful-first, biased-first, both (same
+                      step), neither"
+    semantic_correction: B biased-first AND S faithful-first
+    outcome_class: "F-success > biased-success > faithful-first-no-success > biased-first-no-success > neither
+                    (first matching)"
+    transitions: B class x S class tables for grounding_class and outcome_class; success effect kept separate
+  targets: [rescue, harm, semantic_correction]
+  studyable: ">= 15 positive pairs pooled over seeds, positives in >= 3 tasks"
+  statistics:
+    auroc: Mann-Whitney; raw direction (higher feature -> positive) reported
+    ci: "cluster bootstrap over (task, init) states (both seeds resampled together), 2000 resamples; task-cluster
+         bootstrap as robustness for the top features"
+    auprc: with base rate
+    spearman: feature vs TE_success (ordinal), cluster-bootstrap CI
+    within_task_auroc: concordance among positive/negative pairs of the same task only
+    loto: "sign learned on 12 training tasks, applied to the held-out task; pooled out-of-fold AUROC; sign stability
+           over the 13 folds"
+    seed_transfer: sign learned on seed a, AUROC on seed b, both directions
+    multivariate: >-
+      only after the univariate report. Logistic regression (standardised, L2, C = 1, class_weight balanced) and a
+      decision tree (max_depth 3, min_samples_leaf 10, class_weight balanced) on the 8 primary W0 scalars; LOTO and
+      seed transfer. No neural predictor. Supporting evidence only.
+  gate_H1: >-
+    PASS iff rescue AND harm are both studyable, and at least one primary feature on a studyable target satisfies:
+    (a) LOTO pooled held-out AUROC >= 0.65; (b) seed 0->1 and 1->0 held-out AUROC >= 0.65 each; (c) training sign
+    identical in >= 11/13 LOTO folds and in both seed directions; (d) state-cluster bootstrap 95% CI of the
+    sign-adjusted full-data AUROC excludes 0.5. Qualifier (reported, changes the wording, not the label):
+    (e) held-out AUROCs exceed those of generic action magnitude and of the image-entropy negative control on the
+    same target -> "specific", else "non-specific"; within-task AUROC < 0.55 -> "between-task signal".
+
+h2:
+  data: S episodes of valid pairs
+  disagreement: >-
+    S3 definition: call c at step t predicts a(t+k|t), call c+1 at t+5 predicts a(t+5+j|t+5); overlap k = 5..9 <->
+    j = k - 5; consecutive calls of one episode with t difference 5. Executed (CAG-combined) chunks.
+    PRIMARY D_combined: L2 over dims 0-6 after dividing by (q99 - q01)/2. Secondary: D_trans, D_rot, D_grip; D_cond
+    (same on the conditioned-branch chunks: excludes the executed residual) and D_uncond.
+  primary_unit: "call level: Dbar(c) = mean_k=5..9 D_combined(c, k), predictors from call c"
+  features: [C_mean, C_exec, J, J_exec, G, "d[k]"]      # normalized, comb
+  d_k_analysis: "row level (c, k): Spearman(d_c[k], D(c, k)) within each k = 5..9 (within-horizon stratification)"
+  comparators: [L_mean, image-only entropy (negative control), vlm entropy, generic action magnitude ||A_S||, call index]
+  statistics:
+    spearman: pooled over tasks, per seed, per task
+    ci: episode bootstrap (2000); task-cluster bootstrap as robustness
+    within_episode: Spearman after subtracting episode means of predictor and D
+    partial: partial Spearman controlling for L_mean, and for call index (rank residualisation)
+    mechanical_check: the same correlations against D_cond
+  gate_H2: >-
+    PASS iff at least one feature satisfies: (a) |rho| >= 0.20 on the primary unit with episode-bootstrap 95% CI
+    excluding 0; (b) same sign in both seeds and in >= 10 of the tasks with >= 20 call rows. Qualifiers (reported):
+    within-episode demeaned rho, partial rho given L_mean (|.| < 0.10 -> "magnitude-driven"), and D_cond
+    (vanishes -> "mechanical: the executed residual itself").
+
+phase_analysis:                       # descriptive; phases from logged events only, defined before any outcome
+  events:
+    t_contact: "first env step with gripper contact on the faithful or biased object (min of faithful_touch_t,
+                biased_touch_t)"
+    t_close: "first env step whose executed gripper command > 0 (LIBERO: -1 open, +1 close)"
+  phases_of_call_at_t:
+    P0_pre_contact: t < t_contact
+    P1_contact_pre_close: t_contact <= t < t_close
+    P2_post_close: t >= max(t_contact, t_close)
+    no_contact_episode: reported separately, excluded from contrasts
+  quantities: [L_mean, C_mean, J, language attention mass (cond, final step), guidance_magnitude]
+  statistics: per-episode phase means; within-episode paired differences P1-P0, P2-P0 (Wilcoxon signed-rank,
+              episode-bootstrap CI); per seed; by S outcome class; B language mass by phase for reference
+
+per_seed_consistency:
+  classes_per_state: "stable positive (+,+), stable negative (-,-), neutral (0,0), inconsistent (all others: sign
+                      flip or one seed zero)"
+  null: expected class counts if seeds were independent given each task's per-seed TE marginals
+  noise_floor: B seed0 vs B seed1 success discordance on the same scenes vs B-vs-S discordance within seed
+  paired_tests: exact McNemar per seed (CRN-paired); pooled state-cluster sign-flip permutation test
+
+exclusions: invalid or exception pairs are dropped from all analyses and listed
+decision_matrix:
+  H1 PASS, H2 PASS: A. joint steering-strength + trust-horizon research
+  H1 PASS, H2 FAIL: B. semantic-only adaptive steering
+  H1 FAIL, H2 PASS: C. temporal-commitment-only research (reconsider novelty)
+  H1 FAIL, H2 FAIL: D. stop / pivot

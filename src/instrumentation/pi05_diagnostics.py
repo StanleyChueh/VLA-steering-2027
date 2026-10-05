@@ -53,7 +53,8 @@ def _entropy_summary(probs, prefix_mask):
       obs : distribution over the VALID image keys (image tokens with prefix_mask True), renormalised;
       vlm : distribution over all valid prefix keys (images + valid language), renormalised;
     raw entropy H = -sum p ln p, normalised H / ln(valid_key_count) (valid_key_count > 1 here: 512 / ~525).
-    obs_mass = un-renormalised attention mass on valid image keys.
+    obs_mass = un-renormalised attention mass on valid image keys (vision mass); lang_mass = same on valid
+    non-image prefix keys; prefix_mass = obs_mass + lang_mass (observation mass; the rest goes to action keys).
     """
     p = probs[:, :, 0].astype(jnp.float32)  # [steps, L, K, G, T, S]
     steps, L, K, G, T, S = p.shape
@@ -75,7 +76,10 @@ def _entropy_summary(probs, prefix_mask):
         out[f"{name}_normalized_entropy"] = jnp.where(n > 1, h / jnp.log(jnp.maximum(n, 2).astype(jnp.float32)), jnp.nan)
         out[f"{name}_valid_key_count"] = n
         if name == "obs":
-            out["obs_mass"] = mass
+            out["obs_mass"] = mass  # vision mass: valid image keys
+        else:
+            out["prefix_mass"] = mass  # observation mass: all valid prefix keys (images + language/state tokens)
+    out["lang_mass"] = jnp.where(m_vlm & ~m_obs, pre, 0.0).sum(-1)  # valid language (incl. discretised state) keys
     # "Knowing When to Stop" Eq. 1-2 reference quantity (head mean, layer sum, over all S_p prefix columns).
     w = pre.mean(axis=2).sum(axis=1)  # [steps, T, S_p]
     w = w / w.sum(-1, keepdims=True)
@@ -157,6 +161,8 @@ class DiagnosticPolicy:
             "guidance_scale": w,
             "a_conditioned": env_space["cond"].tolist(),
             "a_unconditioned": env_space["uncond"].tolist(),
+            "a_conditioned_model": model_space["cond"][:, :7].tolist(),  # quantile-normalised model space
+            "a_unconditioned_model": model_space["uncond"][:, :7].tolist(),
             "translation_norm": np.linalg.norm(delta[:, 0:3], axis=-1).tolist(),
             "rotation_norm": np.linalg.norm(delta[:, 3:6], axis=-1).tolist(),
             "gripper_abs_diff": np.abs(delta[:, 6]).tolist(),

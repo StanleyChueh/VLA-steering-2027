@@ -4,6 +4,8 @@
 # matched initial states under native policy stochasticity (NOT noise-paired).
 # DIAG=1 (default) serves through DiagnosticPolicy: guidance magnitude + action-expert attention logging with
 # bit-identical actions (scripts/audit/diagnostics_identity_test.py).
+# CRN_SEED=<m> (S2b): common random numbers, noise = f(m, task, init, call) (src/wrappers/crn.py).
+# FORBID_INIT_FROM=<n>: the client refuses any initial-state index >= n.
 # Usage: [TASKS=0] [EPISODES=2] [INIT_START=0] [CONDS="B S"] [POLICY_SEED=0] [PORT=8765] [DIAG=1] [RAW_EPISODES=2] bash scripts/run_cag/run_b_vs_s.sh <gpu> <guidance_scale> <out_dir>
 #   smoke : DIAG=0 bash scripts/run_cag/run_b_vs_s.sh 0 1.5 results/S2_smoke
 #   pilot : TASKS=0,6,12 EPISODES=20 bash scripts/run_cag/run_b_vs_s.sh 0 1.5 results/S2_pilot
@@ -12,7 +14,13 @@ ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 GPU=${1:-0}; W=${2:-1.5}; OUT=${3:-$ROOT/results/S2_smoke}
 PORT=${PORT:-8765}; TASKS=${TASKS:-0}; EPISODES=${EPISODES:-2}; DIAG=${DIAG:-1}; RAW_EPISODES=${RAW_EPISODES:-2}
 INIT_START=${INIT_START:-0}; CONDS=${CONDS:-"B S"}; POLICY_SEED=${POLICY_SEED:-0}
+CRN_SEED=${CRN_SEED:-}; FORBID_INIT_FROM=${FORBID_INIT_FROM:-}
 SERVER_FLAGS=(--policy-seed "$POLICY_SEED"); [ "$DIAG" = "1" ] && SERVER_FLAGS+=(--diagnostics)
+CLIENT_FLAGS=()
+[ -n "$CRN_SEED" ] && SERVER_FLAGS+=(--crn-master-seed "$CRN_SEED") && CLIENT_FLAGS+=(--crn-master-seed "$CRN_SEED")
+# exact CRN needs cross-process bit-determinism of the B and S servers (reports/S2B_RNG_VALIDATION.md)
+[ -n "$CRN_SEED" ] && export XLA_FLAGS="--xla_gpu_autotune_level=0 --xla_gpu_deterministic_ops=true"
+[ -n "$FORBID_INIT_FROM" ] && CLIENT_FLAGS+=(--forbid-init-from "$FORBID_INIT_FROM")
 run_condition() {
   local cond=$1; shift
   mkdir -p "$OUT/$cond"
@@ -24,7 +32,7 @@ run_condition() {
   kill -0 $pid || { echo "server for $cond died"; tail -20 "$OUT/$cond/server.log"; exit 1; }
   MUJOCO_GL=egl "$ROOT/envs/libero-cf-client/bin/python" "$ROOT/scripts/run_cag/run_cf_eval.py" \
     --suite libero_cf_spatial --task-ids "$TASKS" --episodes "$EPISODES" --condition "$cond" --port $PORT --out "$OUT/$cond" \
-    --raw-attention-episodes "$RAW_EPISODES" --init-start "$INIT_START" \
+    --raw-attention-episodes "$RAW_EPISODES" --init-start "$INIT_START" "${CLIENT_FLAGS[@]}" \
     2>&1 | grep --line-buffered -v -E "EGL|Warning|^\s|^\)|Traceback|Exception ignored|OpenGL|cArguments|result =" | tee "$OUT/$cond/client.log"
   kill $pid; wait $pid 2>/dev/null || true
 }

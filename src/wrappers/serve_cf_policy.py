@@ -7,6 +7,10 @@ This wrapper only adds provenance to each response under the key "server_info": 
 the call (which fully determines the sampled flow-matching noise), the call index, latency, and peak GPU
 memory. It does not touch the RNG stream, the noise, or the returned actions.
 
+With --crn-master-seed (S2b) the outermost wrapper is src/wrappers/crn.CRNPolicy: the flow-matching noise of every
+call is derived from (master_seed, task, init, call index) sent by the client and passed through the policy's public
+`noise=` argument (common random numbers across conditions; strict, no fallback to the native stream).
+
 With --diagnostics (S2 pilot) the policy is wrapped by src/instrumentation/pi05_diagnostics.DiagnosticPolicy
 instead, which additionally returns, under "diag": per-branch noise fingerprints, CAG guidance magnitude
 (a_cond, a_uncond, translation/rotation/gripper/normalised norms) and action-expert attention entropies, with the
@@ -92,10 +96,22 @@ def main():
     parser.add_argument("--port", type=int, default=8000)
     parser.add_argument("--diagnostics", action="store_true", help="guidance + attention logging (S2)")
     parser.add_argument("--policy-seed", type=int, default=0, help="policy RNG stream key; 0 = openpi native default")
+    parser.add_argument("--crn-master-seed", type=int, default=None,
+                        help="S2b common random numbers: noise = f(master_seed, task, init, call); see src/wrappers/crn.py")
     args = parser.parse_args()
     if args.mode == "cag_tf" and args.guidance_scale is None:
         parser.error("--guidance-scale is required for cag_tf (paper: 1.5; LIBERO-CF README: 2.0)")
 
+    if args.crn_master_seed is not None:
+        # Exact CRN needs cross-process bit-determinism (B and S are served by different processes). With XLA
+        # autotuning on, kernel choice differs per process and actions differ by up to ~5e-3 for identical noise
+        # (reports/S2B_RNG_VALIDATION.md); fail fast if the deterministic flags are missing.
+        import os  # noqa: PLC0415
+
+        flags = os.environ.get("XLA_FLAGS", "")
+        for f in ("--xla_gpu_autotune_level=0", "--xla_gpu_deterministic_ops=true"):
+            if f not in flags:
+                parser.error(f"--crn-master-seed requires XLA_FLAGS to contain {f}")
     if args.diagnostics:
         import sys  # noqa: PLC0415
 
@@ -116,6 +132,14 @@ def main():
         wrapped = DiagnosticPolicy(policy, base, mode=args.mode, guidance_scale=args.guidance_scale, attention=True)
     else:
         wrapped = ProvenancePolicy(policy, base, args.mode, args.guidance_scale)
+    if args.crn_master_seed is not None:
+        import sys  # noqa: PLC0415
+
+        sys.path.insert(0, str(REPO_ROOT))
+        from src.wrappers.crn import CRNPolicy  # noqa: PLC0415
+
+        wrapped = CRNPolicy(wrapped, args.crn_master_seed)
+        wrapped.metadata["xla_flags"] = os.environ.get("XLA_FLAGS", "")
     logging.info("Serving %s", json.dumps(wrapped.metadata, default=str))
 
     server = websocket_policy_server.WebsocketPolicyServer(

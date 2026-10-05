@@ -9,6 +9,9 @@ own helper functions; differences are additive only:
     latency, peak GPU memory), executed actions and full predicted chunks;
   * a run manifest; videos are optional;
   * static scene-geometry fingerprint after set_init_state (src/wrappers/geometry.py), logging only;
+  * with --crn-master-seed (S2b): every request carries the CRN tuple (master_seed, task, init, call index); the
+    server derives the flow noise from it (src/wrappers/crn.py). Per call the client also logs an observation
+    hash; per episode the first env step at which each labelled object was touched;
   * with a --diagnostics server: per-call guidance magnitude / branch noise fingerprints (in the JSONL) and
     action-expert attention entropies (one <out>/attn/task<T>_init<I>.npz per episode); raw attention probs for the
     first --raw-attention-episodes episodes per task, written by the server to <out>/raw/.
@@ -20,6 +23,7 @@ Usage (server already running, see src/wrappers/serve_cf_policy.py):
 
 import argparse
 import collections
+import hashlib
 import importlib.util
 import json
 import os
@@ -46,6 +50,10 @@ from src.wrappers.geometry import scene_fingerprint  # noqa: E402
 from src.wrappers.manifest import write_manifest  # noqa: E402
 
 RNG_PROTOCOL = "matched initial states under native policy stochasticity (fresh server per condition; not noise-paired)"
+RNG_PROTOCOL_CRN = (
+    "S2b common random numbers: flow noise of every policy call = f(master_seed, task_id, init_id, call_index) "
+    "(src/wrappers/crn.py), identical across conditions for the same tuple"
+)
 
 LIBERO_DUMMY_ACTION = [0.0] * 6 + [-1.0]
 LIBERO_ENV_RESOLUTION = 256
@@ -72,6 +80,7 @@ def run_episode(cf, env, client, init_state, conditions, subject_to_body, args, 
     geometry = scene_fingerprint(env, include_values=True)
     attention = collections.defaultdict(list)
     touched = {c: False for c in conditions}
+    touch_t = {c: None for c in conditions}  # first env step t whose action produced gripper contact
     t, done = 0, False
     executed, chunks, calls, replay = [], [], [], []
     error = None
@@ -103,6 +112,14 @@ def run_episode(cf, env, client, init_state, conditions, subject_to_body, args, 
                         "save_raw_path": None if raw_prefix is None else f"{raw_prefix}_call{len(calls):03d}",
                     },
                 }
+                if args.crn_master_seed is not None:
+                    element["crn"] = {
+                        "master_seed": args.crn_master_seed, "task_id": args._task_id,
+                        "init_id": args._init_id, "call_index": len(calls),
+                    }
+                obs_sha = hashlib.sha256(
+                    img.tobytes() + wrist_img.tobytes() + np.asarray(element["observation/state"], np.float64).tobytes()
+                ).hexdigest()[:16]
                 start = time.monotonic()
                 result = client.infer(element)
                 rtt_ms = (time.monotonic() - start) * 1000
@@ -118,6 +135,8 @@ def run_episode(cf, env, client, init_state, conditions, subject_to_body, args, 
                         "client_rtt_ms": rtt_ms,
                         "policy_timing": result.get("policy_timing"),
                         "server_info": result.get("server_info"),
+                        "crn": result.get("crn"),
+                        "obs_sha": obs_sha,
                         "diag": {k: v for k, v in result.get("diag", {}).items() if k != "attention"},
                     }
                 )
@@ -134,6 +153,7 @@ def run_episode(cf, env, client, init_state, conditions, subject_to_body, args, 
                     resolved = subject_to_body.get(cf._condition_subject_token(cond))
                     if resolved and resolved in contact_names:
                         touched[cond] = True
+                        touch_t[cond] = int(t)
             if done:
                 break
             t += 1
@@ -149,6 +169,7 @@ def run_episode(cf, env, client, init_state, conditions, subject_to_body, args, 
         "t_final": int(t),
         "env_steps_executed": len(executed),
         "touched": touched,
+        "touch_t": touch_t,
         "cond_success": {c: bool(cond_results.get(c, False)) for c in conditions},
         "executed_actions": executed,
         "predicted_chunks": chunks,
@@ -177,9 +198,15 @@ def main():
     p.add_argument("--video", action="store_true")
     p.add_argument("--raw-attention-episodes", type=int, default=2, help="episodes/task with raw attention probs")
     p.add_argument("--task-manifest", default=str(REPO_ROOT / "configs/cag/libero_cf_spatial_task_validity.csv"))
+    p.add_argument("--crn-master-seed", type=int, default=None, help="S2b common random numbers (server must match)")
+    p.add_argument("--forbid-init-from", type=int, default=None,
+                   help="refuse to run if any initial-state index >= this value (S2b: 30; states 30-49 are reserved)")
     p.add_argument("--out", required=True)
     args = p.parse_args()
 
+    if args.forbid_init_from is not None and args.init_start + args.episodes > args.forbid_init_from:
+        raise SystemExit(f"refusing: init states {args.init_start}..{args.init_start + args.episodes - 1} "
+                         f"reach the reserved range >= {args.forbid_init_from}")
     cf = _load_main_cf()
     np.random.seed(args.seed)
     out = pathlib.Path(args.out).resolve()  # the server writes raw attention files to paths under it
@@ -195,6 +222,9 @@ def main():
             task_manifest = {int(r["task_id"]): (r["faithful_object"], r["biased_object"]) for r in csv.DictReader(f)}
     client = _websocket_client_policy.WebsocketClientPolicy(args.host, args.port)
     server_metadata = client.get_server_metadata()
+    if args.crn_master_seed is not None:
+        assert server_metadata.get("crn_master_seed") == args.crn_master_seed, server_metadata.get("crn_master_seed")
+    rng_protocol = RNG_PROTOCOL if args.crn_master_seed is None else RNG_PROTOCOL_CRN
 
     write_manifest(
         out,
@@ -204,8 +234,9 @@ def main():
         seed={
             "np_random_seed": args.seed,
             "env_seed": args.seed,
-            "policy_rng": "server-side jax.random.key(0) stream",
-            "protocol": RNG_PROTOCOL,
+            "policy_rng": "server-side jax.random.key(0) stream" if args.crn_master_seed is None
+            else f"CRN master_seed {args.crn_master_seed}",
+            "protocol": rng_protocol,
         },
         task={"suite": args.suite, "task_ids": task_ids},
         initial_state_indices=range(args.init_start, args.init_start + args.episodes),
@@ -236,6 +267,7 @@ def main():
             if frozen is not None:  # labels must equal the frozen, committed task manifest
                 assert (labels["faithful_subject"], labels["biased_subject"]) == frozen, (task_id, labels, frozen)
             for ep in range(args.init_start, args.init_start + args.episodes):
+                args._task_id, args._init_id = task_id, ep
                 start = time.monotonic()
                 raw_prefix = (
                     str(out / "raw" / f"task{task_id:02d}_init{ep:03d}")
@@ -264,7 +296,8 @@ def main():
                     "bddl_language": labels["bddl_language"],
                     "initial_state_index": ep,
                     "env_seed": args.seed,
-                    "rng_protocol": RNG_PROTOCOL,
+                    "rng_protocol": rng_protocol,
+                    "crn_master_seed": args.crn_master_seed,
                     "faithful_condition": fc,
                     "biased_condition": bc,
                     "success_any": r["done"],
@@ -273,6 +306,8 @@ def main():
                     "faithful_success": r["cond_success"][fc],
                     "biased_success": r["cond_success"][bc],
                     "touched": r["touched"],
+                    "faithful_touch_t": r["touch_t"][fc],
+                    "biased_touch_t": r["touch_t"][bc],
                     "cond_success": r["cond_success"],
                     "episode_length": r["env_steps_executed"],
                     "policy_call_count": len(r["policy_calls"]),
