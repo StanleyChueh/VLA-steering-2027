@@ -1,0 +1,99 @@
+{
+ "rule": {
+  "source": "l_b (oracle source/training instruction)",
+  "other": "lexicographically first valid instruction that is neither l_f nor l_b"
+ },
+ "tasks": {
+  "0": {
+   "faithful": "pick up the cookie box and place it on the plate",
+   "source": "pick up the black bowl between the plate and the ramekin and place it on the plate",
+   "other": "pick up the black bowl next to the ramekin and place it on the plate",
+   "source_subject": "akita_black_bowl_1",
+   "other_subject": "akita_black_bowl_2"
+  },
+  "1": {
+   "faithful": "pick up the ramekin and place it on the plate",
+   "source": "pick up the black bowl between the plate and the ramekin and place it on the plate",
+   "other": "pick up the black bowl next to the ramekin and place it on the plate",
+   "source_subject": "akita_black_bowl_1",
+   "other_subject": "akita_black_bowl_2"
+  },
+  "2": {
+   "faithful": "pick up the cookie box and place it on the plate",
+   "source": "pick up the black bowl next to the ramekin and place it on the plate",
+   "other": "pick up the black bowl next to the cookie box and place it on the plate",
+   "source_subject": "akita_black_bowl_1",
+   "other_subject": "akita_black_bowl_2"
+  },
+  "3": {
+   "faithful": "pick up the cookie box and place it on the plate",
+   "source": "pick up the black bowl from table center and place it on the plate",
+   "other": "pick up the black bowl next to the plate and place it on the plate",
+   "source_subject": "akita_black_bowl_1",
+   "other_subject": "akita_black_bowl_2"
+  },
+  "4": {
+   "faithful": "pick up the ramekin and place it on the plate",
+   "source": "pick up the black bowl on the cookie box and place it on the plate",
+   "other": "pick up the black bowl on the wooden cabinet and place it on the plate",
+   "source_subject": "akita_black_bowl_1",
+   "other_subject": "akita_black_bowl_2"
+  },
+  "5": {
+   "faithful": "pick up the ramekin and place it on the plate",
+   "source": "pick up the black bowl in the top drawer of the wooden cabinet and place it on the plate",
+   "other": "pick up the black bowl on the wooden cabinet and place it on the plate",
+   "source_subject": "akita_black_bowl_1",
+   "other_subject": "akita_black_bowl_2"
+  },
+  "6": {
+   "faithful": "pick up the black bowl on the cookie box and place it on the plate",
+   "source": "pick up the black bowl on the ramekin and place it on the plate",
+   "other": "pick up the cookie box and place it on the plate",
+   "source_subject": "akita_black_bowl_1",
+   "other_subject": "cookies_1"
+  },
+  "7": {
+   "faithful": "pick up the cookie box and place it on the plate",
+   "source": "pick up the black bowl next to the cookie box and place it on the plate",
+   "other": "pick up the black bowl on the stove and place it on the plate",
+   "source_subject": "akita_black_bowl_1",
+   "other_subject": "akita_black_bowl_2"
+  },
+  "8": {
+   "faithful": "pick up the cookie box and place it on the plate",
+   "source": "pick up the black bowl on the stove and place it on the plate",
+   "other": "pick up the black bowl on the wooden cabinet and place it on the plate",
+   "source_subject": "akita_black_bowl_1",
+   "other_subject": "akita_black_bowl_2"
+  },
+  "9": {
+   "faithful": "pick up the black bowl next to the ramekin and place it on the plate",
+   "source": "pick up the black bowl next to the plate and place it on the plate",
+   "other": "pick up the cookie box and place it on the plate",
+   "source_subject": "akita_black_bowl_1",
+   "other_subject": "cookies_1"
+  },
+  "10": {
+   "faithful": "pick up the ramekin and place it on the plate",
+   "source": "pick up the black bowl on the wooden cabinet and place it on the plate",
+   "other": "pick up the black bowl on the stove and place it on the plate",
+   "source_subject": "akita_black_bowl_1",
+   "other_subject": "akita_black_bowl_2"
+  },
+  "11": {
+   "faithful": "pick up the black bowl next to the plate and place it on the plate",
+   "source": "pick up the black bowl from table center and place it on the plate",
+   "other": "pick up the cookie box and place it on the plate",
+   "source_subject": "akita_black_bowl_1",
+   "other_subject": "cookies_1"
+  },
+  "12": {
+   "faithful": "pick up the black bowl on the wooden cabinet and place it on the plate",
+   "source": "pick up the black bowl on the cookie box and place it on the plate",
+   "other": "pick up the cookie box and place it on the plate",
+   "source_subject": "akita_black_bowl_1",
+   "other_subject": "cookies_1"
+  }
+ }
+}

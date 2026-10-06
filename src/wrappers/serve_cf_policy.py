@@ -89,7 +89,8 @@ class ProvenancePolicy:
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--mode", choices=["vanilla", "cag_tf"], required=True)
+    parser.add_argument("--mode", choices=["vanilla", "cag_tf", "ref_norm", "ref_raw"], required=True,
+                        help="ref_norm / ref_raw: S2d oracle reference guidance (src/wrappers/reference_guidance.py)")
     parser.add_argument("--guidance-scale", type=float, default=None)
     parser.add_argument("--config", default="pi05_libero")
     parser.add_argument("--checkpoint", default="gs://openpi-assets/checkpoints/pi05_libero")
@@ -99,7 +100,7 @@ def main():
     parser.add_argument("--crn-master-seed", type=int, default=None,
                         help="S2b common random numbers: noise = f(master_seed, task, init, call); see src/wrappers/crn.py")
     args = parser.parse_args()
-    if args.mode == "cag_tf" and args.guidance_scale is None:
+    if args.mode != "vanilla" and args.guidance_scale is None:
         parser.error("--guidance-scale is required for cag_tf (paper: 1.5; LIBERO-CF README: 2.0)")
 
     if args.crn_master_seed is not None:
@@ -126,6 +127,15 @@ def main():
         base._rng = jax.random.key(args.policy_seed)
     if args.mode == "vanilla":
         policy = base
+    elif args.mode in ("ref_norm", "ref_raw"):
+        import sys  # noqa: PLC0415
+
+        sys.path.insert(0, str(REPO_ROOT))
+        from src.wrappers.reference_guidance import ReferenceGuidedPolicy  # noqa: PLC0415
+
+        if args.diagnostics:
+            parser.error("S2d reference modes log their own diagnostics; do not pass --diagnostics")
+        policy = ReferenceGuidedPolicy(base, mode=args.mode, omega=args.guidance_scale)
     else:
         policy = _load_cag_class()(base, guidance_scale=args.guidance_scale, uncond_empty_prompt=False)
     if args.diagnostics:

@@ -112,6 +112,8 @@ def run_episode(cf, env, client, init_state, conditions, subject_to_body, args, 
                         "save_raw_path": None if raw_prefix is None else f"{raw_prefix}_call{len(calls):03d}",
                     },
                 }
+                if args._ref_prompt is not None:
+                    element["s2d_ref_prompt"] = args._ref_prompt
                 if args.crn_master_seed is not None:
                     element["crn"] = {
                         "master_seed": args.crn_master_seed, "task_id": args._task_id,
@@ -201,12 +203,20 @@ def main():
     p.add_argument("--crn-master-seed", type=int, default=None, help="S2b common random numbers (server must match)")
     p.add_argument("--forbid-init-from", type=int, default=None,
                    help="refuse to run if any initial-state index >= this value (S2b: 30; states 30-49 are reserved)")
+    p.add_argument("--ref-prompts", default=None,
+                   help="S2d: JSON {task_id: {kind: instruction}}; with --ref-kind, sent as obs['s2d_ref_prompt']")
+    p.add_argument("--ref-kind", default=None, help="S2d: source | other")
     p.add_argument("--out", required=True)
     args = p.parse_args()
 
     if args.forbid_init_from is not None and args.init_start + args.episodes > args.forbid_init_from:
         raise SystemExit(f"refusing: init states {args.init_start}..{args.init_start + args.episodes - 1} "
                          f"reach the reserved range >= {args.forbid_init_from}")
+    ref_prompts = None
+    if args.ref_prompts:
+        assert args.ref_kind in ("source", "other"), args.ref_kind
+        ref_prompts = {int(k): v[args.ref_kind] for k, v in json.loads(pathlib.Path(args.ref_prompts).read_text())["tasks"].items()}
+    args._ref_prompt = None
     cf = _load_main_cf()
     np.random.seed(args.seed)
     out = pathlib.Path(args.out).resolve()  # the server writes raw attention files to paths under it
@@ -250,6 +260,7 @@ def main():
             initial_states = suite.get_task_init_states(task_id)
             env, task_description = cf._get_libero_env(task, LIBERO_ENV_RESOLUTION, args.seed)
             args._task_description = task_description
+            args._ref_prompt = None if ref_prompts is None else ref_prompts[task_id]
             bddl_key = task.problem_folder + "/" + task.bddl_file
             conditions = cf._get_conditions_for_task(conditions_db, bddl_key)
             labels = resolve_labels(pathlib.Path(get_libero_path("bddl_files")) / bddl_key, conditions)
@@ -298,6 +309,8 @@ def main():
                     "env_seed": args.seed,
                     "rng_protocol": rng_protocol,
                     "crn_master_seed": args.crn_master_seed,
+                    "s2d_ref_kind": args.ref_kind,
+                    "s2d_ref_prompt": args._ref_prompt,
                     "faithful_condition": fc,
                     "biased_condition": bc,
                     "success_any": r["done"],

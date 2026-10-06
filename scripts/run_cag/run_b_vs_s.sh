@@ -21,6 +21,9 @@ CLIENT_FLAGS=()
 # exact CRN needs cross-process bit-determinism of the B and S servers (reports/S2B_RNG_VALIDATION.md)
 [ -n "$CRN_SEED" ] && export XLA_FLAGS="--xla_gpu_autotune_level=0 --xla_gpu_deterministic_ops=true"
 [ -n "$FORBID_INIT_FROM" ] && CLIENT_FLAGS+=(--forbid-init-from "$FORBID_INIT_FROM")
+# S2d oracle reference conditions: SN (SOURCE-NORM), OT (OTHER, norm-matched), SR (SOURCE-RAW)
+REF_PROMPTS=${REF_PROMPTS:-$ROOT/configs/cag/S2d_reference_prompts.json}
+EXTRA_CLIENT=()
 run_condition() {
   local cond=$1; shift
   mkdir -p "$OUT/$cond"
@@ -32,7 +35,7 @@ run_condition() {
   kill -0 $pid || { echo "server for $cond died"; tail -20 "$OUT/$cond/server.log"; exit 1; }
   MUJOCO_GL=egl "$ROOT/envs/libero-cf-client/bin/python" "$ROOT/scripts/run_cag/run_cf_eval.py" \
     --suite libero_cf_spatial --task-ids "$TASKS" --episodes "$EPISODES" --condition "$cond" --port $PORT --out "$OUT/$cond" \
-    --raw-attention-episodes "$RAW_EPISODES" --init-start "$INIT_START" "${CLIENT_FLAGS[@]}" \
+    --raw-attention-episodes "$RAW_EPISODES" --init-start "$INIT_START" "${CLIENT_FLAGS[@]}" "${EXTRA_CLIENT[@]}" \
     2>&1 | grep --line-buffered -v -E "EGL|Warning|^\s|^\)|Traceback|Exception ignored|OpenGL|cArguments|result =" | tee "$OUT/$cond/client.log"
   kill $pid; wait $pid 2>/dev/null || true
 }
@@ -40,5 +43,8 @@ for c in $CONDS; do
   case $c in
     B) run_condition B --mode vanilla ;;
     S) run_condition S --mode cag_tf --guidance-scale "$W" ;;
+    SN) EXTRA_CLIENT=(--ref-prompts "$REF_PROMPTS" --ref-kind source); run_condition SN --mode ref_norm --guidance-scale "$W" ;;
+    OT) EXTRA_CLIENT=(--ref-prompts "$REF_PROMPTS" --ref-kind other); run_condition OT --mode ref_norm --guidance-scale "$W" ;;
+    SR) EXTRA_CLIENT=(--ref-prompts "$REF_PROMPTS" --ref-kind source); run_condition SR --mode ref_raw --guidance-scale "$W" ;;
   esac
 done

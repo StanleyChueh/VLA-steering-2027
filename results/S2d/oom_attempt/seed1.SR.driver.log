@@ -1,0 +1,22 @@
+/home/stanley/Stanley_ws/VLA-steering-2027/scripts/run_cag/run_b_vs_s.sh: line 35: kill: (582568) - No such process
+server for SR died
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/stanley/Stanley_ws/VLA-steering-2027/envs/openpi-cf/lib/python3.11/site-packages/jax/_src/core.py", line 1029, in process_primitive
+    return primitive.impl(*args, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/stanley/Stanley_ws/VLA-steering-2027/envs/openpi-cf/lib/python3.11/site-packages/jax/_src/dispatch.py", line 566, in _batched_device_put_impl
+    shard_arg_results = pxla.shard_args(dsa_shardings, [None] * len(dsa_xs),
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/stanley/Stanley_ws/VLA-steering-2027/envs/openpi-cf/lib/python3.11/site-packages/jax/_src/profiler.py", line 334, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/stanley/Stanley_ws/VLA-steering-2027/envs/openpi-cf/lib/python3.11/site-packages/jax/_src/interpreters/pxla.py", line 134, in shard_args
+    return shard_arg_handlers[type(arg)]([arg], shardings, layouts,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/stanley/Stanley_ws/VLA-steering-2027/envs/openpi-cf/lib/python3.11/site-packages/jax/_src/interpreters/pxla.py", line 216, in _shard_np_array
+    results.append(batched_device_put(aval, sharding, shards, devices))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/stanley/Stanley_ws/VLA-steering-2027/envs/openpi-cf/lib/python3.11/site-packages/jax/_src/interpreters/pxla.py", line 243, in batched_device_put
+    return xc.batched_device_put(aval, sharding, xs, list(devices), committed)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+jaxlib.xla_extension.XlaRuntimeError: RESOURCE_EXHAUSTED: Out of memory while trying to allocate 2415919104 bytes.

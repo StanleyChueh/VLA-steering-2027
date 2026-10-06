@@ -1,0 +1,125 @@
+{
+  "timestamp": "2026-10-05T17:12:59.195648+08:00",
+  "command": "/home/stanley/Stanley_ws/VLA-steering-2027/scripts/run_cag/run_cf_eval.py --suite libero_cf_spatial --task-ids 0,1,2,3,4,5,6,7,8,9,10,11,12 --episodes 10 --condition SN --port 8783 --out results/S2d/seed1/SN --raw-attention-episodes 0 --init-start 20 --crn-master-seed 1 --forbid-init-from 30 --ref-prompts /home/stanley/Stanley_ws/VLA-steering-2027/configs/cag/S2d_reference_prompts.json --ref-kind source",
+  "cwd": "/home/stanley/Stanley_ws/VLA-steering-2027",
+  "host": "stanley-Z790-AORUS-ELITE-AX",
+  "python": "3.8.20 (default, Oct  2 2024, 16:34:12) \n[Clang 18.1.8 ]",
+  "our_repo": {
+    "sha": "a01bbbc8506ef76f1cbefefc995fb2cd5501687f",
+    "dirty": true
+  },
+  "external_repos": {
+    "scale": {
+      "sha": "b4ad2a69d14f91712704711e810cf9830e2b7121",
+      "dirty": false
+    },
+    "libero-cf": {
+      "sha": "8460457bfca6e0ef2e856bc104e2c60b023ef2a7",
+      "dirty": false
+    },
+    "mechanistic-steering-vlas": {
+      "sha": "559c0f25a3cc5a20fc8b804774a88415404e0d22",
+      "dirty": false
+    },
+    "vla-explain": {
+      "sha": "202d2a9a00fb4b99083559525d54d8f2a7eb4d3f",
+      "dirty": false
+    },
+    "deps/LIBERO": {
+      "sha": "8f1084e3132a39270c3a13ebe37270a43ece2a01",
+      "dirty": false
+    }
+  },
+  "checkpoint": "gs://openpi-assets/checkpoints/pi05_libero",
+  "condition": "SN",
+  "seed": {
+    "np_random_seed": 7,
+    "env_seed": 7,
+    "policy_rng": "CRN master_seed 1",
+    "protocol": "S2b common random numbers: flow noise of every policy call = f(master_seed, task_id, init_id, call_index) (src/wrappers/crn.py), identical across conditions for the same tuple"
+  },
+  "task": {
+    "suite": "libero_cf_spatial",
+    "task_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ]
+  },
+  "initial_state_indices": [
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29
+  ],
+  "config": {
+    "suite": "libero_cf_spatial",
+    "task_ids": "0,1,2,3,4,5,6,7,8,9,10,11,12",
+    "episodes": 10,
+    "init_start": 20,
+    "condition": "SN",
+    "checkpoint": "gs://openpi-assets/checkpoints/pi05_libero",
+    "host": "0.0.0.0",
+    "port": 8783,
+    "resize_size": 224,
+    "replan_steps": 5,
+    "num_steps_wait": 10,
+    "seed": 7,
+    "video": false,
+    "raw_attention_episodes": 0,
+    "task_manifest": "/home/stanley/Stanley_ws/VLA-steering-2027/configs/cag/libero_cf_spatial_task_validity.csv",
+    "crn_master_seed": 1,
+    "forbid_init_from": 30,
+    "ref_prompts": "/home/stanley/Stanley_ws/VLA-steering-2027/configs/cag/S2d_reference_prompts.json",
+    "ref_kind": "source",
+    "out": "results/S2d/seed1/SN",
+    "_ref_prompt": null
+  },
+  "gpu": {
+    "nvidia_smi": [
+      "0, NVIDIA GeForce RTX 4090, 580.178.04, 24564 MiB, 18318 MiB",
+      "1, NVIDIA GeForce RTX 4090, 580.178.04, 24564 MiB, 8900 MiB"
+    ],
+    "driver_cuda_version": "13.0",
+    "CUDA_VISIBLE_DEVICES": null
+  },
+  "frameworks": {
+    "torch": "1.11.0+cpu",
+    "numpy": "1.22.4",
+    "robosuite": "1.4.1",
+    "mujoco": "3.2.3",
+    "torch_cuda": null
+  },
+  "extra": {
+    "server_metadata": {
+      "s2d_mode": "ref_norm",
+      "s2d_omega": 1.5,
+      "wrapper_mode": "ref_norm",
+      "wrapper_guidance_scale": 1.5,
+      "crn_master_seed": 1,
+      "crn_stream_tag": 1395802656,
+      "crn_noise_shape": [
+        1,
+        10,
+        32
+      ],
+      "xla_flags": "--xla_gpu_autotune_level=0 --xla_gpu_deterministic_ops=true"
+    }
+  }
+}
